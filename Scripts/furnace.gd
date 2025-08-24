@@ -8,4 +8,4 @@ func _on_proximity_trigger_body_exited(body: Node2D) -> void:
 	$BiscuitButton.visible = false
 
 func _on_button_pressed() -> void:
-	print("Made 5 Biscuits")
+	GameManager.biscuit_gained.emit()

@@ -15,6 +15,10 @@ run/main_scene="uid://deqbbtwchr357"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://Assets/icon.svg"
 
+[autoload]
+
+GameManager="*res://game_manager.gd"
+
 [dotnet]
 
 project/assembly_name="Brackey-s Game Jam 2025-2"
