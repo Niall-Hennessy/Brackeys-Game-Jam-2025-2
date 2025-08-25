@@ -10,6 +10,8 @@ extends Node
 @export var player_distance: int = 1000
 @export var winter_distance: int = 0
 
+@export var distance_per_biscuit: int = 100
+
 var rng = RandomNumberGenerator.new()
 
 var my_array = [100, 200, 300, 400, 500]
@@ -48,6 +50,6 @@ func next_turn(consume_num_biscuits: int) -> void:
 		return
 	
 	biscuits -= consume_num_biscuits
-	player_distance += consume_num_biscuits * 100
+	player_distance += consume_num_biscuits * distance_per_biscuit
 	winter_distance += my_array[rng.rand_weighted(weights)]
 	turn += 1
