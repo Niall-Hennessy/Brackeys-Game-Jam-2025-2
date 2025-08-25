@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d4d4b0g6aw2th" path="res://Scenes/Stations/wheat.tscn" id="8_tol5k"]
 [ext_resource type="PackedScene" path="res://Scenes/invisible_wall.tscn" id="9_o16nm"]
 
-[node name="TestLevel2" type="Node2D"]
+[node name="TestLevel" type="Node2D"]
 
 [node name="CampTemp" type="Sprite2D" parent="."]
 position = Vector2(579, 319.5)
