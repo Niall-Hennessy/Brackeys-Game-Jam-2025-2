@@ -1,18 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://c22e3pib328ep"]
+[gd_scene load_steps=7 format=3 uid="uid://fi1wgrchr8kk"]
 
-[ext_resource type="Texture2D" uid="uid://bb4agbex7op6n" path="res://Assets/Stations/furnace_temp.png" id="1_ou41p"]
-[ext_resource type="Script" uid="uid://bv1kwi2wl5o7v" path="res://Scripts/furnace.gd" id="1_x2cpa"]
-[ext_resource type="PackedScene" uid="uid://b81j4cgq1flrb" path="res://Scenes/Stations/proximity_trigger.tscn" id="3_5f1qk"]
+[ext_resource type="Script" uid="uid://dpp0fs15k80af" path="res://Scripts/water.gd" id="1_irj0h"]
+[ext_resource type="Texture2D" uid="uid://bdmbhoheflhah" path="res://Assets/Stations/water_temp.png" id="2_irj0h"]
+[ext_resource type="PackedScene" uid="uid://b81j4cgq1flrb" path="res://Scenes/Stations/proximity_trigger.tscn" id="3_yrbv6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5f1qk"]
-atlas = ExtResource("1_ou41p")
+[sub_resource type="AtlasTexture" id="AtlasTexture_q18oq"]
+atlas = ExtResource("2_irj0h")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ru2c"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5f1qk")
+"texture": SubResource("AtlasTexture_q18oq")
 }],
 "loop": true,
 "name": &"default",
@@ -20,41 +20,40 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5f1qk"]
-size = Vector2(24, 11)
+size = Vector2(26, 15)
 
-[node name="Furnace" type="Node2D"]
-script = ExtResource("1_x2cpa")
+[node name="Water" type="Node2D"]
+script = ExtResource("1_irj0h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0ru2c")
 
-[node name="ProximityTrigger" parent="." instance=ExtResource("3_5f1qk")]
+[node name="ProximityTrigger" parent="." instance=ExtResource("3_yrbv6")]
 collision_layer = 4
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 5.5)
+position = Vector2(1, -0.5)
 shape = SubResource("RectangleShape2D_5f1qk")
 debug_color = Color(0.851513, 0.323311, 0.481857, 0.42)
 
-[node name="BiscuitButton" type="Button" parent="."]
+[node name="FetchButton" type="Button" parent="."]
 visible = false
 offset_left = -22.0
 offset_top = -55.0
 offset_right = 19.0
 offset_bottom = -24.0
 scale = Vector2(1.01618, 0.897703)
-text = "Bake
-"
+text = "Fetch"
 
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
-wait_time = 1.5
+wait_time = 0.33
 one_shot = true
 
 [connection signal="body_entered" from="ProximityTrigger" to="." method="_on_proximity_trigger_body_entered"]
 [connection signal="body_exited" from="ProximityTrigger" to="." method="_on_proximity_trigger_body_exited"]
-[connection signal="pressed" from="BiscuitButton" to="." method="_on_biscuit_button_pressed"]
+[connection signal="pressed" from="FetchButton" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

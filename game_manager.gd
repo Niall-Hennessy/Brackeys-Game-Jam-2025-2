@@ -25,6 +25,9 @@ func gain_biscuit(num_biscuits: int) -> void:
 func gain_dough(num_dough: int) -> void:
 	dough += num_dough
 
+func gain_water(num_water: int) -> void:
+	water += num_water
+
 func next_turn(consume_num_biscuits: int) -> void:
 	if biscuits < consume_num_biscuits:
 		return

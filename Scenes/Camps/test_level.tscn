@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://uldm21fmtwyx" path="res://Scenes/Player/player.tscn" id="2_yqnp2"]
 [ext_resource type="Script" uid="uid://rnvwkq3eij6g" path="res://Scripts/GUI.gd" id="3_qq1j0"]
 [ext_resource type="PackedScene" uid="uid://c22e3pib328ep" path="res://Scenes/Stations/furnace.tscn" id="3_vqqru"]
-[ext_resource type="Texture2D" uid="uid://bdmbhoheflhah" path="res://Assets/Stations/water_temp.png" id="4_2pdh6"]
 [ext_resource type="PackedScene" uid="uid://bhgsnpk41ol4b" path="res://Scenes/Stations/mixing_bowl.tscn" id="4_vqqru"]
 [ext_resource type="Texture2D" uid="uid://bwuy7uhqykb0c" path="res://Assets/Stations/MortarAndPestleTemp.png" id="5_o16nm"]
 [ext_resource type="Texture2D" uid="uid://qhhcvg4miyah" path="res://Assets/Stations/wheat_temp.png" id="6_tol5k"]
+[ext_resource type="PackedScene" uid="uid://fi1wgrchr8kk" path="res://Scenes/Stations/water.tscn" id="8_2pdh6"]
 
 [node name="TestLevel" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-32.0, 639.0, 0.0, -249.0]
@@ -63,17 +63,12 @@ offset_bottom = 65.2491
 scale = Vector2(0.378777, 0.399956)
 
 [node name="Furnace" parent="." instance=ExtResource("3_vqqru")]
-position = Vector2(866, 324)
+position = Vector2(690, 271)
 scale = Vector2(3, 3)
 
 [node name="MixingBowl" parent="." instance=ExtResource("4_vqqru")]
 position = Vector2(234, 435)
 scale = Vector2(3, 3.00738)
-
-[node name="WaterTemp" type="Sprite2D" parent="."]
-position = Vector2(372, 132)
-scale = Vector2(3, 3)
-texture = ExtResource("4_2pdh6")
 
 [node name="MortarAndPestleTemp" type="Sprite2D" parent="."]
 position = Vector2(372, 474)
@@ -94,6 +89,10 @@ texture = ExtResource("6_tol5k")
 position = Vector2(783, 137)
 scale = Vector2(3, 3)
 texture = ExtResource("6_tol5k")
+
+[node name="Water2" parent="." instance=ExtResource("8_2pdh6")]
+position = Vector2(265, 186)
+scale = Vector2(3, 3)
 
 [connection signal="pressed" from="Player/Camera2D/Control/EndTurnButton" to="Player/Camera2D/Control" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="Player/Camera2D/Control/EndTurnButton" to="Player/Camera2D/Control/EndTurnButton" method="_on_pressed"]

@@ -1,13 +1,13 @@
 extends Node2D
 
 func _on_proximity_trigger_body_entered(body: Node2D) -> void:
-	$BiscuitButton.visible = true
+	$FetchButton.visible = true
 
 func _on_proximity_trigger_body_exited(body: Node2D) -> void:
-	$BiscuitButton.visible = false
+	$FetchButton.visible = false
 
-func _on_biscuit_button_pressed() -> void:
+func _on_button_pressed() -> void:
 	$Timer.start()
-	
+
 func _on_timer_timeout() -> void:
-	GameManager.gain_biscuit(3)
+	GameManager.gain_water(1)
