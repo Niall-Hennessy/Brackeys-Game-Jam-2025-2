@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c22e3pib328ep"]
+[gd_scene load_steps=10 format=3 uid="uid://c22e3pib328ep"]
 
 [ext_resource type="Texture2D" uid="uid://bb4agbex7op6n" path="res://Assets/Stations/furnace_temp.png" id="1_ou41p"]
 [ext_resource type="Script" uid="uid://bv1kwi2wl5o7v" path="res://Scripts/furnace.gd" id="1_x2cpa"]
 [ext_resource type="PackedScene" uid="uid://b81j4cgq1flrb" path="res://Scenes/Stations/proximity_trigger.tscn" id="3_5f1qk"]
+[ext_resource type="Texture2D" uid="uid://cp1x0niouvpps" path="res://Assets/clock_progress_under.png" id="4_olajk"]
+[ext_resource type="Texture2D" uid="uid://0h57n21pgy7u" path="res://Assets/clock_progress_over.png" id="5_uf8nk"]
+[ext_resource type="Texture2D" uid="uid://c1d661tfkkm3p" path="res://Assets/Dough_Item_Background_Temp.png" id="6_uf8nk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5f1qk"]
 atlas = ExtResource("1_ou41p")
@@ -39,7 +42,7 @@ position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_5f1qk")
 debug_color = Color(0.851513, 0.323311, 0.481857, 0.42)
 
-[node name="BiscuitButton" type="Button" parent="."]
+[node name="ActionButton" type="Button" parent="."]
 visible = false
 offset_left = -22.0
 offset_top = -55.0
@@ -54,7 +57,24 @@ process_callback = 0
 wait_time = 1.5
 one_shot = true
 
+[node name="StationProgressRadial" type="TextureProgressBar" parent="."]
+visible = false
+offset_left = -11.0
+offset_top = -34.0
+offset_right = 29.0
+offset_bottom = 6.00001
+scale = Vector2(0.700546, 0.689436)
+fill_mode = 4
+texture_under = ExtResource("4_olajk")
+texture_progress = ExtResource("5_uf8nk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -20)
+scale = Vector2(0.495739, 0.481393)
+texture = ExtResource("6_uf8nk")
+
 [connection signal="body_entered" from="ProximityTrigger" to="." method="_on_proximity_trigger_body_entered"]
 [connection signal="body_exited" from="ProximityTrigger" to="." method="_on_proximity_trigger_body_exited"]
-[connection signal="pressed" from="BiscuitButton" to="." method="_on_biscuit_button_pressed"]
+[connection signal="pressed" from="ActionButton" to="." method="_on_biscuit_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

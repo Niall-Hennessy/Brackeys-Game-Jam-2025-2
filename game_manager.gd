@@ -27,18 +27,13 @@ func initialise_vars() -> void:
 	player_distance = 1000
 	winter_distance = 0
 
-func gain_biscuit(num_biscuits: int) -> void:
-	if num_biscuits > dough:
-		return
-		
+
+func gain_biscuit(num_biscuits: int) -> void:		
 	biscuits += num_biscuits
 	dough -= num_biscuits
 
 func gain_dough(num_dough: int) -> void:
-	if num_dough > wheat or num_dough > water:
-		return
-	
-	wheat -= num_dough
+	flour -= num_dough
 	water -= num_dough
 	dough += num_dough
 
@@ -49,9 +44,6 @@ func gain_wheat(num_wheat: int) -> void:
 	wheat += num_wheat
 
 func gain_flour(num_flour: int) -> void:
-	if num_flour > wheat:
-		return
-
 	wheat -= num_flour
 	flour += num_flour
 

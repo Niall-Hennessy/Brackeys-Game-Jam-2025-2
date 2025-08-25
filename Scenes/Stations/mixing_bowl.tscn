@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhgsnpk41ol4b"]
+[gd_scene load_steps=11 format=3 uid="uid://bhgsnpk41ol4b"]
 
 [ext_resource type="Script" uid="uid://o75kjk20mkx4" path="res://Scripts/mixing_bowl.gd" id="1_p7i4k"]
 [ext_resource type="Texture2D" uid="uid://dv4oiy8g7aqmj" path="res://Assets/Stations/MixingBowl.png" id="2_p7i4k"]
 [ext_resource type="PackedScene" uid="uid://b81j4cgq1flrb" path="res://Scenes/Stations/proximity_trigger.tscn" id="3_8fkcv"]
+[ext_resource type="Texture2D" uid="uid://cp1x0niouvpps" path="res://Assets/clock_progress_under.png" id="4_8fkcv"]
+[ext_resource type="Texture2D" uid="uid://0h57n21pgy7u" path="res://Assets/clock_progress_over.png" id="5_n08vg"]
+[ext_resource type="Texture2D" uid="uid://6o5jijuospyl" path="res://Assets/Flour_Item_Background_Temp.png" id="6_nuxqa"]
+[ext_resource type="Texture2D" uid="uid://bq23pqscjxg6v" path="res://Assets/Water_Item_Background_Temp.png" id="7_gargd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0js8q"]
 atlas = ExtResource("2_p7i4k")
@@ -40,7 +44,7 @@ position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_5f1qk")
 debug_color = Color(0.851513, 0.323311, 0.481857, 0.42)
 
-[node name="MixingButton" type="Button" parent="."]
+[node name="ActionButton" type="Button" parent="."]
 visible = false
 offset_left = -22.0
 offset_top = -55.0
@@ -49,6 +53,31 @@ offset_bottom = -24.0
 scale = Vector2(1.01618, 0.897703)
 text = "Mix"
 
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[node name="StationProgressRadial" type="TextureProgressBar" parent="."]
+offset_left = -11.0
+offset_top = -34.0
+offset_right = 29.0
+offset_bottom = 6.00001
+scale = Vector2(0.700546, 0.689436)
+fill_mode = 4
+texture_under = ExtResource("4_8fkcv")
+texture_progress = ExtResource("5_n08vg")
+
+[node name="FlourItemSprite" type="Sprite2D" parent="."]
+position = Vector2(22, -17)
+scale = Vector2(0.888343, 0.84023)
+texture = ExtResource("6_nuxqa")
+
+[node name="WaterItemSprite" type="Sprite2D" parent="."]
+position = Vector2(-24, -17)
+scale = Vector2(0.851394, 0.82494)
+texture = ExtResource("7_gargd")
+
 [connection signal="body_entered" from="ProximityTrigger" to="." method="_on_proximity_trigger_body_entered"]
 [connection signal="body_exited" from="ProximityTrigger" to="." method="_on_proximity_trigger_body_exited"]
-[connection signal="pressed" from="MixingButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ActionButton" to="." method="_on_mixing_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

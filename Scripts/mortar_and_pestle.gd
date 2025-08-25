@@ -1,13 +1,26 @@
-extends Node2D
+extends Station
 
-func _on_proximity_trigger_body_entered(body: Node2D) -> void:
-	$CrushButton.visible = true
+@export var wheat_consumed: int = 1
+@export var wheat_amount: int = 0
 
-func _on_proximity_trigger_body_exited(body: Node2D) -> void:
-	$CrushButton.visible = false
+func _process(delta: float) -> void:
+	if wheat_amount > 0:
+		$Sprite2D.visible = true
+	else:
+		$Sprite2D.visible = false
 
 func _on_crush_button_pressed() -> void:
+	if $Timer.time_left != 0:
+		return
+		
+	if GameManager.wheat < wheat_consumed:
+		return
+	
+	$StationProgressRadial.visible = true
 	$Timer.start()
 	
 func _on_timer_timeout() -> void:
 	GameManager.gain_flour(1)
+
+func add_wheat(wheat_to_add: int) -> void:
+	wheat_amount += wheat_to_add
