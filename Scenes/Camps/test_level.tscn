@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://deqbbtwchr357"]
+[gd_scene load_steps=5 format=3 uid="uid://deqbbtwchr357"]
 
 [ext_resource type="Texture2D" uid="uid://c8g4gvm87meby" path="res://Assets/Camp_temp.png" id="1_c4fu7"]
 [ext_resource type="PackedScene" uid="uid://uldm21fmtwyx" path="res://Scenes/Player/player.tscn" id="2_yqnp2"]
-[ext_resource type="Script" uid="uid://vnbpmnv1ialw" path="res://Scripts/end_turn_button.gd" id="3_epsyj"]
+[ext_resource type="Script" uid="uid://rnvwkq3eij6g" path="res://Scripts/GUI.gd" id="3_qq1j0"]
 [ext_resource type="PackedScene" uid="uid://c22e3pib328ep" path="res://Scenes/Stations/furnace.tscn" id="3_vqqru"]
-[ext_resource type="Script" uid="uid://cx6cttouam7ex" path="res://Scripts/biscuit_label.gd" id="3_yqnp2"]
 
 [node name="TestLevel" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-32.0, 639.0, 0.0, -249.0]
@@ -25,16 +24,22 @@ position = Vector2(0, 0.333333)
 scale = Vector2(1, 1.00246)
 zoom = Vector2(1.5, 1.5)
 
-[node name="EndTurnButton" type="Button" parent="Player/Camera2D"]
+[node name="Control" type="Control" parent="Player/Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_qq1j0")
+
+[node name="EndTurnButton" type="Button" parent="Player/Camera2D/Control"]
 offset_left = 95.0
 offset_top = 48.3333
 offset_right = 173.0
 offset_bottom = 79.3333
 scale = Vector2(0.352649, 0.583948)
 text = "End Turn"
-script = ExtResource("3_epsyj")
 
-[node name="BiscuitLabel" type="Label" parent="Player/Camera2D"]
+[node name="GameManagerLabel" type="Label" parent="Player/Camera2D/Control"]
 offset_left = -124.667
 offset_top = -67.0
 offset_right = -55.6667
@@ -42,10 +47,17 @@ offset_bottom = -18.0
 scale = Vector2(0.607645, 0.477497)
 text = "Biscuits: 
 Turn: "
-script = ExtResource("3_yqnp2")
+
+[node name="LineEdit" type="LineEdit" parent="Player/Camera2D/Control"]
+offset_left = 96.3333
+offset_top = 34.2491
+offset_right = 164.896
+offset_bottom = 65.2491
+scale = Vector2(0.378777, 0.399956)
 
 [node name="Furnace" parent="." instance=ExtResource("3_vqqru")]
 position = Vector2(866, 324)
 scale = Vector2(3, 3)
 
-[connection signal="pressed" from="Player/Camera2D/EndTurnButton" to="Player/Camera2D/EndTurnButton" method="_on_pressed"]
+[connection signal="pressed" from="Player/Camera2D/Control/EndTurnButton" to="Player/Camera2D/Control/EndTurnButton" method="_on_pressed"]
+[connection signal="pressed" from="Player/Camera2D/Control/EndTurnButton" to="Player/Camera2D/Control" method="_on_end_turn_button_pressed"]
