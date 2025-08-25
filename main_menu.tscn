@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://b88naa233hk5g"]
+
+[ext_resource type="Script" uid="uid://d0pwxjyi08nya" path="res://main_menu.gd" id="1_06t4h"]
+
+[node name="main_menu" type="Node2D"]
+script = ExtResource("1_06t4h")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = -75.5
+offset_right = 86.0
+offset_bottom = 75.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MenuTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Risk it for the biscuit !!"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartGameButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start Game!"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
