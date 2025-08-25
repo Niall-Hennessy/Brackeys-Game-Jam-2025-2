@@ -4,12 +4,17 @@ extends Station
 @export var water_consumed: int = 1
 @export var flour_amount: int = 0
 @export var water_amount: int = 0
-
+	
 func _process(delta: float) -> void:
 	if flour_amount > 0:
-		$Sprite2D.visible = true
+		$FlourItemSprite.visible = true
 	else:
-		$Sprite2D.visible = false
+		$FlourItemSprite.visible = false
+	
+	if water_amount > 0:
+		$WaterItemSprite.visible = true
+	else:
+		$WaterItemSprite.visible = false
 	
 func _on_mixing_button_pressed() -> void:
 	if $Timer.time_left != 0:
@@ -23,3 +28,9 @@ func _on_mixing_button_pressed() -> void:
 	
 func _on_timer_timeout() -> void:
 	GameManager.gain_dough(1)
+
+func add_flour(flour_to_add: int) -> void:
+	flour_amount += flour_to_add
+	
+func add_water(water_to_add: int) -> void:
+	water_amount += water_to_add

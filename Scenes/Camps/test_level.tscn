@@ -45,11 +45,11 @@ scale = Vector2(3, 3.00738)
 position = Vector2(265, 186)
 scale = Vector2(3, 3)
 
-[node name="MortarAndPestle" parent="." instance=ExtResource("8_o16nm")]
+[node name="MortarAndPestle" parent="Stations" instance=ExtResource("8_o16nm")]
 position = Vector2(490, 458)
 scale = Vector2(3, 3)
 
-[node name="Wheat" parent="." instance=ExtResource("8_tol5k")]
+[node name="Wheat" parent="Stations" instance=ExtResource("8_tol5k")]
 position = Vector2(493, 122)
 scale = Vector2(3, 3)
 

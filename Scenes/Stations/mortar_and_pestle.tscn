@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://doy4bb45g1085"]
+[gd_scene load_steps=10 format=3 uid="uid://doy4bb45g1085"]
 
 [ext_resource type="Script" uid="uid://dhu64x781l8vf" path="res://Scripts/mortar_and_pestle.gd" id="1_765ix"]
 [ext_resource type="Texture2D" uid="uid://bwuy7uhqykb0c" path="res://Assets/Stations/MortarAndPestleTemp.png" id="2_765ix"]
 [ext_resource type="PackedScene" uid="uid://b81j4cgq1flrb" path="res://Scenes/Stations/proximity_trigger.tscn" id="3_5wmxq"]
 [ext_resource type="Texture2D" uid="uid://cp1x0niouvpps" path="res://Assets/clock_progress_under.png" id="4_5wmxq"]
 [ext_resource type="Texture2D" uid="uid://0h57n21pgy7u" path="res://Assets/clock_progress_over.png" id="5_org45"]
+[ext_resource type="Texture2D" uid="uid://o7sevo0ogp0" path="res://Assets/Wheat_Item_Background_Temp.png" id="6_org45"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2a06r"]
 atlas = ExtResource("2_765ix")
@@ -62,6 +63,11 @@ scale = Vector2(0.700546, 0.689436)
 fill_mode = 4
 texture_under = ExtResource("4_5wmxq")
 texture_progress = ExtResource("5_org45")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -20)
+scale = Vector2(0.526706, 0.520428)
+texture = ExtResource("6_org45")
 
 [connection signal="body_entered" from="ProximityTrigger" to="." method="_on_proximity_trigger_body_entered"]
 [connection signal="body_exited" from="ProximityTrigger" to="." method="_on_proximity_trigger_body_exited"]

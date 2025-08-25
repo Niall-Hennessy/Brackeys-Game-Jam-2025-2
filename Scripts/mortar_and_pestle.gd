@@ -21,3 +21,6 @@ func _on_crush_button_pressed() -> void:
 	
 func _on_timer_timeout() -> void:
 	GameManager.gain_flour(1)
+
+func add_wheat(wheat_to_add: int) -> void:
+	wheat_amount += wheat_to_add
