@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb4agbex7op6n"
-path="res://.godot/imported/furnace_temp.png-6f5eb9e1a0c0561e5f93c3ce134987a0.ctex"
+uid="uid://cu5fj3jhu1dqf"
+path="res://.godot/imported/character_30_frame32x32.png-808f8ef7f6df0f777f51f50951770b8b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/furnace_temp.png"
-dest_files=["res://.godot/imported/furnace_temp.png-6f5eb9e1a0c0561e5f93c3ce134987a0.ctex"]
+source_file="res://Assets/Characters/character_30_frame32x32.png"
+dest_files=["res://.godot/imported/character_30_frame32x32.png-808f8ef7f6df0f777f51f50951770b8b.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv4oiy8g7aqmj"
-path="res://.godot/imported/MixingBowl.png-478cf6782676b619d6c5d1b8e70d82ae.ctex"
+uid="uid://c8g4gvm87meby"
+path="res://.godot/imported/Camp_temp.png-541dc4ceaf890d5b1052f26cee531505.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/MixingBowl.png"
-dest_files=["res://.godot/imported/MixingBowl.png-478cf6782676b619d6c5d1b8e70d82ae.ctex"]
+source_file="res://Assets/Camp/Camp_temp.png"
+dest_files=["res://.godot/imported/Camp_temp.png-541dc4ceaf890d5b1052f26cee531505.ctex"]
 
 [params]
 

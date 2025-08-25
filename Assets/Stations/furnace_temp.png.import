@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8g4gvm87meby"
-path="res://.godot/imported/Camp_temp.png-921bf74ed1fcd672ad09fc4a9e5e37e9.ctex"
+uid="uid://bb4agbex7op6n"
+path="res://.godot/imported/furnace_temp.png-5d50ce255cb7ebdf01f8945840198342.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Camp_temp.png"
-dest_files=["res://.godot/imported/Camp_temp.png-921bf74ed1fcd672ad09fc4a9e5e37e9.ctex"]
+source_file="res://Assets/Stations/furnace_temp.png"
+dest_files=["res://.godot/imported/furnace_temp.png-5d50ce255cb7ebdf01f8945840198342.ctex"]
 
 [params]
 

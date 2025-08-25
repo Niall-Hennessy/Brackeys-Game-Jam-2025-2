@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c22e3pib328ep"]
 
-[ext_resource type="Texture2D" uid="uid://bb4agbex7op6n" path="res://Assets/furnace_temp.png" id="1_ou41p"]
+[ext_resource type="Texture2D" uid="uid://bb4agbex7op6n" path="res://Assets/Stations/furnace_temp.png" id="1_ou41p"]
 [ext_resource type="Script" uid="uid://bv1kwi2wl5o7v" path="res://Scripts/furnace.gd" id="1_x2cpa"]
 [ext_resource type="PackedScene" uid="uid://b81j4cgq1flrb" path="res://Scenes/Stations/proximity_trigger.tscn" id="3_5f1qk"]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dl084v34rq0d6"]
 
-[ext_resource type="Texture2D" uid="uid://c8g4gvm87meby" path="res://Assets/Camp_temp.png" id="1_iti4p"]
-[ext_resource type="PackedScene" uid="uid://uldm21fmtwyx" path="res://Scenes/player.tscn" id="2_dtjkg"]
+[ext_resource type="Texture2D" uid="uid://c8g4gvm87meby" path="res://Assets/Camp/Camp_temp.png" id="1_iti4p"]
+[ext_resource type="PackedScene" uid="uid://uldm21fmtwyx" path="res://Scenes/Player/player.tscn" id="2_dtjkg"]
 
 [node name="TestLevel" type="Node2D"]
 

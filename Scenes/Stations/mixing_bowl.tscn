@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bhgsnpk41ol4b"]
 
 [ext_resource type="Script" uid="uid://o75kjk20mkx4" path="res://Scripts/mixing_bowl.gd" id="1_p7i4k"]
-[ext_resource type="Texture2D" uid="uid://dv4oiy8g7aqmj" path="res://Assets/MixingBowl.png" id="2_p7i4k"]
+[ext_resource type="Texture2D" uid="uid://dv4oiy8g7aqmj" path="res://Assets/Stations/MixingBowl.png" id="2_p7i4k"]
 [ext_resource type="PackedScene" uid="uid://b81j4cgq1flrb" path="res://Scenes/Stations/proximity_trigger.tscn" id="3_8fkcv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0js8q"]
