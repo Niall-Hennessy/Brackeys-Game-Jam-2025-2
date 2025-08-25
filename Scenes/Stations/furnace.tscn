@@ -49,6 +49,11 @@ scale = Vector2(1.01618, 0.897703)
 text = "Bake
 "
 
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
 [connection signal="body_entered" from="ProximityTrigger" to="." method="_on_proximity_trigger_body_entered"]
 [connection signal="body_exited" from="ProximityTrigger" to="." method="_on_proximity_trigger_body_exited"]
 [connection signal="pressed" from="BiscuitButton" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

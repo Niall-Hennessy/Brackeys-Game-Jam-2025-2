@@ -24,7 +24,6 @@ speed = 175.0
 position = Vector2(0, 0.333333)
 scale = Vector2(1, 1.00246)
 zoom = Vector2(1.5, 1.5)
-limit_left = 0
 
 [node name="Control" type="Control" parent="Player/Camera2D"]
 layout_mode = 3

@@ -7,4 +7,7 @@ func _on_proximity_trigger_body_exited(body: Node2D) -> void:
 	$BiscuitButton.visible = false
 
 func _on_button_pressed() -> void:
+	$Timer.start()
+
+func _on_timer_timeout() -> void:
 	GameManager.gain_biscuit(3)
