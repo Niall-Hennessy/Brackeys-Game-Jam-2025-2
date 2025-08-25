@@ -41,7 +41,7 @@ scale = Vector2(3, 3)
 position = Vector2(234, 435)
 scale = Vector2(3, 3.00738)
 
-[node name="Water2" parent="Stations" instance=ExtResource("8_2pdh6")]
+[node name="Water" parent="Stations" instance=ExtResource("8_2pdh6")]
 position = Vector2(265, 186)
 scale = Vector2(3, 3)
 
