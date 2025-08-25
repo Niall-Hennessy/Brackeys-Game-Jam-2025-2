@@ -1,10 +1,17 @@
-extends Node2D
+extends Station
 
-func _on_proximity_trigger_body_entered(body: Node2D) -> void:
-	$MixingButton.visible = true
-
-func _on_proximity_trigger_body_exited(body: Node2D) -> void:
-	$MixingButton.visible = false
-
-func _on_button_pressed() -> void:
-	GameManager.gain_dough(3)
+@export var flour_consumed: int = 1
+@export var water_consumed: int = 1
+	
+func _on_mixing_button_pressed() -> void:
+	if $Timer.time_left != 0:
+		return
+	
+	if GameManager.flour < flour_consumed or GameManager.water < water_consumed:
+		return
+	
+	$StationProgressRadial.visible = true
+	$Timer.start()
+	
+func _on_timer_timeout() -> void:
+	GameManager.gain_dough(1)

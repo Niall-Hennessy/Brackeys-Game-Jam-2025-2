@@ -1,12 +1,15 @@
-extends Node2D
+extends Station
 
-func _on_proximity_trigger_body_entered(body: Node2D) -> void:
-	$BiscuitButton.visible = true
-
-func _on_proximity_trigger_body_exited(body: Node2D) -> void:
-	$BiscuitButton.visible = false
+@export var dough_consumed: int = 1
 
 func _on_biscuit_button_pressed() -> void:
+	if $Timer.time_left != 0:
+		return
+	
+	if GameManager.dough < dough_consumed:
+		return
+	
+	$StationProgressRadial.visible = true
 	$Timer.start()
 	
 func _on_timer_timeout() -> void:

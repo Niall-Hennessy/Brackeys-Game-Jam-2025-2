@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d4d4b0g6aw2th"]
+[gd_scene load_steps=9 format=3 uid="uid://d4d4b0g6aw2th"]
 
 [ext_resource type="Script" uid="uid://f4nroc07x6nc" path="res://Scripts/wheat.gd" id="1_x2muh"]
 [ext_resource type="Texture2D" uid="uid://qhhcvg4miyah" path="res://Assets/Stations/wheat_temp.png" id="2_x2muh"]
 [ext_resource type="PackedScene" uid="uid://b81j4cgq1flrb" path="res://Scenes/Stations/proximity_trigger.tscn" id="3_4a4xg"]
+[ext_resource type="Texture2D" uid="uid://cp1x0niouvpps" path="res://Assets/clock_progress_under.png" id="4_4a4xg"]
+[ext_resource type="Texture2D" uid="uid://0h57n21pgy7u" path="res://Assets/clock_progress_over.png" id="5_m5pyv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rsppu"]
 atlas = ExtResource("2_x2muh")
@@ -39,7 +41,7 @@ position = Vector2(-6, 7.5)
 shape = SubResource("RectangleShape2D_5f1qk")
 debug_color = Color(0.851513, 0.323311, 0.481857, 0.42)
 
-[node name="HarvestButton" type="Button" parent="."]
+[node name="ActionButton" type="Button" parent="."]
 visible = false
 offset_left = -22.0
 offset_top = -55.0
@@ -53,7 +55,17 @@ process_callback = 0
 wait_time = 0.33
 one_shot = true
 
+[node name="StationProgressRadial" type="TextureProgressBar" parent="."]
+offset_left = -11.0
+offset_top = -34.0
+offset_right = 29.0
+offset_bottom = 6.00001
+scale = Vector2(0.700546, 0.689436)
+fill_mode = 4
+texture_under = ExtResource("4_4a4xg")
+texture_progress = ExtResource("5_m5pyv")
+
 [connection signal="body_entered" from="ProximityTrigger" to="." method="_on_proximity_trigger_body_entered"]
 [connection signal="body_exited" from="ProximityTrigger" to="." method="_on_proximity_trigger_body_exited"]
-[connection signal="pressed" from="HarvestButton" to="." method="_on_harvest_button_pressed"]
+[connection signal="pressed" from="ActionButton" to="." method="_on_harvest_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
