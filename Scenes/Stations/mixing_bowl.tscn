@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhgsnpk41ol4b"]
+
+[ext_resource type="Script" uid="uid://o75kjk20mkx4" path="res://Scripts/mixing_bowl.gd" id="1_p7i4k"]
+[ext_resource type="Texture2D" uid="uid://dv4oiy8g7aqmj" path="res://Assets/MixingBowl.png" id="2_p7i4k"]
+[ext_resource type="PackedScene" uid="uid://b81j4cgq1flrb" path="res://Scenes/Stations/proximity_trigger.tscn" id="3_8fkcv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0js8q"]
+atlas = ExtResource("2_p7i4k")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ru2c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0js8q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5f1qk"]
+size = Vector2(24, 11)
+
+[node name="MixingBowl" type="Node2D"]
+script = ExtResource("1_p7i4k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0ru2c")
+autoplay = "default"
+
+[node name="ProximityTrigger" parent="." instance=ExtResource("3_8fkcv")]
+collision_layer = 4
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_5f1qk")
+debug_color = Color(0.851513, 0.323311, 0.481857, 0.42)
+
+[node name="MixingButton" type="Button" parent="."]
+visible = false
+offset_left = -22.0
+offset_top = -55.0
+offset_right = 19.0
+offset_bottom = -24.0
+scale = Vector2(1.01618, 0.897703)
+text = "Mix"
+
+[connection signal="body_entered" from="ProximityTrigger" to="." method="_on_proximity_trigger_body_entered"]
+[connection signal="body_exited" from="ProximityTrigger" to="." method="_on_proximity_trigger_body_exited"]
+[connection signal="pressed" from="MixingButton" to="." method="_on_button_pressed"]
