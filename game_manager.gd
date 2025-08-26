@@ -17,6 +17,17 @@ var rng = RandomNumberGenerator.new()
 var my_array = [100, 200, 300, 400, 500]
 var weights = PackedFloat32Array([0.5, 1, 2, 1.5, 1]) #https://docs.godotengine.org/en/4.4/classes/class_randomnumbergenerator.html
 	
+func initialise_vars() -> void:
+	biscuits = 0
+	wheat = 0
+	flour = 0
+	water = 0
+	dough = 0
+	turn = 1
+	player_distance = 1000
+	winter_distance = 0
+
+
 func gain_biscuit(num_biscuits: int) -> void:		
 	biscuits += num_biscuits
 	dough -= num_biscuits
@@ -43,4 +54,7 @@ func next_turn(consume_num_biscuits: int) -> void:
 	biscuits -= consume_num_biscuits
 	player_distance += consume_num_biscuits * distance_per_biscuit
 	winter_distance += my_array[rng.rand_weighted(weights)]
-	turn += 1
+	if winter_distance > player_distance:
+		get_tree().change_scene_to_file("res://Scenes/Screens/game_over_screen.tscn")
+	else:
+		turn += 1
