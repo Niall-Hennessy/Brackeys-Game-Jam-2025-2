@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de2s0kbsumu34"
-path="res://.godot/imported/Item_Background_Temp.png-4ad7d43af28ff2d0633a2083adec20ef.ctex"
+uid="uid://bq23pqscjxg6v"
+path="res://.godot/imported/Water_Item_Background_Temp.png-9103db141e60d87cb28fd08acc93694c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Item_Background_Temp.png"
-dest_files=["res://.godot/imported/Item_Background_Temp.png-4ad7d43af28ff2d0633a2083adec20ef.ctex"]
+source_file="res://Assets/ItemBoxes/Water_Item_Background_Temp.png"
+dest_files=["res://.godot/imported/Water_Item_Background_Temp.png-9103db141e60d87cb28fd08acc93694c.ctex"]
 
 [params]
 
