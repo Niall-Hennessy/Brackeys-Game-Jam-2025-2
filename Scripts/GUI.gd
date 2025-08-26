@@ -5,3 +5,6 @@ func _process(delta: float) -> void:
 
 func _on_end_turn_button_pressed() -> void:
 	GameManager.next_turn(int($LineEdit.text))
+
+func _on_discard_button_pressed() -> void:
+	GameManager.discard_item_sig.emit()
