@@ -18,6 +18,11 @@ var rng = RandomNumberGenerator.new()
 var my_array = [100, 200, 300, 400, 500]
 var weights = PackedFloat32Array([0.5, 1, 2, 1.5, 1]) #https://docs.godotengine.org/en/4.4/classes/class_randomnumbergenerator.html
 	
+signal discard_item_sig
+
+func _ready() -> void:
+	discard_item_sig.connect(discard_item)	
+
 func initialise_vars() -> void:
 	biscuits = 0
 	inventory = Items.EMPTY
@@ -63,6 +68,9 @@ func gain_flour() -> void:
 	if inventory == Items.EMPTY:
 		inventory = Items.FLOUR
 	print(inventory)
+	
+func discard_item() -> void:
+	inventory = Items.EMPTY
 
 func next_turn(consume_num_biscuits: int) -> void:
 	if biscuits < consume_num_biscuits:

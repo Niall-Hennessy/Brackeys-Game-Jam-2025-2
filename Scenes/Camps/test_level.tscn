@@ -94,6 +94,15 @@ offset_right = -24.0
 offset_bottom = -87.0
 scale = Vector2(0.378777, 0.399956)
 
+[node name="DiscardButton" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = -361.333
+offset_top = -290.333
+offset_right = -294.333
+offset_bottom = -259.333
+scale = Vector2(0.431655, 0.336504)
+text = "Discard"
+
 [node name="InvisibleWalls" type="Node" parent="."]
 
 [node name="InvisibleWall" parent="InvisibleWalls" instance=ExtResource("9_o16nm")]
@@ -114,3 +123,4 @@ scale = Vector2(60.56, 1)
 
 [connection signal="pressed" from="CanvasLayer/Control/EndTurnButton" to="CanvasLayer/Control" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/EndTurnButton" to="CanvasLayer/Control/EndTurnButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/DiscardButton" to="CanvasLayer/Control" method="_on_discard_button_pressed"]
