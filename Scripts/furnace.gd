@@ -13,9 +13,11 @@ func _on_biscuit_button_pressed() -> void:
 	if $Timer.time_left != 0:
 		return
 	
-	if GameManager.dough < dough_consumed:
+	if GameManager.inventory != GameManager.Items.DOUGH:
 		return
 	
+	# don't update is_busy, we can leave the biscuits cook unsupervised I guess
+	GameManager.inventory = GameManager.Items.EMPTY
 	$StationProgressRadial.visible = true
 	$Timer.start()
 	
