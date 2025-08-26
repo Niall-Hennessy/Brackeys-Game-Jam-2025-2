@@ -1,10 +1,6 @@
 extends Node
 
 @export var biscuits: int = 0
-@export var wheat: int = 0
-@export var flour: int = 0
-@export var water: int = 0
-@export var dough: int = 0
 
 enum Items {EMPTY, WHEAT, FLOUR, WATER, DOUGH}
 @export var inventory: int = Items.EMPTY
@@ -24,43 +20,46 @@ var weights = PackedFloat32Array([0.5, 1, 2, 1.5, 1]) #https://docs.godotengine.
 	
 func initialise_vars() -> void:
 	biscuits = 0
-	wheat = 0
-	flour = 0
-	water = 0
-	dough = 0
 	inventory = Items.EMPTY
 	turn = 1
 	player_distance = 1000
 	winter_distance = 0
 
+func inventory_string() -> String:
+	match inventory:
+		0:
+			return "Empty"
+		1:
+			return "Wheat"
+		2:
+			return "Flour"
+		3:
+			return "Water"
+		4:
+			return "Dough"
+		_:
+			return "you've met with a terrible fate haven't you" 
 
 func gain_biscuit(num_biscuits: int) -> void:		
 	biscuits += num_biscuits
-	dough -= num_biscuits
+	inventory = Items.EMPTY
 
-func gain_dough(num_dough: int) -> void:
-	flour -= num_dough
-	water -= num_dough
-	dough += num_dough
-	if inventory == Items.DOUGH:
-		inventory = Items.WHEAT
+func gain_dough() -> void:
+	if inventory == Items.EMPTY:
+		inventory = Items.DOUGH
 	print(inventory)
 
-func gain_water(num_water: int) -> void:
-	water += num_water
+func gain_water() -> void:
 	if inventory == Items.EMPTY:
 		inventory = Items.WATER
 	print(inventory)
 	
-func gain_wheat(num_wheat: int) -> void:
-	wheat += num_wheat
+func gain_wheat() -> void:
 	if inventory == Items.EMPTY:
 		inventory = Items.WHEAT
 	print(inventory)
 
-func gain_flour(num_flour: int) -> void:
-	wheat -= num_flour
-	flour += num_flour
+func gain_flour() -> void:
 	if inventory == Items.EMPTY:
 		inventory = Items.FLOUR
 	print(inventory)

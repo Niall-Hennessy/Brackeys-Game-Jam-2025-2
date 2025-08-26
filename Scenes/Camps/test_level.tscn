@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://fi1wgrchr8kk" path="res://Scenes/Stations/water.tscn" id="8_2pdh6"]
 [ext_resource type="PackedScene" uid="uid://doy4bb45g1085" path="res://Scenes/Stations/mortar_and_pestle.tscn" id="8_o16nm"]
 [ext_resource type="PackedScene" uid="uid://d4d4b0g6aw2th" path="res://Scenes/Stations/wheat.tscn" id="8_tol5k"]
-[ext_resource type="PackedScene" path="res://Scenes/invisible_wall.tscn" id="9_o16nm"]
+[ext_resource type="PackedScene" uid="uid://c1xml0p8585f2" path="res://Scenes/invisible_wall.tscn" id="9_o16nm"]
 
 [node name="TestLevel2" type="Node2D"]
 

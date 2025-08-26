@@ -16,12 +16,13 @@ func _on_crush_button_pressed() -> void:
 	if GameManager.inventory != GameManager.Items.WHEAT:
 		return
 	
+	GameManager.inventory = GameManager.Items.EMPTY
 	GameManager.is_busy = true
 	$StationProgressRadial.visible = true
 	$Timer.start()
 	
 func _on_timer_timeout() -> void:
-	GameManager.gain_flour(1)
+	GameManager.gain_flour()
 	GameManager.is_busy = false
 
 func add_wheat(wheat_to_add: int) -> void:
