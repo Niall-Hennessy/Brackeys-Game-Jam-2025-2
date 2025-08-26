@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://23wmr368sfy7"]
+
+[ext_resource type="Script" uid="uid://dyeqglh312bar" path="res://Scripts/voronoi.gd" id="1_6klco"]
+
+[node name="Voronoi" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+script = ExtResource("1_6klco")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 981.0
+offset_top = 591.0
+offset_right = 1126.0
+offset_bottom = 622.0
+text = "Generate Voronoi"
+
+[connection signal="pressed" from="Button" to="Sprite2D" method="_on_button_pressed"]
