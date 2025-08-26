@@ -22,6 +22,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		anim = "idle_" + facing_direction
 		
-	$AnimatedSprite2D.play(anim)
-	velocity = direction * speed
-	move_and_slide()
+	if !GameManager.is_busy:
+		$AnimatedSprite2D.play(anim)
+		velocity = direction * speed
+		move_and_slide()

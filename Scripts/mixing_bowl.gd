@@ -22,12 +22,14 @@ func _on_mixing_button_pressed() -> void:
 	
 	if GameManager.flour < flour_consumed or GameManager.water < water_consumed:
 		return
-	
+		
+	GameManager.is_busy = true
 	$StationProgressRadial.visible = true
 	$Timer.start()
 	
 func _on_timer_timeout() -> void:
 	GameManager.gain_dough(1)
+	GameManager.is_busy = false
 
 func add_flour(flour_to_add: int) -> void:
 	flour_amount += flour_to_add
