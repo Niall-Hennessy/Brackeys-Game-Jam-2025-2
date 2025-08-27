@@ -103,6 +103,76 @@ offset_bottom = -259.333
 scale = Vector2(0.431655, 0.336504)
 text = "Discard"
 
+[node name="EndOfTurnPopup" type="Control" parent="CanvasLayer"]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_left = 455.0
+offset_top = 294.0
+offset_right = 495.0
+offset_bottom = 334.0
+script = ExtResource("3_qq1j0")
+
+[node name="EndOfTurnLabel" type="Label" parent="CanvasLayer/EndOfTurnPopup"]
+layout_mode = 0
+offset_left = -452.0
+offset_top = -291.0
+offset_right = -228.0
+offset_bottom = -111.0
+scale = Vector2(0.607645, 0.477497)
+text = "Biscuits: 
+Turn: "
+
+[node name="EndTurnButton" type="Button" parent="CanvasLayer/EndOfTurnPopup"]
+layout_mode = 0
+offset_left = -122.667
+offset_top = -100.667
+offset_right = 6.33334
+offset_bottom = -69.6667
+scale = Vector2(0.352649, 0.583948)
+text = "End Turn"
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/EndOfTurnPopup"]
+layout_mode = 0
+offset_left = -118.0
+offset_top = -118.0
+offset_right = -24.0
+offset_bottom = -87.0
+scale = Vector2(0.378777, 0.399956)
+
+[node name="Pause Menu" type="Control" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+top_level = true
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_left = 455.0
+offset_top = 294.0
+offset_right = 495.0
+offset_bottom = 334.0
+script = ExtResource("3_qq1j0")
+
+[node name="PauseLabel" type="Label" parent="CanvasLayer/Pause Menu"]
+layout_mode = 0
+offset_left = -345.0
+offset_top = -231.0
+offset_right = -121.0
+offset_bottom = -51.0
+scale = Vector2(0.607645, 0.477497)
+text = "GAME PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer/Pause Menu"]
+layout_mode = 0
+offset_left = -301.0
+offset_top = -178.667
+offset_right = -172.0
+offset_bottom = -147.666
+scale = Vector2(0.352649, 0.583948)
+text = "Resume"
+
 [node name="InvisibleWalls" type="Node" parent="."]
 
 [node name="InvisibleWall" parent="InvisibleWalls" instance=ExtResource("9_o16nm")]
@@ -124,3 +194,8 @@ scale = Vector2(60.56, 1)
 [connection signal="pressed" from="CanvasLayer/Control/EndTurnButton" to="CanvasLayer/Control" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/EndTurnButton" to="CanvasLayer/Control/EndTurnButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/DiscardButton" to="CanvasLayer/Control" method="_on_discard_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/EndOfTurnPopup/EndTurnButton" to="CanvasLayer/EndOfTurnPopup" method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/EndOfTurnPopup/EndTurnButton" to="CanvasLayer/EndOfTurnPopup/EndTurnButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause Menu/ResumeButton" to="CanvasLayer/EndOfTurnPopup" method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause Menu/ResumeButton" to="CanvasLayer/Pause Menu" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause Menu/ResumeButton" to="CanvasLayer/Pause Menu/ResumeButton" method="_on_pressed"]
