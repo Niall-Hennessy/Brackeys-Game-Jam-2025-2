@@ -17,15 +17,26 @@ var camps_traversed: int
 var last_camp: Camp
 var camera_edge_y: int
 
-func _on_new_map_button_pressed() -> void:
-	for child in camps.get_children():
-		child.free()
-	
-	for child in lines.get_children():
-		child.free()
-	
-	generate_new_map()
-	unlock_floor(0)
+func _ready() -> void:
+	if not GameManager.map_data:
+		generate_new_map()
+		GameManager.map_data = map_data
+		unlock_floor(0)
+		print("Tgest")
+	else:
+		camps_traversed = 0
+		map_data = GameManager.map_data
+		create_map()
+
+#func _on_new_map_button_pressed() -> void:
+	#for child in camps.get_children():
+		#child.free()
+	#
+	#for child in lines.get_children():
+		#child.free()
+	#
+	#generate_new_map()
+	#unlock_floor(0)
 
 func _on_choose_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Camps/test_level.tscn")

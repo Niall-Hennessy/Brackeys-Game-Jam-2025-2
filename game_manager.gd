@@ -19,7 +19,9 @@ var rng = RandomNumberGenerator.new()
 
 var my_array = [100, 200, 300, 400, 500]
 var weights = PackedFloat32Array([0.5, 1, 2, 1.5, 1]) #https://docs.godotengine.org/en/4.4/classes/class_randomnumbergenerator.html
-	
+
+var map_data: Array[Array]
+
 signal discard_item_sig
 
 func _ready() -> void:

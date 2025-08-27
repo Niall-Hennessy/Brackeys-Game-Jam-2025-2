@@ -24,6 +24,7 @@ unique_name_in_owner = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="NewMapButton" type="Button" parent="CanvasLayer"]
+visible = false
 offset_right = 81.0
 offset_bottom = 31.0
 text = "New Map"
