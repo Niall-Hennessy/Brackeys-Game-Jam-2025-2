@@ -23,7 +23,7 @@ var weights = PackedFloat32Array([plains_camp_weight, arid_camp_weight, mountain
 
 func generate_map() -> Array[Array]:
 	map_data = _generate_initial_grid()
-	var starting_points: Array[int]= [2,2,2,2]#_get_random_starting_points()	
+	var starting_points: Array[int]= [2,2,2,2]
 	
 	for j in starting_points:
 		var current_j := j
