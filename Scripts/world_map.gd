@@ -65,6 +65,7 @@ func _on_choose_button_pressed() -> void:
 		travel_progress += GameManager.biscuits
 		GameManager.biscuits = 0
 	else:
+		GameManager.biscuits -= biscuits_per_travel - travel_progress
 		travel_progress += biscuits_per_travel - travel_progress
 	
 	print(travel_progress)
@@ -86,6 +87,9 @@ func _on_choose_button_pressed() -> void:
 		
 		camps_traversed += 1
 		travel_progress = 0
+		GameManager.travel_progress = 0
+		print("It was reset")
+		print(travel_progress)
 		unlock_next_rooms()
 
 func _on_setup_camp_button_pressed() -> void:
