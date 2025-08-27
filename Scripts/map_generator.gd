@@ -2,9 +2,11 @@ class_name MapGenerator
 extends Node
 #https://www.youtube.com/watch?v=7HYu7QXBuCY
 
-@export var grass_camp_weight = 11
-@export var desert_camp_weight = 7
-@export var rocky_camp_weight = 8
+@export var plains_camp_weight = 11
+@export var arid_camp_weight = 7
+@export var mountain_camp_weight = 8
+@export var river_camp_weight = 8
+@export var forest_camp_weight = 8
 
 const X_Dist := 30
 const Y_Dist := 25
@@ -16,8 +18,8 @@ const PATHS := 3
 var map_data: Array[Array]
 
 var rng = RandomNumberGenerator.new()
-var camp_biomes_array = [Camp.Biome.GRASS, Camp.Biome.ROCKY, Camp.Biome.DESERT]
-var weights = PackedFloat32Array([grass_camp_weight, desert_camp_weight, rocky_camp_weight])
+var camp_biomes_array = [Camp.Biome.PLAINS, Camp.Biome.ARID, Camp.Biome.MOUNTAIN, Camp.Biome.RIVER, Camp.Biome.FOREST]
+var weights = PackedFloat32Array([plains_camp_weight, arid_camp_weight, mountain_camp_weight, river_camp_weight, forest_camp_weight])
 
 func generate_map() -> Array[Array]:
 	map_data = _generate_initial_grid()
@@ -87,7 +89,7 @@ func _would_cross_existing_path(i: int, j: int, camp: Camp) -> bool:
 func _setup_camp_biomes() -> void:
 	for camp: Camp in map_data[0]:
 		if camp.next_camps.size() > 0:
-			camp.biome = Camp.Biome.GRASS
+			camp.biome = Camp.Biome.PLAINS
 
 	for current_floor in map_data:
 		for camp: Camp in current_floor:

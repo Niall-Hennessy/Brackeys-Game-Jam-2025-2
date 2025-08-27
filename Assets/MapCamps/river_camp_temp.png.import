@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvisnmo1hmye4"
-path="res://.godot/imported/grass_camp_temp.png-40aaf66b95a73944164518ad4e38a17e.ctex"
+uid="uid://dhcqp25jq7q68"
+path="res://.godot/imported/river_camp_temp.png-b33dc2be5f41a6dc1736c9d342431b8b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/grass_camp_temp.png"
-dest_files=["res://.godot/imported/grass_camp_temp.png-40aaf66b95a73944164518ad4e38a17e.ctex"]
+source_file="res://Assets/MapCamps/river_camp_temp.png"
+dest_files=["res://.godot/imported/river_camp_temp.png-b33dc2be5f41a6dc1736c9d342431b8b.ctex"]
 
 [params]
 

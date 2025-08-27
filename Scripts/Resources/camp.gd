@@ -2,7 +2,7 @@ class_name Camp
 extends Resource
 #https://www.youtube.com/watch?v=7HYu7QXBuCY
 
-enum Biome {UNASSIGNED, GRASS, DESERT, ROCKY}
+enum Biome {UNASSIGNED, PLAINS, ARID, MOUNTAIN, RIVER, FOREST}
 
 @export_group("Camp Properties")
 @export var biome: Biome

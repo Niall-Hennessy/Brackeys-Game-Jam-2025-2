@@ -6,9 +6,11 @@ signal selected(camp: Camp)
 
 const ICONS := {
 	Camp.Biome.UNASSIGNED: [null],
-	Camp.Biome.GRASS: [preload("res://Assets/grass_camp_temp.png")],
-	Camp.Biome.DESERT: [preload("res://Assets/desert_camp_temp.png")],
-	Camp.Biome.ROCKY: [preload("res://Assets/rocky_camp_temp.png")]
+	Camp.Biome.PLAINS: [preload("res://Assets/MapCamps/plains_camp_temp.png")],
+	Camp.Biome.ARID: [preload("res://Assets/MapCamps/arid_camp_temp.png")],
+	Camp.Biome.MOUNTAIN: [preload("res://Assets/MapCamps/mountain_camp_temp.png")],
+	Camp.Biome.RIVER: [preload("res://Assets/MapCamps/river_camp_temp.png")],
+	Camp.Biome.FOREST: [preload("res://Assets/MapCamps/forest_camp_temp.png")]
 }
 
 @onready var sprite_2d: Sprite2D = $Sprite2D

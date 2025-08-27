@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n20nyxbqstei"
-path="res://.godot/imported/rocky_camp_temp.png-af826516972d1bd589793c21ddf1556c.ctex"
+uid="uid://cpsqnwcym6l6"
+path="res://.godot/imported/forest_camp_temp.png-71b6f438f5de1ab52cda8372dea794e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/rocky_camp_temp.png"
-dest_files=["res://.godot/imported/rocky_camp_temp.png-af826516972d1bd589793c21ddf1556c.ctex"]
+source_file="res://Assets/MapCamps/forest_camp_temp.png"
+dest_files=["res://.godot/imported/forest_camp_temp.png-71b6f438f5de1ab52cda8372dea794e0.ctex"]
 
 [params]
 
