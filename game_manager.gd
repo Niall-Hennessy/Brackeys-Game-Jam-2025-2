@@ -52,22 +52,18 @@ func gain_biscuit(num_biscuits: int) -> void:
 func gain_dough() -> void:
 	if inventory == Items.EMPTY:
 		inventory = Items.DOUGH
-	print(inventory)
 
 func gain_water() -> void:
 	if inventory == Items.EMPTY:
 		inventory = Items.WATER
-	print(inventory)
 	
 func gain_wheat() -> void:
 	if inventory == Items.EMPTY:
 		inventory = Items.WHEAT
-	print(inventory)
 
 func gain_flour() -> void:
 	if inventory == Items.EMPTY:
 		inventory = Items.FLOUR
-	print(inventory)
 	
 func discard_item() -> void:
 	inventory = Items.EMPTY

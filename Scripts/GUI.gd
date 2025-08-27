@@ -1,11 +1,12 @@
 extends Control
 
 
-func _input(event: InputEvent) -> void:
-	if Input.is_key_pressed(KEY_ESCAPE):
-		get_tree().paused = true
-		show()
+func _process(delta: float) -> void:
+	#var GameManagerLabel = get_node("CanvasLayer/Control/GameManagerLabel")
+	$GameManagerLabel.text = "Inventory: " + str(GameManager.inventory_string()) + "\nBiscuits: " + str(GameManager.biscuits) + "\nTurn: " + str(GameManager.turn) + "\nPlayer Distance: " + str(GameManager.player_distance) + "\nWinter Distance: " + str(GameManager.winter_distance)
 
-func _on_resume_button_pressed() -> void:
-	get_tree().paused = false
-	hide()
+func _on_end_turn_button_pressed() -> void:
+	GameManager.next_turn(int($LineEdit.text))
+
+func _on_discard_button_pressed() -> void:
+	GameManager.discard_item_sig.emit()
