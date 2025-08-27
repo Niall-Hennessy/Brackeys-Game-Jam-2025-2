@@ -23,8 +23,8 @@ var camp: Camp : set = set_camp
 func set_available(new_value: bool) -> void:
 	available = new_value
 
-	if available:
-		animation_player.play("Pulsate")
+	#if available:
+		#animation_player.play("Pulsate")
 	if not camp.selected:
 		animation_player.play("RESET")
 

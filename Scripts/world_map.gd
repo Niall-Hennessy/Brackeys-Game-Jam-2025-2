@@ -41,19 +41,22 @@ func _ready() -> void:
 		GameManager.map_data = map_data
 		player_position = first_camp.position
 		current_camp = first_camp
-		unlock_floor(1)
+		unlock_next_rooms()
 	else:
 		camps_traversed = GameManager.camps_traversed
 		map_data = GameManager.map_data
 		create_map()
 		player_position = GameManager.player_world_map_position
-		selected_camp = GameManager.world_map_selected_camp
+		#selected_camp = GameManager.world_map_selected_camp
 		current_camp = GameManager.world_map_current_camp
 		unlock_next_rooms()
 		
 	player_sprite.position = player_position
 
 func _on_choose_button_pressed() -> void:
+	if not selected_camp:
+		return
+	
 	tween = create_tween()
 	tween.tween_property(player_sprite, "position", selected_camp.position, 1)
 	
@@ -61,6 +64,7 @@ func _on_choose_button_pressed() -> void:
 		if map_camp.camp.column == selected_camp.column:
 			map_camp.available = false
 			map_camp.end_animation()
+	current_camp = selected_camp
 	
 	camps_traversed += 1
 	unlock_next_rooms()
@@ -68,8 +72,9 @@ func _on_choose_button_pressed() -> void:
 func _on_setup_camp_button_pressed() -> void:
 	GameManager.camps_traversed = camps_traversed
 	GameManager.player_world_map_position = player_sprite.position
-	GameManager.world_map_selected_camp = selected_camp
+	#GameManager.world_map_selected_camp = selected_camp
 	GameManager.world_map_current_camp = current_camp
+	
 	get_tree().change_scene_to_file(MAPS[current_camp.biome])
 
 func _input(event: InputEvent) -> void:
@@ -107,7 +112,7 @@ func unlock_floor(which_floor: int = camps_traversed) -> void:
 
 func unlock_next_rooms() -> void:
 	for map_camp: MapCamp in camps.get_children():
-		if selected_camp.next_camps.has(map_camp.camp):
+		if current_camp.next_camps.has(map_camp.camp):
 			map_camp.available = true
 
 func _spawn_camp(camp: Camp) -> void:
@@ -135,6 +140,6 @@ func _on_map_camp_selected(map_camp_sent: MapCamp) -> void:
 		if map_camp != map_camp_sent:
 			map_camp.set_is_selected(false)
 	
-	
-	current_camp = selected_camp
 	selected_camp = map_camp_sent.camp
+	#current_camp = selected_camp
+	#selected_camp = map_camp_sent.camp
