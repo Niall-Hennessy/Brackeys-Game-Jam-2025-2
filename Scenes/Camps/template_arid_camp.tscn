@@ -130,6 +130,7 @@ wait_time = 60.0
 autostart = true
 
 [node name="WorldMapButton" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
 offset_left = -129.667
 offset_top = -289.333
 offset_right = -36.6667

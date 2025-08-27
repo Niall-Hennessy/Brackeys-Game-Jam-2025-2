@@ -54,7 +54,7 @@ func _ready() -> void:
 	player_sprite.position = player_position
 
 func _on_choose_button_pressed() -> void:
-	if not selected_camp:
+	if not selected_camp or GameManager.biscuits < 1:
 		return
 	
 	tween = create_tween()
@@ -67,6 +67,7 @@ func _on_choose_button_pressed() -> void:
 	current_camp = selected_camp
 	
 	camps_traversed += 1
+	GameManager.biscuits -= 1
 	unlock_next_rooms()
 
 func _on_setup_camp_button_pressed() -> void:

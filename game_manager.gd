@@ -26,6 +26,8 @@ var camps_traversed: int
 var world_map_selected_camp: Camp
 var world_map_current_camp: Camp
 
+var camp_timer_storage: float
+
 signal discard_item_sig
 
 func _ready() -> void:
