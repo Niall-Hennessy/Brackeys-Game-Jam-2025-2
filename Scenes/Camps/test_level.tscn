@@ -98,6 +98,7 @@ scale = Vector2(0.431655, 0.336504)
 text = "Discard"
 
 [node name="EndOfTurnPopup" type="Control" parent="CanvasLayer"]
+process_mode = 2
 z_index = 10
 layout_mode = 3
 anchors_preset = 0
@@ -116,6 +117,16 @@ offset_bottom = -31.0
 scale = Vector2(0.607645, 0.477497)
 text = "How many biscuits do you want to eat while travelling?"
 
+[node name="NumberOfBiscuitsLabel" type="Label" parent="CanvasLayer/EndOfTurnPopup"]
+layout_mode = 0
+offset_left = -300.667
+offset_top = -198.333
+offset_right = -274.667
+offset_bottom = -171.333
+scale = Vector2(0.607645, 0.477497)
+text = "0"
+horizontal_alignment = 1
+
 [node name="AdvanceButton" type="Button" parent="CanvasLayer/EndOfTurnPopup"]
 layout_mode = 0
 offset_left = -317.667
@@ -125,13 +136,16 @@ offset_bottom = -120.0
 scale = Vector2(0.352649, 0.583948)
 text = "Advance"
 
-[node name="NumberOfBiscuits" type="LineEdit" parent="CanvasLayer/EndOfTurnPopup"]
+[node name="NumberOfBiscuitsSlider" type="HSlider" parent="CanvasLayer/EndOfTurnPopup"]
 layout_mode = 0
-offset_left = -311.667
-offset_top = -181.333
-offset_right = -217.667
-offset_bottom = -150.333
-scale = Vector2(0.378777, 0.399956)
+offset_left = -359.0
+offset_top = -187.667
+offset_right = -231.0
+offset_bottom = -171.667
+scale = Vector2(1.05991, 1)
+rounded = true
+scrollable = false
+ticks_on_borders = true
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer"]
 process_mode = 3
@@ -189,5 +203,6 @@ scale = Vector2(60.56, 1)
 [connection signal="pressed" from="CanvasLayer/Control/DiscardButton" to="CanvasLayer/Control" method="_on_discard_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/EndOfTurnPopup/AdvanceButton" to="CanvasLayer/EndOfTurnPopup" method="_on_advance_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/EndOfTurnPopup/AdvanceButton" to="CanvasLayer/EndOfTurnPopup/AdvanceButton" method="_on_pressed"]
+[connection signal="value_changed" from="CanvasLayer/EndOfTurnPopup/NumberOfBiscuitsSlider" to="CanvasLayer/EndOfTurnPopup" method="_on_number_of_biscuits_slider_value_changed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu/ResumeButton" method="_on_pressed"]
