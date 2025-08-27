@@ -9,12 +9,20 @@ script = ExtResource("1_b7gke")
 [node name="MapGenerator" type="Node" parent="."]
 script = ExtResource("1_rvr0e")
 
-[node name="Visuals" type="Node2D" parent="."]
-
-[node name="Lines" type="Node2D" parent="Visuals"]
-unique_name_in_owner = true
-
-[node name="Camps" type="Node2D" parent="Visuals"]
-unique_name_in_owner = true
-
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 608)
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "New Map"
+
+[node name="MapTextures" type="Node2D" parent="."]
+
+[node name="Camps" type="Node2D" parent="MapTextures"]
+unique_name_in_owner = true
+
+[node name="Lines" type="Node2D" parent="MapTextures"]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

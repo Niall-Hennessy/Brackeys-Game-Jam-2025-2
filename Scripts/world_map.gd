@@ -1,5 +1,6 @@
 class_name WorldMap
 extends Node2D
+#https://www.youtube.com/watch?v=7HYu7QXBuCY
 
 const SCROLL_SPEED := 15
 const MAP_CAMP = preload("res://Scenes/map_camp.tscn")
@@ -8,13 +9,23 @@ const MAP_LINE = preload("res://Scenes/map_line.tscn")
 @onready var map_generator: MapGenerator = $MapGenerator
 @onready var lines: Node2D = %Lines
 @onready var camps: Node2D = %Camps 
-@onready var visuals: Node2D = $Visuals
+@onready var map_textures: Node2D = $MapTextures
 @onready var camera_2d: Camera2D = $Camera2D
 
 var map_data: Array[Array]
 var floors_climbed: int
 var last_camp: Camp
 var camera_edge_y: int
+
+func _on_button_pressed() -> void:
+	for child in camps.get_children():
+		child.free()
+	
+	for child in lines.get_children():
+		child.free()
+	
+	generate_new_map()
+	unlock_floor(0)
 
 func _ready() -> void:
 	camera_edge_y = MapGenerator.Y_Dist * (MapGenerator.FLOORS - 1)
@@ -42,8 +53,8 @@ func create_map() -> void:
 				_spawn_camp(camp)
 	
 	var map_width_pixels := MapGenerator.X_Dist * (MapGenerator.MAP_WIDTH - 1)
-	visuals.position.x = (get_viewport_rect().size.x - map_width_pixels) / 2
-	visuals.position.y = get_viewport_rect().size.y / 2
+	map_textures.position.x = (get_viewport_rect().size.x - map_width_pixels) / 2
+	map_textures.position.y = 0
 	
 func unlock_floor(which_floor: int = floors_climbed) -> void:
 	for map_camp: MapCamp in camps.get_children():
@@ -90,6 +101,3 @@ func _on_map_camp_selected(camp: Camp) -> void:
 			
 	last_camp = camp
 	floors_climbed += 1
-	
-	
-	

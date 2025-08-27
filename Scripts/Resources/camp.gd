@@ -12,5 +12,5 @@ enum Biome {UNASSIGNED, GRASS, DESERT, ROCKY}
 @export var next_camps: Array[Camp]
 @export var selected: bool = false
 
-func _to_string() -> String:
-	return "%s (%s)" % [column, Biome.keys()[biome][0]]
+#func _to_string() -> String:
+	#return "%s (%s)" % [column, Biome.keys()[biome][0]]
