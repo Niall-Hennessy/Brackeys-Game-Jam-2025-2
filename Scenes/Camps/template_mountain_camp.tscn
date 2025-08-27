@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhlxv2q5t0k7u"]
+[gd_scene load_steps=12 format=3 uid="uid://bhxurfj50xgia"]
 
 [ext_resource type="Texture2D" uid="uid://bdlv5svsqkvrf" path="res://Assets/Camp/Camp_mountain.png" id="1_wifu6"]
 [ext_resource type="PackedScene" uid="uid://uldm21fmtwyx" path="res://Scenes/Player/player.tscn" id="2_3hvpl"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://d4d4b0g6aw2th" path="res://Scenes/Stations/wheat.tscn" id="7_iuk2b"]
 [ext_resource type="Script" uid="uid://rnvwkq3eij6g" path="res://Scripts/GUI.gd" id="8_5hosk"]
 [ext_resource type="PackedScene" uid="uid://c1xml0p8585f2" path="res://Scenes/invisible_wall.tscn" id="9_hp3a5"]
+[ext_resource type="Script" path="res://Scripts/GUI_end_turn.gd" id="10_768v3"]
+[ext_resource type="Script" path="res://Scripts/GUI_pause_menu.gd" id="11_is53t"]
 
 [node name="TestLevel" type="Node2D"]
 
@@ -53,6 +55,32 @@ scale = Vector2(3, 3)
 position = Vector2(393, 459)
 scale = Vector2(3, 3)
 
+[node name="InvisibleWalls" type="Node" parent="."]
+
+[node name="InvisibleWall" parent="InvisibleWalls" instance=ExtResource("9_hp3a5")]
+position = Vector2(195, 358)
+scale = Vector2(1.30302, 17.813)
+
+[node name="InvisibleWall2" parent="InvisibleWalls" instance=ExtResource("9_hp3a5")]
+position = Vector2(941, 301)
+scale = Vector2(1, 23.8)
+
+[node name="InvisibleWall5" parent="InvisibleWalls" instance=ExtResource("9_hp3a5")]
+position = Vector2(736, 123)
+scale = Vector2(1, 5.28)
+
+[node name="InvisibleWall3" parent="InvisibleWalls" instance=ExtResource("9_hp3a5")]
+position = Vector2(453, 173)
+scale = Vector2(29.4993, 0.826894)
+
+[node name="InvisibleWall4" parent="InvisibleWalls" instance=ExtResource("9_hp3a5")]
+position = Vector2(564, 539)
+scale = Vector2(39.4, 1)
+
+[node name="InvisibleWall6" parent="InvisibleWalls" instance=ExtResource("9_hp3a5")]
+position = Vector2(837, 67)
+scale = Vector2(11.52, 1)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 scale = Vector2(3, 3)
 transform = Transform2D(3, 0, 0, 3, 0, 0)
@@ -86,13 +114,15 @@ scale = Vector2(0.607645, 0.477497)
 text = "Biscuits: 
 Turn: "
 
-[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control"]
+[node name="TimeRemainingLabel" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = -118.0
-offset_top = -118.0
-offset_right = -24.0
-offset_bottom = -87.0
-scale = Vector2(0.378777, 0.399956)
+offset_left = -240.667
+offset_top = -268.0
+offset_right = -16.6667
+offset_bottom = -88.0
+scale = Vector2(0.607645, 0.477497)
+text = "Time remaining:
+"
 
 [node name="DiscardButton" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 0
@@ -103,32 +133,100 @@ offset_bottom = -259.333
 scale = Vector2(0.431655, 0.336504)
 text = "Discard"
 
-[node name="InvisibleWalls" type="Node" parent="."]
+[node name="CampTimer" type="Timer" parent="CanvasLayer/Control"]
+wait_time = 60.0
+autostart = true
 
-[node name="InvisibleWall" parent="InvisibleWalls" instance=ExtResource("9_hp3a5")]
-position = Vector2(195, 358)
-scale = Vector2(1.30302, 17.813)
+[node name="EndOfTurnPopup" type="Control" parent="CanvasLayer"]
+process_mode = 2
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_left = 455.0
+offset_top = 294.0
+offset_right = 495.0
+offset_bottom = 334.0
+script = ExtResource("10_768v3")
 
-[node name="InvisibleWall2" parent="InvisibleWalls" instance=ExtResource("9_hp3a5")]
-position = Vector2(941, 301)
-scale = Vector2(1, 23.8)
+[node name="EndOfTurnLabel" type="Label" parent="CanvasLayer/EndOfTurnPopup"]
+layout_mode = 0
+offset_left = -404.667
+offset_top = -211.0
+offset_right = 25.3333
+offset_bottom = -31.0
+scale = Vector2(0.607645, 0.477497)
+text = "How many biscuits do you want to eat while travelling?"
 
-[node name="InvisibleWall5" parent="InvisibleWalls" instance=ExtResource("9_hp3a5")]
-position = Vector2(736, 123)
-scale = Vector2(1, 5.28)
+[node name="NumberOfBiscuitsLabel" type="Label" parent="CanvasLayer/EndOfTurnPopup"]
+layout_mode = 0
+offset_left = -300.667
+offset_top = -198.333
+offset_right = -274.667
+offset_bottom = -171.333
+scale = Vector2(0.607645, 0.477497)
+text = "0"
+horizontal_alignment = 1
 
-[node name="InvisibleWall3" parent="InvisibleWalls" instance=ExtResource("9_hp3a5")]
-position = Vector2(453, 173)
-scale = Vector2(29.4993, 0.826894)
+[node name="AdvanceButton" type="Button" parent="CanvasLayer/EndOfTurnPopup"]
+layout_mode = 0
+offset_left = -317.667
+offset_top = -151.0
+offset_right = -188.666
+offset_bottom = -120.0
+scale = Vector2(0.352649, 0.583948)
+text = "Advance"
 
-[node name="InvisibleWall4" parent="InvisibleWalls" instance=ExtResource("9_hp3a5")]
-position = Vector2(564, 539)
-scale = Vector2(39.4, 1)
+[node name="NumberOfBiscuitsSlider" type="HSlider" parent="CanvasLayer/EndOfTurnPopup"]
+layout_mode = 0
+offset_left = -359.0
+offset_top = -187.667
+offset_right = -231.0
+offset_bottom = -171.667
+scale = Vector2(1.05991, 1)
+rounded = true
+scrollable = false
+ticks_on_borders = true
 
-[node name="InvisibleWall6" parent="InvisibleWalls" instance=ExtResource("9_hp3a5")]
-position = Vector2(837, 67)
-scale = Vector2(11.52, 1)
+[node name="PauseMenu" type="Control" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+top_level = true
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_left = 455.0
+offset_top = 294.0
+offset_right = 495.0
+offset_bottom = 334.0
+script = ExtResource("11_is53t")
+
+[node name="PauseLabel" type="Label" parent="CanvasLayer/PauseMenu"]
+layout_mode = 0
+offset_left = -345.0
+offset_top = -231.0
+offset_right = -121.0
+offset_bottom = -51.0
+scale = Vector2(0.607645, 0.477497)
+text = "GAME PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer/PauseMenu"]
+layout_mode = 0
+offset_left = -301.0
+offset_top = -178.667
+offset_right = -172.0
+offset_bottom = -147.666
+scale = Vector2(0.352649, 0.583948)
+text = "Resume"
 
 [connection signal="pressed" from="CanvasLayer/Control/EndTurnButton" to="CanvasLayer/Control" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/EndTurnButton" to="CanvasLayer/Control/EndTurnButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/EndTurnButton" to="CanvasLayer/EndOfTurnPopup" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/DiscardButton" to="CanvasLayer/Control" method="_on_discard_button_pressed"]
+[connection signal="timeout" from="CanvasLayer/Control/CampTimer" to="CanvasLayer/Control" method="_on_camp_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/EndOfTurnPopup/AdvanceButton" to="CanvasLayer/EndOfTurnPopup" method="_on_advance_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/EndOfTurnPopup/AdvanceButton" to="CanvasLayer/EndOfTurnPopup/AdvanceButton" method="_on_pressed"]
+[connection signal="value_changed" from="CanvasLayer/EndOfTurnPopup/NumberOfBiscuitsSlider" to="CanvasLayer/EndOfTurnPopup" method="_on_number_of_biscuits_slider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu/ResumeButton" method="_on_pressed"]
