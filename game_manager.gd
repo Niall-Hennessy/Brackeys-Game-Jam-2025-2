@@ -13,6 +13,8 @@ enum Items {EMPTY, WHEAT, FLOUR, WATER, DOUGH}
 
 @export var distance_per_biscuit: int = 100
 
+@export var camp_timer : Timer
+
 var rng = RandomNumberGenerator.new()
 
 var my_array = [100, 200, 300, 400, 500]
@@ -24,11 +26,13 @@ func _ready() -> void:
 	discard_item_sig.connect(discard_item)	
 
 func initialise_vars() -> void:
-	biscuits = 10
+	biscuits = 0
 	inventory = Items.EMPTY
 	turn = 1
 	player_distance = 1000
 	winter_distance = 0
+	# camp timer starts automatically upon entering the scene
+	
 
 func inventory_string() -> String:
 	match inventory:
@@ -79,3 +83,4 @@ func next_turn(consume_num_biscuits: int) -> void:
 		get_tree().change_scene_to_file("res://Scenes/Screens/game_over_screen.tscn")
 	else:
 		turn += 1
+		# load the map screen which will in turn load a camp scene and restart the timer

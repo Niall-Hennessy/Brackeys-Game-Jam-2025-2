@@ -15,7 +15,7 @@
 [node name="TestLevel" type="Node2D"]
 
 [node name="CampTemp" type="Sprite2D" parent="."]
-position = Vector2(579, 319.5)
+position = Vector2(569, 321)
 scale = Vector2(1.82813, 2.02813)
 texture = ExtResource("1_c4fu7")
 
@@ -88,6 +88,16 @@ scale = Vector2(0.607645, 0.477497)
 text = "Biscuits: 
 Turn: "
 
+[node name="TimeRemainingLabel" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = -240.667
+offset_top = -268.0
+offset_right = -16.6667
+offset_bottom = -88.0
+scale = Vector2(0.607645, 0.477497)
+text = "Time remaining:
+"
+
 [node name="DiscardButton" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_left = -361.333
@@ -96,6 +106,10 @@ offset_right = -294.333
 offset_bottom = -259.333
 scale = Vector2(0.431655, 0.336504)
 text = "Discard"
+
+[node name="CampTimer" type="Timer" parent="CanvasLayer/Control"]
+wait_time = 60.0
+autostart = true
 
 [node name="EndOfTurnPopup" type="Control" parent="CanvasLayer"]
 process_mode = 2
@@ -198,9 +212,11 @@ scale = Vector2(59.0067, 0.875)
 position = Vector2(592, 655)
 scale = Vector2(60.56, 1)
 
+[connection signal="pressed" from="CanvasLayer/Control/EndTurnButton" to="CanvasLayer/Control" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/EndTurnButton" to="CanvasLayer/Control/EndTurnButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/EndTurnButton" to="CanvasLayer/EndOfTurnPopup" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/DiscardButton" to="CanvasLayer/Control" method="_on_discard_button_pressed"]
+[connection signal="timeout" from="CanvasLayer/Control/CampTimer" to="CanvasLayer/Control" method="_on_camp_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/EndOfTurnPopup/AdvanceButton" to="CanvasLayer/EndOfTurnPopup" method="_on_advance_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/EndOfTurnPopup/AdvanceButton" to="CanvasLayer/EndOfTurnPopup/AdvanceButton" method="_on_pressed"]
 [connection signal="value_changed" from="CanvasLayer/EndOfTurnPopup/NumberOfBiscuitsSlider" to="CanvasLayer/EndOfTurnPopup" method="_on_number_of_biscuits_slider_value_changed"]
