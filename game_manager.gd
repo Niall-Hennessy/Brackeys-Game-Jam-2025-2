@@ -25,6 +25,7 @@ var player_world_map_position: Vector2
 var camps_traversed: int
 var world_map_selected_camp: Camp
 var world_map_current_camp: Camp
+var travel_progress: int
 
 var camp_timer_storage: float
 

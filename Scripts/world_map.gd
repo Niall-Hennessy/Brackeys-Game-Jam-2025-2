@@ -35,8 +35,12 @@ var first_camp: Camp
 
 var player_position: Vector2
 
+var travel_progress: int
+var biscuits_per_travel: int = 3
+
 func _ready() -> void:
 	if not GameManager.map_data:
+		travel_progress = 0
 		generate_new_map()
 		GameManager.map_data = map_data
 		player_position = first_camp.position
@@ -47,35 +51,48 @@ func _ready() -> void:
 		map_data = GameManager.map_data
 		create_map()
 		player_position = GameManager.player_world_map_position
-		#selected_camp = GameManager.world_map_selected_camp
 		current_camp = GameManager.world_map_current_camp
+		travel_progress = GameManager.travel_progress
 		unlock_next_rooms()
 		
 	player_sprite.position = player_position
 
 func _on_choose_button_pressed() -> void:
-	if not selected_camp or GameManager.biscuits < 1:
+	if not selected_camp or GameManager.biscuits <= 0:
 		return
+		
+	if GameManager.biscuits < biscuits_per_travel - travel_progress:
+		travel_progress += GameManager.biscuits
+		GameManager.biscuits = 0
+	else:
+		travel_progress += biscuits_per_travel - travel_progress
+	
+	print(travel_progress)
+	
+	#create a travel progress variable that holds how far along the path the player is and perform all calculations based off of that
+	
+	var vec2 = selected_camp.position - player_sprite.position
+	vec2 = vec2/3
 	
 	tween = create_tween()
-	tween.tween_property(player_sprite, "position", selected_camp.position, 1)
+	tween.tween_property(player_sprite, "position", player_sprite.position + vec2 * travel_progress, 1)
 	
-	for map_camp: MapCamp in camps.get_children():
-		if map_camp.camp.column == selected_camp.column:
-			map_camp.available = false
-			map_camp.end_animation()
-	current_camp = selected_camp
-	
-	camps_traversed += 1
-	GameManager.biscuits -= 1
-	unlock_next_rooms()
+	if travel_progress == biscuits_per_travel:
+		for map_camp: MapCamp in camps.get_children():
+			if map_camp.camp.column == selected_camp.column:
+				map_camp.available = false
+				map_camp.end_animation()
+		current_camp = selected_camp
+		
+		camps_traversed += 1
+		travel_progress = 0
+		unlock_next_rooms()
 
 func _on_setup_camp_button_pressed() -> void:
 	GameManager.camps_traversed = camps_traversed
 	GameManager.player_world_map_position = player_sprite.position
-	#GameManager.world_map_selected_camp = selected_camp
 	GameManager.world_map_current_camp = current_camp
-	
+	GameManager.travel_progress = travel_progress
 	get_tree().change_scene_to_file(MAPS[current_camp.biome])
 
 func _input(event: InputEvent) -> void:
@@ -122,9 +139,6 @@ func _spawn_camp(camp: Camp) -> void:
 	new_map_camp.camp = camp
 	new_map_camp.selected.connect(_on_map_camp_selected)
 	_connect_lines(camp)
-	
-	if camp.selected and camp.column < camps_traversed:
-		pass#new_map_camp.show_selected()
 		
 func _connect_lines(camp: Camp) -> void:
 	if camp.next_camps.is_empty():
@@ -142,5 +156,3 @@ func _on_map_camp_selected(map_camp_sent: MapCamp) -> void:
 			map_camp.set_is_selected(false)
 	
 	selected_camp = map_camp_sent.camp
-	#current_camp = selected_camp
-	#selected_camp = map_camp_sent.camp
