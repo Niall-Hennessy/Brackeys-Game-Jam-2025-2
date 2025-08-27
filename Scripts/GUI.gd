@@ -11,10 +11,8 @@ func _on_end_turn_button_pressed() -> void:
 func _on_discard_button_pressed() -> void:
 	GameManager.discard_item_sig.emit()
 
-
 func _on_world_map_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/WorldMap/world_map.tscn")
 
 func _on_camp_timer_timeout() -> void:
 	$EndTurnButton.pressed.emit()
-

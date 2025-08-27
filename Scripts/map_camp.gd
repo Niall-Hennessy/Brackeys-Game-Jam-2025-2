@@ -2,7 +2,7 @@ class_name MapCamp
 extends Area2D
 #https://www.youtube.com/watch?v=7HYu7QXBuCY
 
-signal selected(camp: Camp)
+signal selected(map_camp: MapCamp)
 
 const ICONS := {
 	Camp.Biome.UNASSIGNED: null,
@@ -17,6 +17,7 @@ const ICONS := {
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var available := false : set = set_available
+var is_selected := false : set = set_is_selected
 var camp: Camp : set = set_camp
 
 func set_available(new_value: bool) -> void:
@@ -27,6 +28,13 @@ func set_available(new_value: bool) -> void:
 	if not camp.selected:
 		animation_player.play("RESET")
 
+func set_is_selected(new_value: bool) -> void:
+	camp.selected = new_value
+	end_animation()
+	
+func end_animation() -> void:
+	animation_player.play("RESET")
+	
 func set_camp(new_data: Camp) -> void:
 	camp = new_data
 	position = camp.position
@@ -38,6 +46,4 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 
 	camp.selected = true
 	animation_player.play("Pulsate")
-	
-func _on_map_camp_selected() -> void:
-	selected.emit(camp)
+	selected.emit(self)
