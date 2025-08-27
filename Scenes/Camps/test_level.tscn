@@ -103,6 +103,15 @@ offset_bottom = -259.333
 scale = Vector2(0.431655, 0.336504)
 text = "Discard"
 
+[node name="WorldMapButton" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = -129.667
+offset_top = -289.333
+offset_right = -36.6667
+offset_bottom = -258.333
+scale = Vector2(0.582228, 0.518008)
+text = "World Map"
+
 [node name="InvisibleWalls" type="Node" parent="."]
 
 [node name="InvisibleWall" parent="InvisibleWalls" instance=ExtResource("9_o16nm")]
@@ -124,3 +133,4 @@ scale = Vector2(60.56, 1)
 [connection signal="pressed" from="CanvasLayer/Control/EndTurnButton" to="CanvasLayer/Control" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/EndTurnButton" to="CanvasLayer/Control/EndTurnButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/DiscardButton" to="CanvasLayer/Control" method="_on_discard_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/WorldMapButton" to="CanvasLayer/Control" method="_on_world_map_button_pressed"]

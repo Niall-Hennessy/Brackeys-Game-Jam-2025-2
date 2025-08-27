@@ -6,11 +6,11 @@ const X_Dist := 30
 const Y_Dist := 25
 const PLACEMENT_RANDOMNESS := 5
 const FLOORS := 15
-const MAP_WIDTH := 7
-const PATHS := 6
-const GRASS_ROOM_WEIGHT := 10
-const DESERT_ROOM_WEIGHT := 3
-const ROCKY_ROOM_WEIGHT := 4
+const MAP_HEIGHT := 4
+const PATHS := 3
+const GRASS_ROOM_WEIGHT := 11
+const DESERT_ROOM_WEIGHT := 7
+const ROCKY_ROOM_WEIGHT := 8
 
 var random_camp_biome_weights = {
 	Camp.Biome.GRASS: 0.0,
@@ -23,7 +23,7 @@ var map_data: Array[Array]
 
 func generate_map() -> Array[Array]:
 	map_data = _generate_initial_grid()
-	var starting_points := _get_random_starting_points()	
+	var starting_points: Array[int]= [2,2,2,2]#_get_random_starting_points()	
 	
 	for j in starting_points:
 		var current_j := j
@@ -41,10 +41,10 @@ func _generate_initial_grid() -> Array[Array]:
 	for i in FLOORS:
 		var adjacent_camps: Array[Camp] = []
 	
-		for j in MAP_WIDTH:
+		for j in MAP_HEIGHT:
 			var current_camp := Camp.new()
 			var offset := Vector2(randf(), randf()) * PLACEMENT_RANDOMNESS
-			current_camp.position = Vector2(j * X_Dist, i * -Y_Dist) + offset
+			current_camp.position = Vector2(i * X_Dist, j * -Y_Dist) + offset
 			current_camp.row = i
 			current_camp.column = j
 			current_camp.next_camps = []
@@ -63,7 +63,7 @@ func _get_random_starting_points() -> Array[int]:
 		y_coordinates = []
 		
 		for i in PATHS:
-			var starting_point := randi_range(0, MAP_WIDTH - 1)
+			var starting_point := randi_range(0, MAP_HEIGHT - 1)
 			if not y_coordinates.has(starting_point):
 				unique_points += 1
 			
@@ -76,7 +76,7 @@ func _setup_connection(i: int, j: int) -> int:
 	var current_camp := map_data[i][j] as Camp
 	
 	while not next_camp or _would_cross_existing_path(i, j, next_camp):
-		var random_j := clampi(randi_range(j - 1, j + 1), 0, MAP_WIDTH - 1)
+		var random_j := clampi(randi_range(j - 1, j + 1), 0, MAP_HEIGHT - 1)
 		next_camp = map_data[i + 1][random_j]
 		
 	current_camp.next_camps.append(next_camp)
@@ -89,7 +89,7 @@ func _would_cross_existing_path(i: int, j: int, camp: Camp) -> bool:
 	
 	if j > 0:
 		left_neighbour = map_data[i][j-1]
-	if j < MAP_WIDTH - 1:
+	if j < MAP_HEIGHT - 1:
 		right_neighbour = map_data[i][j + 1]
 		
 	if right_neighbour and camp.column > j:

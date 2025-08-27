@@ -4,7 +4,6 @@ extends Area2D
 
 signal selected(camp: Camp)
 
-#Consider removing the Vector2.ONE part below
 const ICONS := {
 	Camp.Biome.UNASSIGNED: [null],
 	Camp.Biome.GRASS: [preload("res://Assets/grass_camp_temp.png")],
@@ -21,10 +20,10 @@ var camp: Camp : set = set_camp
 func set_available(new_value: bool) -> void:
 	available = new_value
 
-	if available:
-		animation_player.play("Selected")
-	elif not camp.selected:
-		animation_player.play("RESET")
+	#if available:
+		#animation_player.play("Selected")
+	#elif not camp.selected:
+		#animation_player.play("RESET")
 
 func set_camp(new_data: Camp) -> void:
 	camp = new_data
@@ -32,7 +31,7 @@ func set_camp(new_data: Camp) -> void:
 	sprite_2d.texture = ICONS[camp.biome][0]
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if not available or not event.is_action_pressed("left_mouse"):
+	if not available or not event.is_action_pressed("left_click"):
 		return
 
 	camp.selected = true

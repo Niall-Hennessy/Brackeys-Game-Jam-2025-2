@@ -2,7 +2,7 @@ class_name WorldMap
 extends Node2D
 #https://www.youtube.com/watch?v=7HYu7QXBuCY
 
-const SCROLL_SPEED := 15
+const SCROLL_SPEED := 30
 const MAP_CAMP = preload("res://Scenes/map_camp.tscn")
 const MAP_LINE = preload("res://Scenes/map_line.tscn")
 
@@ -27,6 +27,10 @@ func _on_button_pressed() -> void:
 	generate_new_map()
 	unlock_floor(0)
 
+
+func _on_choose_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Camps/test_level.tscn")
+
 func _ready() -> void:
 	camera_edge_y = MapGenerator.Y_Dist * (MapGenerator.FLOORS - 1)
 	
@@ -34,10 +38,10 @@ func _ready() -> void:
 	unlock_floor(0)
 	
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("scroll_up"):
-		camera_2d.position.y -= SCROLL_SPEED
-	elif event.is_action_pressed("scroll_down"):
-		camera_2d.position.y += SCROLL_SPEED
+	if event.is_action_pressed("move_left"):
+		camera_2d.position.x -= SCROLL_SPEED
+	elif event.is_action_pressed("move_right"):
+		camera_2d.position.x += SCROLL_SPEED
 	
 	camera_2d.position.y = clamp(camera_2d.position.y, -camera_edge_y, 0)
 
@@ -52,7 +56,7 @@ func create_map() -> void:
 			if camp.next_camps.size() > 0:
 				_spawn_camp(camp)
 	
-	var map_width_pixels := MapGenerator.X_Dist * (MapGenerator.MAP_WIDTH - 1)
+	var map_width_pixels := MapGenerator.X_Dist * (MapGenerator.MAP_HEIGHT - 1)
 	map_textures.position.x = (get_viewport_rect().size.x - map_width_pixels) / 2
 	map_textures.position.y = 0
 	
