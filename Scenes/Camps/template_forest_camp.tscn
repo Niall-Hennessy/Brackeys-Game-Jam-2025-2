@@ -1,26 +1,26 @@
-[gd_scene load_steps=12 format=3 uid="uid://deqbbtwchr357"]
+[gd_scene load_steps=12 format=3 uid="uid://clbhvhyefd8ik"]
 
-[ext_resource type="Texture2D" uid="uid://c8g4gvm87meby" path="res://Assets/Camp/Camp_temp.png" id="1_c4fu7"]
-[ext_resource type="PackedScene" uid="uid://uldm21fmtwyx" path="res://Scenes/Player/player.tscn" id="2_yqnp2"]
-[ext_resource type="Script" uid="uid://rnvwkq3eij6g" path="res://Scripts/GUI.gd" id="3_qq1j0"]
-[ext_resource type="PackedScene" uid="uid://c22e3pib328ep" path="res://Scenes/Stations/furnace.tscn" id="3_vqqru"]
-[ext_resource type="PackedScene" uid="uid://bhgsnpk41ol4b" path="res://Scenes/Stations/mixing_bowl.tscn" id="4_vqqru"]
-[ext_resource type="PackedScene" uid="uid://fi1wgrchr8kk" path="res://Scenes/Stations/water.tscn" id="8_2pdh6"]
-[ext_resource type="PackedScene" uid="uid://doy4bb45g1085" path="res://Scenes/Stations/mortar_and_pestle.tscn" id="8_o16nm"]
-[ext_resource type="PackedScene" uid="uid://d4d4b0g6aw2th" path="res://Scenes/Stations/wheat.tscn" id="8_tol5k"]
-[ext_resource type="PackedScene" uid="uid://c1xml0p8585f2" path="res://Scenes/invisible_wall.tscn" id="9_o16nm"]
-[ext_resource type="Script" path="res://Scripts/GUI_end_turn.gd" id="9_tol5k"]
-[ext_resource type="Script" path="res://Scripts/GUI_pause_menu.gd" id="10_63ecn"]
+[ext_resource type="Texture2D" uid="uid://cgu0a44yrds1k" path="res://Assets/Camp/Camp_forest.png" id="1_3ymfh"]
+[ext_resource type="PackedScene" uid="uid://uldm21fmtwyx" path="res://Scenes/Player/player.tscn" id="2_5almv"]
+[ext_resource type="PackedScene" uid="uid://c22e3pib328ep" path="res://Scenes/Stations/furnace.tscn" id="3_87t1i"]
+[ext_resource type="PackedScene" uid="uid://bhgsnpk41ol4b" path="res://Scenes/Stations/mixing_bowl.tscn" id="4_r877b"]
+[ext_resource type="PackedScene" uid="uid://fi1wgrchr8kk" path="res://Scenes/Stations/water.tscn" id="5_dlw8t"]
+[ext_resource type="PackedScene" uid="uid://doy4bb45g1085" path="res://Scenes/Stations/mortar_and_pestle.tscn" id="6_smliu"]
+[ext_resource type="PackedScene" uid="uid://d4d4b0g6aw2th" path="res://Scenes/Stations/wheat.tscn" id="7_gxy0m"]
+[ext_resource type="Script" uid="uid://rnvwkq3eij6g" path="res://Scripts/GUI.gd" id="8_suego"]
+[ext_resource type="PackedScene" uid="uid://c1xml0p8585f2" path="res://Scenes/invisible_wall.tscn" id="9_twx7x"]
+[ext_resource type="Script" path="res://Scripts/GUI_end_turn.gd" id="10_87t1i"]
+[ext_resource type="Script" path="res://Scripts/GUI_pause_menu.gd" id="11_r877b"]
 
 [node name="TestLevel" type="Node2D"]
 
-[node name="CampTemp" type="Sprite2D" parent="."]
-position = Vector2(569, 321)
+[node name="CampForest" type="Sprite2D" parent="."]
+position = Vector2(579, 319.5)
 scale = Vector2(1.82813, 2.02813)
-texture = ExtResource("1_c4fu7")
+texture = ExtResource("1_3ymfh")
 
-[node name="Player" parent="." instance=ExtResource("2_yqnp2")]
-position = Vector2(472, 356)
+[node name="Player" parent="." instance=ExtResource("2_5almv")]
+position = Vector2(548, 287)
 scale = Vector2(3, 3)
 speed = 175.0
 
@@ -35,33 +35,51 @@ limit_bottom = 640
 
 [node name="Stations" type="Node" parent="."]
 
-[node name="Furnace" parent="Stations" instance=ExtResource("3_vqqru")]
-position = Vector2(545, 354)
+[node name="Furnace" parent="Stations" instance=ExtResource("3_87t1i")]
+position = Vector2(539, 414)
 scale = Vector2(3, 3)
 
-[node name="MixingBowl" parent="Stations" instance=ExtResource("4_vqqru")]
-position = Vector2(234, 435)
+[node name="MixingBowl" parent="Stations" instance=ExtResource("4_r877b")]
+position = Vector2(524, 143)
 scale = Vector2(3, 3.00738)
 
-[node name="Water1" parent="Stations" instance=ExtResource("8_2pdh6")]
-position = Vector2(98, 249)
+[node name="Water" parent="Stations" instance=ExtResource("5_dlw8t")]
+position = Vector2(244, 455)
 scale = Vector2(3, 3)
 
-[node name="Water2" parent="Stations" instance=ExtResource("8_2pdh6")]
-position = Vector2(951, 372)
+[node name="MortarAndPestle" parent="Stations" instance=ExtResource("6_smliu")]
+position = Vector2(860, 168)
 scale = Vector2(3, 3)
 
-[node name="MortarAndPestle" parent="Stations" instance=ExtResource("8_o16nm")]
-position = Vector2(822, 142)
+[node name="Wheat" parent="Stations" instance=ExtResource("7_gxy0m")]
+position = Vector2(913, 456)
 scale = Vector2(3, 3)
 
-[node name="Wheat1" parent="Stations" instance=ExtResource("8_tol5k")]
-position = Vector2(493, 122)
-scale = Vector2(3, 3)
+[node name="InvisibleWalls" type="Node" parent="."]
 
-[node name="Wheat2" parent="Stations" instance=ExtResource("8_tol5k")]
-position = Vector2(760, 563)
-scale = Vector2(3, 3)
+[node name="InvisibleWall" parent="InvisibleWalls" instance=ExtResource("9_twx7x")]
+position = Vector2(-30, 318)
+scale = Vector2(2.38889, 32.96)
+
+[node name="InvisibleWall2" parent="InvisibleWalls" instance=ExtResource("9_twx7x")]
+position = Vector2(1175, 321)
+scale = Vector2(1, 32.68)
+
+[node name="InvisibleWall3" parent="InvisibleWalls" instance=ExtResource("9_twx7x")]
+position = Vector2(578, -5)
+scale = Vector2(59.0067, 0.875)
+
+[node name="InvisibleWall4" parent="InvisibleWalls" instance=ExtResource("9_twx7x")]
+position = Vector2(592, 655)
+scale = Vector2(60.56, 1)
+
+[node name="InvisibleWall5" parent="InvisibleWalls" instance=ExtResource("9_twx7x")]
+position = Vector2(373, 229)
+scale = Vector2(6.39999, 5.2)
+
+[node name="InvisibleWall6" parent="InvisibleWalls" instance=ExtResource("9_twx7x")]
+position = Vector2(720, 391)
+scale = Vector2(6.39999, 5.2)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 scale = Vector2(3, 3)
@@ -75,7 +93,7 @@ offset_left = 455.0
 offset_top = 294.0
 offset_right = 495.0
 offset_bottom = 334.0
-script = ExtResource("3_qq1j0")
+script = ExtResource("8_suego")
 
 [node name="EndTurnButton" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 0
@@ -128,7 +146,7 @@ offset_left = 455.0
 offset_top = 294.0
 offset_right = 495.0
 offset_bottom = 334.0
-script = ExtResource("9_tol5k")
+script = ExtResource("10_87t1i")
 
 [node name="EndOfTurnLabel" type="Label" parent="CanvasLayer/EndOfTurnPopup"]
 layout_mode = 0
@@ -180,7 +198,7 @@ offset_left = 455.0
 offset_top = 294.0
 offset_right = 495.0
 offset_bottom = 334.0
-script = ExtResource("10_63ecn")
+script = ExtResource("11_r877b")
 
 [node name="PauseLabel" type="Label" parent="CanvasLayer/PauseMenu"]
 layout_mode = 0
@@ -201,24 +219,6 @@ offset_right = -172.0
 offset_bottom = -147.666
 scale = Vector2(0.352649, 0.583948)
 text = "Resume"
-
-[node name="InvisibleWalls" type="Node" parent="."]
-
-[node name="InvisibleWall" parent="InvisibleWalls" instance=ExtResource("9_o16nm")]
-position = Vector2(-30, 318)
-scale = Vector2(2.38889, 32.96)
-
-[node name="InvisibleWall2" parent="InvisibleWalls" instance=ExtResource("9_o16nm")]
-position = Vector2(1175, 321)
-scale = Vector2(1, 32.68)
-
-[node name="InvisibleWall3" parent="InvisibleWalls" instance=ExtResource("9_o16nm")]
-position = Vector2(578, -5)
-scale = Vector2(59.0067, 0.875)
-
-[node name="InvisibleWall4" parent="InvisibleWalls" instance=ExtResource("9_o16nm")]
-position = Vector2(592, 655)
-scale = Vector2(60.56, 1)
 
 [connection signal="pressed" from="CanvasLayer/Control/EndTurnButton" to="CanvasLayer/Control" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/EndTurnButton" to="CanvasLayer/Control/EndTurnButton" method="_on_pressed"]
