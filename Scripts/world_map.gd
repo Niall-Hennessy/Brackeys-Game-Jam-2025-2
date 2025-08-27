@@ -2,7 +2,7 @@ class_name WorldMap
 extends Node2D
 #https://www.youtube.com/watch?v=7HYu7QXBuCY
 
-const SCROLL_SPEED := 30
+const SCREEN_MOVE_SPEED := 30
 const MAP_CAMP = preload("res://Scenes/map_camp.tscn")
 const MAP_LINE = preload("res://Scenes/map_line.tscn")
 
@@ -13,11 +13,11 @@ const MAP_LINE = preload("res://Scenes/map_line.tscn")
 @onready var camera_2d: Camera2D = $Camera2D
 
 var map_data: Array[Array]
-var floors_climbed: int
+var camps_traversed: int
 var last_camp: Camp
 var camera_edge_y: int
 
-func _on_button_pressed() -> void:
+func _on_new_map_button_pressed() -> void:
 	for child in camps.get_children():
 		child.free()
 	
@@ -27,26 +27,19 @@ func _on_button_pressed() -> void:
 	generate_new_map()
 	unlock_floor(0)
 
-
 func _on_choose_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Camps/test_level.tscn")
 
-func _ready() -> void:
-	camera_edge_y = MapGenerator.Y_Dist * (MapGenerator.FLOORS - 1)
-	
-	generate_new_map()
-	unlock_floor(0)
-	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("move_left"):
-		camera_2d.position.x -= SCROLL_SPEED
+		camera_2d.position.x -= SCREEN_MOVE_SPEED
 	elif event.is_action_pressed("move_right"):
-		camera_2d.position.x += SCROLL_SPEED
+		camera_2d.position.x += SCREEN_MOVE_SPEED
 	
 	camera_2d.position.y = clamp(camera_2d.position.y, -camera_edge_y, 0)
 
 func generate_new_map() -> void:
-	floors_climbed = 0
+	camps_traversed = 0
 	map_data = map_generator.generate_map()
 	create_map()
 	
@@ -60,9 +53,9 @@ func create_map() -> void:
 	map_textures.position.x = (get_viewport_rect().size.x - map_width_pixels) / 2
 	map_textures.position.y = 0
 	
-func unlock_floor(which_floor: int = floors_climbed) -> void:
+func unlock_floor(which_floor: int = camps_traversed) -> void:
 	for map_camp: MapCamp in camps.get_children():
-		if map_camp.camp.row == which_floor:
+		if map_camp.camp.column == which_floor:
 			map_camp.available = true
 
 func unlock_next_rooms() -> void:
@@ -85,7 +78,7 @@ func _spawn_camp(camp: Camp) -> void:
 	new_map_camp.selected.connect(_on_map_camp_selected)
 	_connect_lines(camp)
 	
-	if camp.selected and camp.row < floors_climbed:
+	if camp.selected and camp.column < camps_traversed:
 		new_map_camp.show_selected()
 		
 func _connect_lines(camp: Camp) -> void:
@@ -100,8 +93,8 @@ func _connect_lines(camp: Camp) -> void:
 	
 func _on_map_camp_selected(camp: Camp) -> void:
 	for map_camp: MapCamp in camps.get_children():
-		if map_camp.camp.row == camp.row:
+		if map_camp.camp.column == camp.column:
 			map_camp.available = false
 			
 	last_camp = camp
-	floors_climbed += 1
+	camps_traversed += 1

@@ -34,5 +34,5 @@ offset_right = 65.0
 offset_bottom = 69.0
 text = "Choose"
 
-[connection signal="pressed" from="CanvasLayer/NewMapButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/NewMapButton" to="." method="_on_new_map_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ChooseButton" to="." method="_on_choose_button_pressed"]

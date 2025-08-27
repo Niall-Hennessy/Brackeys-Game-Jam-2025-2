@@ -11,7 +11,7 @@ const ICONS := {
 	Camp.Biome.ROCKY: [preload("res://Assets/rocky_camp_temp.png")]
 }
 
-@onready var sprite_2d: Sprite2D = $Visuals/Sprite2D
+@onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var available := false : set = set_available
@@ -20,10 +20,10 @@ var camp: Camp : set = set_camp
 func set_available(new_value: bool) -> void:
 	available = new_value
 
-	#if available:
-		#animation_player.play("Selected")
-	#elif not camp.selected:
-		#animation_player.play("RESET")
+	if available:
+		animation_player.play("Pulsate")
+	if not camp.selected:
+		animation_player.play("RESET")
 
 func set_camp(new_data: Camp) -> void:
 	camp = new_data
@@ -35,7 +35,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		return
 
 	camp.selected = true
-	animation_player.play("Selected")
+	animation_player.play("Pulsate")
 	
 func _on_map_camp_selected() -> void:
 	selected.emit(camp)

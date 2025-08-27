@@ -2,24 +2,22 @@ class_name MapGenerator
 extends Node
 #https://www.youtube.com/watch?v=7HYu7QXBuCY
 
+@export var grass_camp_weight = 11
+@export var desert_camp_weight = 7
+@export var rocky_camp_weight = 8
+
 const X_Dist := 30
 const Y_Dist := 25
 const PLACEMENT_RANDOMNESS := 5
 const FLOORS := 15
 const MAP_HEIGHT := 4
 const PATHS := 3
-const GRASS_ROOM_WEIGHT := 11
-const DESERT_ROOM_WEIGHT := 7
-const ROCKY_ROOM_WEIGHT := 8
 
-var random_camp_biome_weights = {
-	Camp.Biome.GRASS: 0.0,
-	Camp.Biome.DESERT: 0.0,
-	Camp.Biome.ROCKY: 0.0	
-}
-
-var random_camp_biome_total_weight := 0
 var map_data: Array[Array]
+
+var rng = RandomNumberGenerator.new()
+var camp_biomes_array = [Camp.Biome.GRASS, Camp.Biome.ROCKY, Camp.Biome.DESERT]
+var weights = PackedFloat32Array([grass_camp_weight, desert_camp_weight, rocky_camp_weight])
 
 func generate_map() -> Array[Array]:
 	map_data = _generate_initial_grid()
@@ -29,8 +27,7 @@ func generate_map() -> Array[Array]:
 		var current_j := j
 		for i in FLOORS - 1:
 			current_j = _setup_connection(i, current_j)
-	
-	_setup_random_camp_weights()
+			
 	_setup_camp_biomes()
 	
 	return map_data
@@ -45,31 +42,14 @@ func _generate_initial_grid() -> Array[Array]:
 			var current_camp := Camp.new()
 			var offset := Vector2(randf(), randf()) * PLACEMENT_RANDOMNESS
 			current_camp.position = Vector2(i * X_Dist, j * -Y_Dist) + offset
-			current_camp.row = i
-			current_camp.column = j
+			current_camp.column = i
+			current_camp.row = j
 			current_camp.next_camps = []
 			
 			adjacent_camps.append(current_camp)
 	
 		result.append(adjacent_camps)
 	return result
-
-func _get_random_starting_points() -> Array[int]:
-	var y_coordinates: Array[int]
-	var unique_points: int = 0
-	
-	while unique_points < 2:
-		unique_points = 0
-		y_coordinates = []
-		
-		for i in PATHS:
-			var starting_point := randi_range(0, MAP_HEIGHT - 1)
-			if not y_coordinates.has(starting_point):
-				unique_points += 1
-			
-			y_coordinates.append(starting_point)
-	
-	return y_coordinates
 
 func _setup_connection(i: int, j: int) -> int:
 	var next_camp: Camp
@@ -81,7 +61,7 @@ func _setup_connection(i: int, j: int) -> int:
 		
 	current_camp.next_camps.append(next_camp)
 	
-	return next_camp.column
+	return next_camp.row
 	
 func _would_cross_existing_path(i: int, j: int, camp: Camp) -> bool:
 	var left_neighbour: Camp
@@ -92,27 +72,19 @@ func _would_cross_existing_path(i: int, j: int, camp: Camp) -> bool:
 	if j < MAP_HEIGHT - 1:
 		right_neighbour = map_data[i][j + 1]
 		
-	if right_neighbour and camp.column > j:
+	if right_neighbour and camp.row > j:
 		for next_camp: Camp in right_neighbour.next_camps:
-			if next_camp.column < camp.column:
+			if next_camp.row < camp.row:
 				return true
 				
-	if left_neighbour and camp.column < j:
+	if left_neighbour and camp.row < j:
 		for next_camp: Camp in left_neighbour.next_camps:
-			if next_camp.column > camp.column:
+			if next_camp.row > camp.row:
 				return true
 	
 	return false
 
-func _setup_random_camp_weights() -> void:
-	random_camp_biome_weights[Camp.Biome.GRASS] = GRASS_ROOM_WEIGHT
-	random_camp_biome_weights[Camp.Biome.DESERT] = GRASS_ROOM_WEIGHT + DESERT_ROOM_WEIGHT
-	random_camp_biome_weights[Camp.Biome.ROCKY] = GRASS_ROOM_WEIGHT + DESERT_ROOM_WEIGHT + ROCKY_ROOM_WEIGHT
-	
-	random_camp_biome_total_weight = random_camp_biome_weights[Camp.Biome.ROCKY]
-
 func _setup_camp_biomes() -> void:
-	
 	for camp: Camp in map_data[0]:
 		if camp.next_camps.size() > 0:
 			camp.biome = Camp.Biome.GRASS
@@ -121,22 +93,4 @@ func _setup_camp_biomes() -> void:
 		for camp: Camp in current_floor:
 			for next_camp: Camp in camp.next_camps:
 				if next_camp.biome == Camp.Biome.UNASSIGNED:
-					_set_camp_randomly(next_camp)
-
-func _set_camp_randomly(camp_to_set: Camp) -> void:
-	var biome_candidate: Camp.Biome
-	
-	biome_candidate = _get_random_camp_biome_by_weight()
-	
-	camp_to_set.biome = biome_candidate
-	
-func _get_random_camp_biome_by_weight() -> Camp.Biome:
-		var roll := randf_range(0.0, random_camp_biome_total_weight)
-		
-		for biome: Camp.Biome in random_camp_biome_weights:
-			if random_camp_biome_weights[biome] > roll:
-				return biome
-		
-		return Camp.Biome.GRASS
-	
-	
+					next_camp.biome = camp_biomes_array[rng.rand_weighted(weights)]
