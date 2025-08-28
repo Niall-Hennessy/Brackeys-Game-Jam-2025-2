@@ -11,7 +11,7 @@ extends Node
 const X_Dist := 30
 const Y_Dist := 25
 const PLACEMENT_RANDOMNESS := 5
-const FLOORS := 15
+const FLOORS := 10
 const MAP_HEIGHT := 10
 const PATHS := 8
 
@@ -55,6 +55,7 @@ func _generate_initial_grid() -> Array[Array]:
 			
 			if i == FLOORS - 1:
 				current_camp.position.x = (i + 1) * i/8 * X_Dist + 50 * i
+				current_camp.position.y = MAP_HEIGHT/2
 			
 			adjacent_camps.append(current_camp)
 

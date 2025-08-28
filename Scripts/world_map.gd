@@ -87,12 +87,17 @@ func _on_choose_button_pressed() -> void:
 	tween = create_tween()
 	tween.tween_property(player_sprite, "position", player_sprite.position + vec2 * travel_progress, 1)
 	
+	await tween.finished
+	
 	if travel_progress == biscuits_per_travel:
 		
 		current_camp = selected_camp
 		GameManager.world_map_selected_camp = null
 		
 		camps_traversed += 1
+		if camps_traversed == map_generator.FLOORS:
+			get_tree().change_scene_to_file("res://Scenes/Screens/victory_screen.tscn")			
+		
 		travel_progress = 0
 		biscuits_per_travel += 1
 		GameManager.biscuits_per_travel = biscuits_per_travel
