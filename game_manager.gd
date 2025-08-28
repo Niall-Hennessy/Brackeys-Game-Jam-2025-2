@@ -10,6 +10,7 @@ enum Items {EMPTY, WHEAT, FLOUR, WATER, DOUGH}
 @export var turn: int = 1
 @export var player_distance: int = 1000
 @export var winter_distance: int = 0
+@export var winter_intensity = 0
 
 @export var distance_per_biscuit: int = 100
 
@@ -92,4 +93,14 @@ func next_turn(consume_num_biscuits: int) -> void:
 		get_tree().change_scene_to_file("res://Scenes/Screens/game_over_screen.tscn")
 	else:
 		turn += 1
+		# TODO check if you've arrived at a camp?
 		# load the map screen which will in turn load a camp scene and restart the timer
+		
+		# calculate winter intensity
+		var gap = player_distance - winter_distance
+		if gap > 800:
+			winter_intensity = 0 # default
+		elif gap > 400:
+			winter_intensity = 1 # small graphical change, increase station times
+		else:
+			winter_intensity = 2 # noticeable graphical change, add obstacles

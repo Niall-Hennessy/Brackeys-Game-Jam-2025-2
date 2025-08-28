@@ -35,7 +35,10 @@ func _on_mixing_button_pressed() -> void:
 	if has_water and has_flour:
 		GameManager.is_busy = true
 		$StationProgressRadial.visible = true
-		$Timer.start()
+		var winter_multiplier = 1
+		if GameManager.winter_intensity > 0:
+			winter_multiplier = 1.5
+		$Timer.start($Timer.wait_time * winter_multiplier)
 
 func _on_timer_timeout() -> void:
 	GameManager.gain_dough()

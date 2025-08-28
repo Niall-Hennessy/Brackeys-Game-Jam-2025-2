@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bcdwnssg1p26x"]
+[gd_scene load_steps=15 format=3 uid="uid://bcdwnssg1p26x"]
 
 [ext_resource type="Texture2D" uid="uid://c8g4gvm87meby" path="res://Assets/Camp/Camp_temp.png" id="1_ggwjr"]
 [ext_resource type="PackedScene" uid="uid://uldm21fmtwyx" path="res://Scenes/Player/player.tscn" id="2_jbux2"]
@@ -9,8 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://d4d4b0g6aw2th" path="res://Scenes/Stations/wheat.tscn" id="7_1s3k0"]
 [ext_resource type="Script" uid="uid://rnvwkq3eij6g" path="res://Scripts/GUI.gd" id="8_e3pj7"]
 [ext_resource type="PackedScene" uid="uid://c1xml0p8585f2" path="res://Scenes/invisible_wall.tscn" id="9_v1faj"]
-[ext_resource type="Script" path="res://Scripts/GUI_end_turn.gd" id="10_hqsev"]
-[ext_resource type="Script" path="res://Scripts/GUI_pause_menu.gd" id="11_d3476"]
+[ext_resource type="Script" uid="uid://sluadc1scs3u" path="res://Scripts/GUI_end_turn.gd" id="10_hqsev"]
+[ext_resource type="Script" uid="uid://gpyh2lxkqtod" path="res://Scripts/GUI_pause_menu.gd" id="11_d3476"]
+[ext_resource type="Script" uid="uid://c2oxatc6kpwxo" path="res://Scripts/snow_pile.gd" id="12_fi4yr"]
+[ext_resource type="Texture2D" uid="uid://chmqa5g7g436q" path="res://Assets/snow_pile.png" id="13_uy33q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1s3k0"]
 
 [node name="TestLevel" type="Node2D"]
 
@@ -22,7 +26,6 @@ texture = ExtResource("1_ggwjr")
 [node name="Player" parent="." instance=ExtResource("2_jbux2")]
 position = Vector2(455, 293)
 scale = Vector2(3, 3)
-speed = 175.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, 0.333333)
@@ -130,6 +133,7 @@ wait_time = 60.0
 autostart = true
 
 [node name="WorldMapButton" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
 offset_left = -129.667
 offset_top = -289.333
 offset_right = -36.6667
@@ -220,6 +224,18 @@ offset_bottom = -147.666
 scale = Vector2(0.352649, 0.583948)
 text = "Resume"
 
+[node name="SnowPile1" type="Area2D" parent="."]
+position = Vector2(374, 307)
+scale = Vector2(3.12, 3.12)
+script = ExtResource("12_fi4yr")
+
+[node name="Sprite2D" type="Sprite2D" parent="SnowPile1"]
+texture = ExtResource("13_uy33q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SnowPile1"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_1s3k0")
+
 [connection signal="pressed" from="CanvasLayer/Control/EndTurnButton" to="CanvasLayer/Control" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/EndTurnButton" to="CanvasLayer/Control/EndTurnButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/EndTurnButton" to="CanvasLayer/EndOfTurnPopup" method="_on_end_turn_button_pressed"]
@@ -231,3 +247,5 @@ text = "Resume"
 [connection signal="value_changed" from="CanvasLayer/EndOfTurnPopup/NumberOfBiscuitsSlider" to="CanvasLayer/EndOfTurnPopup" method="_on_number_of_biscuits_slider_value_changed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu/ResumeButton" method="_on_pressed"]
+[connection signal="body_entered" from="SnowPile1" to="Player" method="_on_snow_pile_1_body_entered"]
+[connection signal="body_exited" from="SnowPile1" to="Player" method="_on_snow_pile_1_body_exited"]

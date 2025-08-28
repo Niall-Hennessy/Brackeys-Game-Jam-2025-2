@@ -19,7 +19,10 @@ func _on_biscuit_button_pressed() -> void:
 	# don't update is_busy, we can leave the biscuits cook unsupervised I guess
 	GameManager.inventory = GameManager.Items.EMPTY
 	$StationProgressRadial.visible = true
-	$Timer.start()
+	var winter_multiplier = 1
+	if GameManager.winter_intensity > 0:
+		winter_multiplier = 1.5
+	$Timer.start($Timer.wait_time * winter_multiplier)
 	
 func _on_timer_timeout() -> void:
 	GameManager.gain_biscuit(1)
