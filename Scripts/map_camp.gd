@@ -10,7 +10,8 @@ const ICONS := {
 	Camp.Biome.ARID: preload("res://Assets/MapCamps/arid_camp_temp.png"),
 	Camp.Biome.MOUNTAIN: preload("res://Assets/MapCamps/mountain_camp_temp.png"),
 	Camp.Biome.RIVER: preload("res://Assets/MapCamps/river_camp_temp.png"),
-	Camp.Biome.FOREST: preload("res://Assets/MapCamps/forest_camp_temp.png")
+	Camp.Biome.FOREST: preload("res://Assets/MapCamps/forest_camp_temp.png"),
+	Camp.Biome.TOWN: preload("res://Assets/MapCamps/town_camp_temp.png")
 }
 
 @onready var sprite_2d: Sprite2D = $Sprite2D

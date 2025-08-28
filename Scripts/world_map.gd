@@ -123,6 +123,9 @@ func create_map() -> void:
 					has_found_first = true
 				_spawn_camp(camp)
 	
+	var middle := floori(MapGenerator.MAP_HEIGHT * 0.5)
+	_spawn_camp(map_data[MapGenerator.FLOORS - 1][middle])
+	
 	var map_width_pixels := MapGenerator.X_Dist * (MapGenerator.MAP_HEIGHT - 1)
 	map_textures.position.x = (get_viewport_rect().size.x - map_width_pixels) / 2
 	map_textures.position.y = 0

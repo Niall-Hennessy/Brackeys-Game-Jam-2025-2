@@ -30,6 +30,7 @@ func generate_map() -> Array[Array]:
 		for i in FLOORS - 1:
 			current_j = _setup_connection(i, current_j)
 			
+	_setup_final_camp()
 	_setup_camp_biomes()
 	
 	return map_data
@@ -47,6 +48,9 @@ func _generate_initial_grid() -> Array[Array]:
 			current_camp.column = i
 			current_camp.row = j
 			current_camp.next_camps = []
+			
+			if i == FLOORS - 1:
+				current_camp.position.x = (i + 1) * X_Dist
 			
 			adjacent_camps.append(current_camp)
 	
@@ -85,6 +89,18 @@ func _would_cross_existing_path(i: int, j: int, camp: Camp) -> bool:
 				return true
 	
 	return false
+
+func _setup_final_camp() -> void:
+	var middle := floori(MAP_HEIGHT * 0.5)
+	var final_camp := map_data[FLOORS - 1][middle] as Camp
+	
+	for j in MAP_HEIGHT:
+		var current_camp = map_data[FLOORS - 2][j] as Camp
+		if  current_camp.next_camps:
+			current_camp.next_camps = [] as Array[Camp]
+			current_camp.next_camps.append(final_camp)
+			
+	final_camp.biome = Camp.Biome.TOWN
 
 func _setup_camp_biomes() -> void:
 	for camp: Camp in map_data[0]:
