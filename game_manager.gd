@@ -104,3 +104,21 @@ func next_turn(consume_num_biscuits: int) -> void:
 			winter_intensity = 1 # small graphical change, increase station times
 		else:
 			winter_intensity = 2 # noticeable graphical change, add obstacles
+
+func get_current_camp() -> String :
+	if world_map_current_camp == null:
+		return ""
+
+	match world_map_current_camp.biome:
+		Camp.Biome.PLAINS:
+			return "Plains"
+		Camp.Biome.ARID:
+			return "Arid"
+		Camp.Biome.MOUNTAIN:
+			return "Mountain"
+		Camp.Biome.RIVER:
+			return "River"
+		Camp.Biome.FOREST:
+			return "Forest"
+		_:
+			return ""
