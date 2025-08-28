@@ -38,7 +38,6 @@ var player_position: Vector2
 
 var travel_progress: int
 var biscuits_per_travel: int
-var between_camps: bool = false
 
 func _ready() -> void:
 	if not GameManager.map_data:
@@ -94,10 +93,8 @@ func _on_choose_button_pressed() -> void:
 	
 	await tween.finished
 	
-	between_camps = true
 	if travel_progress == biscuits_per_travel:
 		
-		between_camps = false
 		current_camp = selected_camp
 		GameManager.world_map_selected_camp = null
 		
@@ -110,9 +107,11 @@ func _on_choose_button_pressed() -> void:
 		GameManager.biscuits_per_travel = biscuits_per_travel
 		print(biscuits_per_travel)
 		GameManager.travel_progress = 0
+		selected_camp = null
 		unlock_next_rooms()
-		update_biscuit_slider()
-		update_button_text()
+	biscuit_slider.set_value_no_signal(0)
+	update_biscuit_slider()
+	update_button_text()
 
 func _on_setup_camp_button_pressed() -> void:
 	GameManager.camps_traversed = camps_traversed
@@ -205,13 +204,15 @@ func update_biscuit_slider() -> void:
 	# set the slider's max value to the number of biscuits you have
 	biscuit_slider.max_value = GameManager.biscuits
 	biscuit_slider.tick_count = GameManager.biscuits
+	$CanvasLayer/NumberOfBiscuitsLabel.text = str(int(biscuit_slider.value))
+	
 	
 func update_button_text() -> void:
 	# change the button text to reflect whether a destination has been chosen or not
-	if between_camps:
-		$CanvasLayer/ChooseButton.text = "Choose Destination and Travel"
-	else:
+	if travel_progress > 0:
 		$CanvasLayer/ChooseButton.text = "Travel Towards Destination"
+	else:
+		$CanvasLayer/ChooseButton.text = "Choose Destination and Travel"
 
 func _on_number_of_biscuits_slider_value_changed(value: float) -> void:
 	update_biscuit_slider()
