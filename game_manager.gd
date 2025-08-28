@@ -37,7 +37,7 @@ func _ready() -> void:
 	discard_item_sig.connect(discard_item)	
 
 func initialise_vars() -> void:
-	biscuits = 0
+	biscuits = 10
 	inventory = Items.EMPTY
 	turn = 1
 	player_distance = 1000

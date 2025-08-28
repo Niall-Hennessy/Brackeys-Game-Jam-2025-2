@@ -23,6 +23,7 @@ var tween: Tween
 @onready var map_textures: Node2D = $MapTextures
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var player_sprite: Sprite2D = $MapTextures/PlayerSprite
+@onready var biscuit_slider: HSlider = $CanvasLayer/NumberOfBiscuitsSlider
 
 var camera_edge_y: int
 
@@ -37,6 +38,7 @@ var player_position: Vector2
 
 var travel_progress: int
 var biscuits_per_travel: int
+var between_camps: bool = false
 
 func _ready() -> void:
 	if not GameManager.map_data:
@@ -60,9 +62,12 @@ func _ready() -> void:
 		unlock_next_rooms()
 		
 	player_sprite.position = player_position
+	update_biscuit_slider()
+	update_button_text()
 
 func _on_choose_button_pressed() -> void:
-	if not selected_camp or GameManager.biscuits <= 0:
+	var current_biscuits = biscuit_slider.get_value()
+	if not selected_camp or current_biscuits <= 0:
 		return
 	
 	for map_camp: MapCamp in camps.get_children():
@@ -72,9 +77,9 @@ func _on_choose_button_pressed() -> void:
 	
 	GameManager.world_map_selected_camp = selected_camp
 		
-	if GameManager.biscuits < biscuits_per_travel - travel_progress:
-		travel_progress += GameManager.biscuits
-		GameManager.biscuits = 0
+	if current_biscuits < biscuits_per_travel - travel_progress:
+		travel_progress += current_biscuits
+		GameManager.biscuits -= current_biscuits
 	else:
 		GameManager.biscuits -= biscuits_per_travel - travel_progress
 		travel_progress += biscuits_per_travel - travel_progress
@@ -89,8 +94,10 @@ func _on_choose_button_pressed() -> void:
 	
 	await tween.finished
 	
+	between_camps = true
 	if travel_progress == biscuits_per_travel:
 		
+		between_camps = false
 		current_camp = selected_camp
 		GameManager.world_map_selected_camp = null
 		
@@ -104,6 +111,8 @@ func _on_choose_button_pressed() -> void:
 		print(biscuits_per_travel)
 		GameManager.travel_progress = 0
 		unlock_next_rooms()
+		update_biscuit_slider()
+		update_button_text()
 
 func _on_setup_camp_button_pressed() -> void:
 	GameManager.camps_traversed = camps_traversed
@@ -191,3 +200,20 @@ func _on_map_camp_selected(map_camp_sent: MapCamp) -> void:
 			map_camp.set_is_selected(false)
 	
 	selected_camp = map_camp_sent.camp
+
+func update_biscuit_slider() -> void:
+	# set the slider's max value to the number of biscuits you have
+	biscuit_slider.max_value = GameManager.biscuits
+	biscuit_slider.tick_count = GameManager.biscuits
+	
+func update_button_text() -> void:
+	# change the button text to reflect whether a destination has been chosen or not
+	if between_camps:
+		$CanvasLayer/ChooseButton.text = "Choose Destination and Travel"
+	else:
+		$CanvasLayer/ChooseButton.text = "Travel Towards Destination"
+
+func _on_number_of_biscuits_slider_value_changed(value: float) -> void:
+	update_biscuit_slider()
+	$CanvasLayer/NumberOfBiscuitsLabel.text = str(int(biscuit_slider.get_value()))
+	
