@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://dhu64x781l8vf" path="res://Scripts/mortar_and_pestle.gd" id="1_765ix"]
 [ext_resource type="Texture2D" uid="uid://bwuy7uhqykb0c" path="res://Assets/Stations/MortarAndPestleTemp.png" id="2_765ix"]
 [ext_resource type="PackedScene" uid="uid://b81j4cgq1flrb" path="res://Scenes/Stations/proximity_trigger.tscn" id="3_5wmxq"]
-[ext_resource type="Texture2D" uid="uid://cp1x0niouvpps" path="res://Assets/clock_progress_under.png" id="4_5wmxq"]
-[ext_resource type="Texture2D" uid="uid://0h57n21pgy7u" path="res://Assets/clock_progress_over.png" id="5_org45"]
-[ext_resource type="Texture2D" uid="uid://o7sevo0ogp0" path="res://Assets/Wheat_Item_Background_Temp.png" id="6_org45"]
+[ext_resource type="Texture2D" uid="uid://cp1x0niouvpps" path="res://Assets/Clocks/clock_progress_under.png" id="4_5wmxq"]
+[ext_resource type="Texture2D" uid="uid://0h57n21pgy7u" path="res://Assets/Clocks/clock_progress_over.png" id="5_org45"]
+[ext_resource type="Texture2D" uid="uid://o7sevo0ogp0" path="res://Assets/ItemBoxes/Wheat_Item_Background_Temp.png" id="6_org45"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2a06r"]
 atlas = ExtResource("2_765ix")

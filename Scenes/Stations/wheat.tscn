@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://f4nroc07x6nc" path="res://Scripts/wheat.gd" id="1_x2muh"]
 [ext_resource type="Texture2D" uid="uid://qhhcvg4miyah" path="res://Assets/Stations/wheat_temp.png" id="2_x2muh"]
 [ext_resource type="PackedScene" uid="uid://b81j4cgq1flrb" path="res://Scenes/Stations/proximity_trigger.tscn" id="3_4a4xg"]
-[ext_resource type="Texture2D" uid="uid://cp1x0niouvpps" path="res://Assets/clock_progress_under.png" id="4_4a4xg"]
-[ext_resource type="Texture2D" uid="uid://0h57n21pgy7u" path="res://Assets/clock_progress_over.png" id="5_m5pyv"]
+[ext_resource type="Texture2D" uid="uid://cp1x0niouvpps" path="res://Assets/Clocks/clock_progress_under.png" id="4_4a4xg"]
+[ext_resource type="Texture2D" uid="uid://0h57n21pgy7u" path="res://Assets/Clocks/clock_progress_over.png" id="5_m5pyv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rsppu"]
 atlas = ExtResource("2_x2muh")

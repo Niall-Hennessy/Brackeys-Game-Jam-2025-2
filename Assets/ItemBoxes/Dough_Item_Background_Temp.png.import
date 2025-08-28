@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6o5jijuospyl"
-path="res://.godot/imported/Flour_Item_Background_Temp.png-2bc3cf98914ce754ffdbfa17c43f3288.ctex"
+uid="uid://c1d661tfkkm3p"
+path="res://.godot/imported/Dough_Item_Background_Temp.png-4b5851129c0637dcaed8dd99aa777226.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Flour_Item_Background_Temp.png"
-dest_files=["res://.godot/imported/Flour_Item_Background_Temp.png-2bc3cf98914ce754ffdbfa17c43f3288.ctex"]
+source_file="res://Assets/ItemBoxes/Dough_Item_Background_Temp.png"
+dest_files=["res://.godot/imported/Dough_Item_Background_Temp.png-4b5851129c0637dcaed8dd99aa777226.ctex"]
 
 [params]
 

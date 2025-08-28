@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://o75kjk20mkx4" path="res://Scripts/mixing_bowl.gd" id="1_p7i4k"]
 [ext_resource type="Texture2D" uid="uid://dv4oiy8g7aqmj" path="res://Assets/Stations/MixingBowl.png" id="2_p7i4k"]
 [ext_resource type="PackedScene" uid="uid://b81j4cgq1flrb" path="res://Scenes/Stations/proximity_trigger.tscn" id="3_8fkcv"]
-[ext_resource type="Texture2D" uid="uid://cp1x0niouvpps" path="res://Assets/clock_progress_under.png" id="4_8fkcv"]
-[ext_resource type="Texture2D" uid="uid://0h57n21pgy7u" path="res://Assets/clock_progress_over.png" id="5_n08vg"]
-[ext_resource type="Texture2D" uid="uid://6o5jijuospyl" path="res://Assets/Flour_Item_Background_Temp.png" id="6_nuxqa"]
-[ext_resource type="Texture2D" uid="uid://bq23pqscjxg6v" path="res://Assets/Water_Item_Background_Temp.png" id="7_gargd"]
+[ext_resource type="Texture2D" uid="uid://cp1x0niouvpps" path="res://Assets/Clocks/clock_progress_under.png" id="4_8fkcv"]
+[ext_resource type="Texture2D" uid="uid://0h57n21pgy7u" path="res://Assets/Clocks/clock_progress_over.png" id="5_n08vg"]
+[ext_resource type="Texture2D" uid="uid://6o5jijuospyl" path="res://Assets/ItemBoxes/Flour_Item_Background_Temp.png" id="6_nuxqa"]
+[ext_resource type="Texture2D" uid="uid://bq23pqscjxg6v" path="res://Assets/ItemBoxes/Water_Item_Background_Temp.png" id="7_gargd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0js8q"]
 atlas = ExtResource("2_p7i4k")

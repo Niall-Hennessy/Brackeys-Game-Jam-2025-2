@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://clbhvhyefd8ik"]
+[gd_scene load_steps=12 format=3 uid="uid://h7g8tht87pal"]
 
 [ext_resource type="Texture2D" uid="uid://cgu0a44yrds1k" path="res://Assets/Camp/Camp_forest.png" id="1_3ymfh"]
 [ext_resource type="PackedScene" uid="uid://uldm21fmtwyx" path="res://Scenes/Player/player.tscn" id="2_5almv"]
@@ -137,6 +137,15 @@ text = "Discard"
 wait_time = 60.0
 autostart = true
 
+[node name="WorldMapButton" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = -129.667
+offset_top = -289.333
+offset_right = -36.6667
+offset_bottom = -258.333
+scale = Vector2(0.582228, 0.518008)
+text = "World Map"
+
 [node name="EndOfTurnPopup" type="Control" parent="CanvasLayer"]
 process_mode = 2
 z_index = 10
@@ -225,6 +234,7 @@ text = "Resume"
 [connection signal="pressed" from="CanvasLayer/Control/EndTurnButton" to="CanvasLayer/EndOfTurnPopup" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/DiscardButton" to="CanvasLayer/Control" method="_on_discard_button_pressed"]
 [connection signal="timeout" from="CanvasLayer/Control/CampTimer" to="CanvasLayer/Control" method="_on_camp_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/Control/WorldMapButton" to="CanvasLayer/Control" method="_on_world_map_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/EndOfTurnPopup/AdvanceButton" to="CanvasLayer/EndOfTurnPopup" method="_on_advance_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/EndOfTurnPopup/AdvanceButton" to="CanvasLayer/EndOfTurnPopup/AdvanceButton" method="_on_pressed"]
 [connection signal="value_changed" from="CanvasLayer/EndOfTurnPopup/NumberOfBiscuitsSlider" to="CanvasLayer/EndOfTurnPopup" method="_on_number_of_biscuits_slider_value_changed"]

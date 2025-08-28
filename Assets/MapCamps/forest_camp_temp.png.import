@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq23pqscjxg6v"
-path="res://.godot/imported/Water_Item_Background_Temp.png-8e47a7a331f5df5cea1cd2645e66f418.ctex"
+uid="uid://cpsqnwcym6l6"
+path="res://.godot/imported/forest_camp_temp.png-71b6f438f5de1ab52cda8372dea794e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Water_Item_Background_Temp.png"
-dest_files=["res://.godot/imported/Water_Item_Background_Temp.png-8e47a7a331f5df5cea1cd2645e66f418.ctex"]
+source_file="res://Assets/MapCamps/forest_camp_temp.png"
+dest_files=["res://.godot/imported/forest_camp_temp.png-71b6f438f5de1ab52cda8372dea794e0.ctex"]
 
 [params]
 

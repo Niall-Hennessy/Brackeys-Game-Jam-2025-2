@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0h57n21pgy7u"
-path="res://.godot/imported/clock_progress_over.png-93c49f253757720f3563af35836582d3.ctex"
+uid="uid://s6jm8g533jsw"
+path="res://.godot/imported/arid_camp_temp.png-0386014acc69948bd2215fc1753d28bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/clock_progress_over.png"
-dest_files=["res://.godot/imported/clock_progress_over.png-93c49f253757720f3563af35836582d3.ctex"]
+source_file="res://Assets/MapCamps/arid_camp_temp.png"
+dest_files=["res://.godot/imported/arid_camp_temp.png-0386014acc69948bd2215fc1753d28bd.ctex"]
 
 [params]
 
