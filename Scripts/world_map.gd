@@ -87,6 +87,7 @@ func _on_choose_button_pressed() -> void:
 		
 		camps_traversed += 1
 		travel_progress = 0
+		biscuits_per_travel += 1
 		GameManager.travel_progress = 0
 		print("It was reset")
 		print(travel_progress)
