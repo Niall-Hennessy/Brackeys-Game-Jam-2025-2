@@ -152,7 +152,22 @@ func _connect_lines(camp: Camp) -> void:
 		return
 	
 	for next: Camp in camp.next_camps:
+		
 		var new_map_line := MAP_LINE.instantiate() as Line2D
+		
+		match camp.biome:
+			Camp.Biome.PLAINS:
+				new_map_line.texture = load("res://Assets/MapLines/lime_line.png")
+			Camp.Biome.ARID:
+				new_map_line.texture = load("res://Assets/MapLines/yellow_line.png")
+			Camp.Biome.MOUNTAIN:
+				new_map_line.texture = load("res://Assets/MapLines/grey_line.png")
+			Camp.Biome.FOREST:
+				new_map_line.texture = load("res://Assets/MapLines/green_line.png")
+			Camp.Biome.RIVER:
+				new_map_line.texture = load("res://Assets/MapLines/red_line.png")
+		
+		
 		new_map_line.add_point(camp.position)
 		new_map_line.add_point(next.position)
 		lines.add_child(new_map_line)
