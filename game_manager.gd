@@ -26,6 +26,7 @@ var camps_traversed: int
 var world_map_selected_camp: Camp
 var world_map_current_camp: Camp
 var travel_progress: int
+var biscuits_per_travel: int
 
 var camp_timer_storage: float
 

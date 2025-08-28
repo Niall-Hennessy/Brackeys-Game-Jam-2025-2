@@ -36,7 +36,7 @@ var first_camp: Camp
 var player_position: Vector2
 
 var travel_progress: int
-var biscuits_per_travel: int = 3
+var biscuits_per_travel: int
 
 func _ready() -> void:
 	if not GameManager.map_data:
@@ -45,6 +45,7 @@ func _ready() -> void:
 		GameManager.map_data = map_data
 		player_position = first_camp.position
 		current_camp = first_camp
+		biscuits_per_travel = 3
 		unlock_next_rooms()
 	else:
 		camps_traversed = GameManager.camps_traversed
@@ -53,6 +54,9 @@ func _ready() -> void:
 		player_position = GameManager.player_world_map_position
 		current_camp = GameManager.world_map_current_camp
 		travel_progress = GameManager.travel_progress
+		biscuits_per_travel = GameManager.biscuits_per_travel
+		if GameManager.world_map_selected_camp:
+			selected_camp = GameManager.world_map_selected_camp
 		unlock_next_rooms()
 		
 	player_sprite.position = player_position
@@ -60,6 +64,13 @@ func _ready() -> void:
 func _on_choose_button_pressed() -> void:
 	if not selected_camp or GameManager.biscuits <= 0:
 		return
+	
+	for map_camp: MapCamp in camps.get_children():
+			if map_camp.camp.column == selected_camp.column:
+				map_camp.available = false
+				map_camp.end_animation()
+	
+	GameManager.world_map_selected_camp = selected_camp
 		
 	if GameManager.biscuits < biscuits_per_travel - travel_progress:
 		travel_progress += GameManager.biscuits
@@ -68,29 +79,25 @@ func _on_choose_button_pressed() -> void:
 		GameManager.biscuits -= biscuits_per_travel - travel_progress
 		travel_progress += biscuits_per_travel - travel_progress
 	
-	print(travel_progress)
-	
 	#create a travel progress variable that holds how far along the path the player is and perform all calculations based off of that
 	
 	var vec2 = selected_camp.position - player_sprite.position
-	vec2 = vec2/3
+	vec2 = vec2/biscuits_per_travel
 	
 	tween = create_tween()
 	tween.tween_property(player_sprite, "position", player_sprite.position + vec2 * travel_progress, 1)
 	
 	if travel_progress == biscuits_per_travel:
-		for map_camp: MapCamp in camps.get_children():
-			if map_camp.camp.column == selected_camp.column:
-				map_camp.available = false
-				map_camp.end_animation()
+		
 		current_camp = selected_camp
+		GameManager.world_map_selected_camp = null
 		
 		camps_traversed += 1
 		travel_progress = 0
 		biscuits_per_travel += 1
+		GameManager.biscuits_per_travel = biscuits_per_travel
+		print(biscuits_per_travel)
 		GameManager.travel_progress = 0
-		print("It was reset")
-		print(travel_progress)
 		unlock_next_rooms()
 
 func _on_setup_camp_button_pressed() -> void:

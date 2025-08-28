@@ -42,7 +42,7 @@ func set_camp(new_data: Camp) -> void:
 	sprite_2d.texture = ICONS[camp.biome]
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if not available or not event.is_action_pressed("left_click"):
+	if not available or not event.is_action_pressed("left_click") or GameManager.world_map_selected_camp:
 		return
 
 	camp.selected = true
