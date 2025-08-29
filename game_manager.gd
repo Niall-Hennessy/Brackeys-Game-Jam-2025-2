@@ -84,19 +84,12 @@ func gain_flour() -> void:
 func discard_item() -> void:
 	inventory = Items.EMPTY
 
-func next_turn(consume_num_biscuits: int) -> void:
-	if biscuits < consume_num_biscuits:
-		return
-	
-	biscuits -= consume_num_biscuits
-	player_distance += consume_num_biscuits * distance_per_biscuit
+func next_turn() -> void:
 	winter_distance += my_array[rng.rand_weighted(weights)]
 	if winter_distance > player_distance:
 		get_tree().change_scene_to_file("res://Scenes/Screens/game_over_screen.tscn")
 	else:
 		turn += 1
-		# TODO check if you've arrived at a camp?
-		# load the map screen which will in turn load a camp scene and restart the timer
 		
 		# calculate winter intensity
 		var gap = player_distance - winter_distance
