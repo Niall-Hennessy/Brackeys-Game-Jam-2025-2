@@ -85,7 +85,8 @@ func discard_item() -> void:
 
 func next_turn() -> void:
 	winter_distance += my_array[rng.rand_weighted(weights)]
-	if winter_distance > player_distance:
+	if winter_distance >= player_distance:
+		GameManager.initialise_vars()
 		get_tree().change_scene_to_file("res://Scenes/Screens/game_over_screen.tscn")
 	else:
 		turn += 1
