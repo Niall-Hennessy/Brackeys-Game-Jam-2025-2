@@ -75,15 +75,16 @@ func _on_choose_button_pressed() -> void:
 				map_camp.end_animation()
 	
 	GameManager.world_map_selected_camp = selected_camp
-		
+	
 	if current_biscuits < biscuits_per_travel - travel_progress:
+		GameManager.player_distance += current_biscuits * 100
 		travel_progress += current_biscuits
 		GameManager.biscuits -= current_biscuits
 	else:
+		GameManager.player_distance += (biscuits_per_travel - travel_progress) * 100
 		GameManager.biscuits -= biscuits_per_travel - travel_progress
 		travel_progress += biscuits_per_travel - travel_progress
-		
-	GameManager.player_distance += (biscuits_per_travel - travel_progress) * 100
+	
 	#create a travel progress variable that holds how far along the path the player is and perform all calculations based off of that
 	
 	var vec2 = selected_camp.position - player_sprite.position
