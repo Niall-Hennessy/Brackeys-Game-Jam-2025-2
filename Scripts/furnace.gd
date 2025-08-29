@@ -25,6 +25,7 @@ func _on_biscuit_button_pressed() -> void:
 	
 func _on_timer_timeout() -> void:
 	GameManager.gain_biscuit(1)
+	dough_amount = 0
 
 func add_dough(dough_to_add: int) -> void:
 	dough_amount += dough_to_add

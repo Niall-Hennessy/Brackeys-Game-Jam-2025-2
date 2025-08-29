@@ -31,6 +31,7 @@ var camp_time: float = 60
 var camp_timer_storage: float
 
 signal discard_item_sig
+signal gained_item_sig
 
 func _ready() -> void:
 	discard_item_sig.connect(discard_item)	

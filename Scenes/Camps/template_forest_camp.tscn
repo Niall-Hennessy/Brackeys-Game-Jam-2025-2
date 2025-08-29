@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://h7g8tht87pal"]
+[gd_scene load_steps=23 format=3 uid="uid://h7g8tht87pal"]
 
 [ext_resource type="Texture2D" uid="uid://cgu0a44yrds1k" path="res://Assets/Camp/Camp_forest.png" id="1_3ymfh"]
 [ext_resource type="PackedScene" uid="uid://uldm21fmtwyx" path="res://Scenes/Player/player.tscn" id="2_5almv"]
@@ -9,9 +9,18 @@
 [ext_resource type="PackedScene" uid="uid://d4d4b0g6aw2th" path="res://Scenes/Stations/wheat.tscn" id="7_gxy0m"]
 [ext_resource type="Script" uid="uid://rnvwkq3eij6g" path="res://Scripts/GUI.gd" id="8_suego"]
 [ext_resource type="PackedScene" uid="uid://c1xml0p8585f2" path="res://Scenes/invisible_wall.tscn" id="9_twx7x"]
+[ext_resource type="Texture2D" uid="uid://clgx7peyi1gxq" path="res://Assets/x_button_texture.png" id="11_bygcb"]
 [ext_resource type="Script" path="res://Scripts/GUI_pause_menu.gd" id="11_r877b"]
+[ext_resource type="Texture2D" uid="uid://dt73ra2h1vh5n" path="res://Assets/ProgressBars/under_long_progress_bar.png" id="12_ckjjx"]
 [ext_resource type="Script" path="res://Scripts/snow_pile.gd" id="12_dlw8t"]
+[ext_resource type="Texture2D" uid="uid://b611pfvavrl36" path="res://Assets/ProgressBars/overlay_long_progress_bar.png" id="13_pvhib"]
 [ext_resource type="Texture2D" uid="uid://chmqa5g7g436q" path="res://Assets/snow_pile.png" id="13_smliu"]
+[ext_resource type="Texture2D" uid="uid://7q0x5fqb57nq" path="res://Assets/ProgressBars/red_long_progress_bar.png" id="14_j5sh0"]
+[ext_resource type="Texture2D" uid="uid://mo4w5lbfafu7" path="res://Assets/ProgressBars/white_long_progress_bar.png" id="15_6balm"]
+[ext_resource type="Texture2D" uid="uid://dul0pxrqja6j8" path="res://Assets/Clocks/winter_clock_progress_under.png" id="16_hx77x"]
+[ext_resource type="Texture2D" uid="uid://bpdy38olx6j2d" path="res://Assets/Clocks/winter_clock_progress_over.png" id="17_b1lfw"]
+[ext_resource type="Texture2D" uid="uid://de2s0kbsumu34" path="res://Assets/ItemBoxes/Item_Background_Temp.png" id="18_pamjw"]
+[ext_resource type="Texture2D" uid="uid://bvytux8wetx0g" path="res://Assets/biscuit.png" id="19_o2r1u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gxy0m"]
 
@@ -88,58 +97,6 @@ scale = Vector2(6.39999, 5.2)
 scale = Vector2(3, 3)
 transform = Transform2D(3, 0, 0, 3, 0, 0)
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-z_index = 10
-layout_mode = 3
-anchors_preset = 0
-offset_left = 455.0
-offset_top = 294.0
-offset_right = 495.0
-offset_bottom = 334.0
-script = ExtResource("8_suego")
-
-[node name="GameManagerLabel" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = -452.0
-offset_top = -291.0
-offset_right = -228.0
-offset_bottom = -111.0
-scale = Vector2(0.607645, 0.477497)
-text = "Biscuits: 
-Turn: "
-
-[node name="TimeRemainingLabel" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = -240.667
-offset_top = -268.0
-offset_right = -16.6667
-offset_bottom = -88.0
-scale = Vector2(0.607645, 0.477497)
-text = "Time remaining:
-"
-
-[node name="DiscardButton" type="Button" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = -361.333
-offset_top = -290.333
-offset_right = -294.333
-offset_bottom = -259.333
-scale = Vector2(0.431655, 0.336504)
-text = "Discard"
-
-[node name="CampTimer" type="Timer" parent="CanvasLayer/Control"]
-wait_time = 60.0
-autostart = true
-
-[node name="WorldMapButton" type="Button" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = -129.667
-offset_top = -289.333
-offset_right = -36.6667
-offset_bottom = -258.333
-scale = Vector2(0.582228, 0.518008)
-text = "World Map"
-
 [node name="PauseMenu" type="Control" parent="CanvasLayer"]
 process_mode = 3
 visible = false
@@ -173,6 +130,134 @@ offset_bottom = -147.666
 scale = Vector2(0.352649, 0.583948)
 text = "Resume"
 
+[node name="GUI" type="Control" parent="CanvasLayer"]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_left = 455.0
+offset_top = 294.0
+offset_right = 495.0
+offset_bottom = 334.0
+script = ExtResource("8_suego")
+
+[node name="EndTurnButton" type="Button" parent="CanvasLayer/GUI"]
+layout_mode = 0
+offset_left = -264.333
+offset_top = -397.667
+offset_right = -135.333
+offset_bottom = -366.666
+scale = Vector2(0.352649, 0.583948)
+text = "End Turn"
+
+[node name="GameManagerLabel" type="Label" parent="CanvasLayer/GUI"]
+layout_mode = 0
+offset_left = -367.333
+offset_top = -404.0
+offset_right = -143.333
+offset_bottom = -224.0
+scale = Vector2(0.607645, 0.477497)
+text = "Biscuits: 
+Turn: "
+
+[node name="TimeRemainingLabel" type="Label" parent="CanvasLayer/GUI"]
+layout_mode = 0
+offset_left = -473.667
+offset_top = -401.667
+offset_right = -249.666
+offset_bottom = -221.667
+scale = Vector2(0.607645, 0.477497)
+text = "Time remaining:
+"
+
+[node name="DiscardButton" type="TextureButton" parent="CanvasLayer/GUI"]
+layout_mode = 0
+offset_left = -415.333
+offset_top = -288.0
+offset_right = -348.333
+offset_bottom = -256.0
+scale = Vector2(0.411001, 0.384674)
+texture_normal = ExtResource("11_bygcb")
+
+[node name="WorldMapButton" type="Button" parent="CanvasLayer/GUI"]
+layout_mode = 0
+offset_left = -130.0
+offset_top = -100.0
+offset_right = -36.9997
+offset_bottom = -69.0
+scale = Vector2(0.582228, 0.518008)
+text = "World Map"
+
+[node name="CampTimer" type="Timer" parent="CanvasLayer/GUI"]
+wait_time = 30.0
+autostart = true
+
+[node name="PlayerProgressBar" type="TextureProgressBar" parent="CanvasLayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -245.0
+offset_top = -294.667
+offset_right = -205.0
+offset_bottom = -254.667
+scale = Vector2(3.06899, 0.576278)
+max_value = 143.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("12_ckjjx")
+texture_over = ExtResource("13_pvhib")
+texture_progress = ExtResource("14_j5sh0")
+
+[node name="WinterProgressBar" type="TextureProgressBar" parent="CanvasLayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -245.0
+offset_top = -294.667
+offset_right = -205.0
+offset_bottom = -254.667
+scale = Vector2(3.06899, 0.576278)
+max_value = 143.0
+value = 50.0
+nine_patch_stretch = true
+texture_over = ExtResource("13_pvhib")
+texture_progress = ExtResource("15_6balm")
+
+[node name="WinterClockProgressRadial" type="TextureProgressBar" parent="CanvasLayer/GUI"]
+layout_mode = 0
+offset_left = -118.333
+offset_top = -290.333
+offset_right = -78.3333
+offset_bottom = -250.333
+scale = Vector2(1.29142, 1.27094)
+max_value = 30.0
+fill_mode = 4
+texture_under = ExtResource("16_hx77x")
+texture_progress = ExtResource("17_b1lfw")
+
+[node name="ItemBox" type="TextureRect" parent="CanvasLayer/GUI"]
+layout_mode = 0
+offset_left = -456.333
+offset_top = -291.333
+offset_right = -416.333
+offset_bottom = -251.333
+texture = ExtResource("18_pamjw")
+
+[node name="BiscuitTexture" type="TextureRect" parent="CanvasLayer/GUI"]
+layout_mode = 0
+offset_left = -455.0
+offset_top = -250.333
+offset_right = -415.0
+offset_bottom = -210.333
+scale = Vector2(0.609691, 0.609691)
+texture = ExtResource("19_o2r1u")
+
+[node name="BiscuitLabel" type="Label" parent="CanvasLayer/GUI"]
+layout_mode = 0
+offset_left = -429.667
+offset_top = -247.0
+offset_right = -389.667
+offset_bottom = -224.0
+scale = Vector2(0.769197, 0.769197)
+text = "x1"
+
 [node name="SnowPile1" type="Area2D" parent="."]
 position = Vector2(877, 347)
 scale = Vector2(3.12, 3.12)
@@ -185,10 +270,12 @@ texture = ExtResource("13_smliu")
 scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_gxy0m")
 
-[connection signal="pressed" from="CanvasLayer/Control/DiscardButton" to="CanvasLayer/Control" method="_on_discard_button_pressed"]
-[connection signal="timeout" from="CanvasLayer/Control/CampTimer" to="CanvasLayer/Control" method="_on_camp_timer_timeout"]
-[connection signal="pressed" from="CanvasLayer/Control/WorldMapButton" to="CanvasLayer/Control" method="_on_world_map_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu/ResumeButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/GUI/EndTurnButton" to="CanvasLayer/GUI" method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GUI/EndTurnButton" to="CanvasLayer/GUI/EndTurnButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/GUI/DiscardButton" to="CanvasLayer/GUI" method="_on_discard_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GUI/WorldMapButton" to="CanvasLayer/GUI" method="_on_world_map_button_pressed"]
+[connection signal="timeout" from="CanvasLayer/GUI/CampTimer" to="CanvasLayer/GUI" method="_on_camp_timer_timeout"]
 [connection signal="body_entered" from="SnowPile1" to="Player" method="_on_snow_pile_1_body_entered"]
 [connection signal="body_exited" from="SnowPile1" to="Player" method="_on_snow_pile_1_body_exited"]
