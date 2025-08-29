@@ -8,6 +8,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	$GameManagerLabel.text = "Inventory: " + str(GameManager.inventory_string()) + "\nBiscuits: " + str(GameManager.biscuits) + "\nTurn: " + str(GameManager.turn) + "\nPlayer Distance: " + str(GameManager.player_distance) + "\nWinter Distance: " + str(GameManager.winter_distance)
 	$TimeRemainingLabel.text = "Time Remaining:\n" + str(snapped($CampTimer.time_left, 0.01))
+	%PlayerProgressBar.value = GameManager.player_distance/100
+	%WinterProgressBar.value = GameManager.winter_distance/100
 
 func _on_end_turn_button_pressed() -> void:
 	$CampTimer.start(60)

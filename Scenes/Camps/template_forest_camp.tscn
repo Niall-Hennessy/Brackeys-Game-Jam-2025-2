@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://d4d4b0g6aw2th" path="res://Scenes/Stations/wheat.tscn" id="7_gxy0m"]
 [ext_resource type="Script" uid="uid://rnvwkq3eij6g" path="res://Scripts/GUI.gd" id="8_suego"]
 [ext_resource type="PackedScene" uid="uid://c1xml0p8585f2" path="res://Scenes/invisible_wall.tscn" id="9_twx7x"]
-[ext_resource type="Script" uid="uid://sluadc1scs3u" path="res://Scripts/GUI_end_turn.gd" id="10_87t1i"]
-[ext_resource type="Script" uid="uid://gpyh2lxkqtod" path="res://Scripts/GUI_pause_menu.gd" id="11_r877b"]
-[ext_resource type="Script" uid="uid://c2oxatc6kpwxo" path="res://Scripts/snow_pile.gd" id="12_dlw8t"]
+[ext_resource type="Script" path="res://Scripts/GUI_end_turn.gd" id="10_87t1i"]
+[ext_resource type="Script" path="res://Scripts/GUI_pause_menu.gd" id="11_r877b"]
+[ext_resource type="Script" path="res://Scripts/snow_pile.gd" id="12_dlw8t"]
 [ext_resource type="Texture2D" uid="uid://chmqa5g7g436q" path="res://Assets/snow_pile.png" id="13_smliu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gxy0m"]

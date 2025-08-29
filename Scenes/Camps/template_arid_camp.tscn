@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/GUI_end_turn.gd" id="10_mj8fq"]
 [ext_resource type="Script" path="res://Scripts/GUI_pause_menu.gd" id="11_u5vrg"]
 
-[node name="TestLevel" type="Node2D"]
+[node name="TestLevel2" type="Node2D"]
 
 [node name="CampArid" type="Sprite2D" parent="."]
 position = Vector2(579, 319.5)
@@ -22,7 +22,6 @@ texture = ExtResource("1_rlaot")
 [node name="Player" parent="." instance=ExtResource("2_7x58p")]
 position = Vector2(461, 335)
 scale = Vector2(3, 3)
-speed = 175.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, 0.333333)
