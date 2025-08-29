@@ -41,6 +41,7 @@ var biscuits_per_travel: int
 
 func _ready() -> void:
 	if not GameManager.map_data:
+		print("first time")
 		travel_progress = 0
 		generate_new_map()
 		GameManager.map_data = map_data
@@ -48,7 +49,9 @@ func _ready() -> void:
 		current_camp = first_camp
 		biscuits_per_travel = 3
 		unlock_next_rooms()
+		print(player_sprite.position)
 	else:
+		print("not the first time")
 		camps_traversed = GameManager.camps_traversed
 		map_data = GameManager.map_data
 		create_map()
@@ -59,12 +62,17 @@ func _ready() -> void:
 		if GameManager.world_map_selected_camp:
 			selected_camp = GameManager.world_map_selected_camp
 		unlock_next_rooms()
+		print(player_sprite.position)
 		
 	player_sprite.position = player_position
 	update_biscuit_slider()
 	update_button_text()
+	print("end of ready:")
+	print(GameManager.player_world_map_position)
 
 func _on_choose_button_pressed() -> void:
+	print("start_of_choose")
+	print(player_sprite.position)
 	var current_biscuits = biscuit_slider.get_value()
 	if not selected_camp or current_biscuits <= 0:
 		return
@@ -87,10 +95,10 @@ func _on_choose_button_pressed() -> void:
 	
 	var vec2 = selected_camp.position - player_sprite.position
 	vec2 = vec2/biscuits_per_travel
-	
+	print(player_sprite.position)
 	tween = create_tween()
 	tween.tween_property(player_sprite, "position", player_sprite.position + vec2 * travel_progress, 1)
-	
+	print(player_sprite.position)
 	await tween.finished
 	
 	if travel_progress == biscuits_per_travel:

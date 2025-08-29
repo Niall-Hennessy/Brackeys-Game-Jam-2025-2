@@ -2,7 +2,7 @@ extends Node2D
 
 
 func _on_start_game_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Camps/test_level.tscn")
+	get_tree().change_scene_to_file("res://Scenes/WorldMap/world_map.tscn")
 	GameManager.initialise_vars()
 
 

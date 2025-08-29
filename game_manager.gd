@@ -29,6 +29,7 @@ var world_map_current_camp: Camp
 var travel_progress: int
 var biscuits_per_travel: int
 
+var camp_time: float = 60
 var camp_timer_storage: float
 
 signal discard_item_sig
