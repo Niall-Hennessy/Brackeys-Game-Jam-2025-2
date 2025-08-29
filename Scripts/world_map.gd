@@ -21,7 +21,7 @@ var tween: Tween
 @onready var lines: Node2D = %Lines
 @onready var camps: Node2D = %Camps 
 @onready var map_textures: Node2D = $MapTextures
-@onready var camera_2d: Camera2D = $Camera2D
+@onready var camera_2d: Camera2D = $MapTextures/PlayerSprite/Camera2D
 @onready var player_sprite: Sprite2D = $MapTextures/PlayerSprite
 @onready var biscuit_slider: HSlider = $CanvasLayer/NumberOfBiscuitsSlider
 
@@ -126,7 +126,7 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("move_right"):
 		camera_2d.position.x += SCREEN_MOVE_SPEED
 	
-	camera_2d.position.y = clamp(camera_2d.position.y, -camera_edge_y, 0)
+	#camera_2d.position.y = clamp(camera_2d.position.y, -camera_edge_y, 0)
 
 func generate_new_map() -> void:
 	camps_traversed = 1

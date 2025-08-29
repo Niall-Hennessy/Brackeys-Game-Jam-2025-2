@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d4d4b0g6aw2th" path="res://Scenes/Stations/wheat.tscn" id="7_6lcay"]
 [ext_resource type="Script" uid="uid://rnvwkq3eij6g" path="res://Scripts/GUI.gd" id="8_lfqb0"]
 [ext_resource type="PackedScene" uid="uid://c1xml0p8585f2" path="res://Scenes/invisible_wall.tscn" id="9_cb3qh"]
-[ext_resource type="Script" uid="uid://gpyh2lxkqtod" path="res://Scripts/GUI_pause_menu.gd" id="11_u5vrg"]
+[ext_resource type="Script" path="res://Scripts/GUI_pause_menu.gd" id="11_u5vrg"]
 
 [node name="TestLevel" type="Node2D"]
 

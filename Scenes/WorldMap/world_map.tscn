@@ -14,9 +14,6 @@ script = ExtResource("1_whvw3")
 [node name="MapGenerator" type="Node" parent="."]
 script = ExtResource("2_e2gad")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 608)
-
 [node name="MapTextures" type="Node2D" parent="."]
 scale = Vector2(3, 3)
 
@@ -29,6 +26,10 @@ unique_name_in_owner = true
 [node name="PlayerSprite" type="Sprite2D" parent="MapTextures"]
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_uwqkr")
+
+[node name="Camera2D" type="Camera2D" parent="MapTextures/PlayerSprite"]
+position = Vector2(0.666656, 0.666656)
+scale = Vector2(0.666667, 0.666667)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
