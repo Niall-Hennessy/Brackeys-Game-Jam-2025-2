@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhgsnpk41ol4b"]
+[gd_scene load_steps=12 format=3 uid="uid://bhgsnpk41ol4b"]
 
 [ext_resource type="Script" uid="uid://o75kjk20mkx4" path="res://Scripts/mixing_bowl.gd" id="1_p7i4k"]
 [ext_resource type="Texture2D" uid="uid://dv4oiy8g7aqmj" path="res://Assets/Stations/MixingBowl.png" id="2_p7i4k"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://0h57n21pgy7u" path="res://Assets/Clocks/clock_progress_over.png" id="5_n08vg"]
 [ext_resource type="Texture2D" uid="uid://6o5jijuospyl" path="res://Assets/ItemBoxes/Flour_Item_Background_Temp.png" id="6_nuxqa"]
 [ext_resource type="Texture2D" uid="uid://bq23pqscjxg6v" path="res://Assets/ItemBoxes/Water_Item_Background_Temp.png" id="7_gargd"]
+[ext_resource type="Texture2D" uid="uid://c1d661tfkkm3p" path="res://Assets/ItemBoxes/Dough_Item_Background_Temp.png" id="8_gargd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0js8q"]
 atlas = ExtResource("2_p7i4k")
@@ -76,6 +77,11 @@ texture = ExtResource("6_nuxqa")
 position = Vector2(-24, -17)
 scale = Vector2(0.851394, 0.82494)
 texture = ExtResource("7_gargd")
+
+[node name="DoughItemSprite" type="Sprite2D" parent="."]
+position = Vector2(-1, -17)
+scale = Vector2(0.851394, 0.82494)
+texture = ExtResource("8_gargd")
 
 [connection signal="body_entered" from="ProximityTrigger" to="." method="_on_proximity_trigger_body_entered"]
 [connection signal="body_exited" from="ProximityTrigger" to="." method="_on_proximity_trigger_body_exited"]
