@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://deqbbtwchr357"]
+[gd_scene load_steps=19 format=3 uid="uid://deqbbtwchr357"]
 
 [ext_resource type="Texture2D" uid="uid://c8g4gvm87meby" path="res://Assets/Camp/Camp_temp.png" id="1_c4fu7"]
 [ext_resource type="PackedScene" uid="uid://uldm21fmtwyx" path="res://Scenes/Player/player.tscn" id="2_yqnp2"]
@@ -8,12 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://fi1wgrchr8kk" path="res://Scenes/Stations/water.tscn" id="8_2pdh6"]
 [ext_resource type="PackedScene" uid="uid://doy4bb45g1085" path="res://Scenes/Stations/mortar_and_pestle.tscn" id="8_o16nm"]
 [ext_resource type="PackedScene" uid="uid://d4d4b0g6aw2th" path="res://Scenes/Stations/wheat.tscn" id="8_tol5k"]
-[ext_resource type="Texture2D" uid="uid://ceqw4sx6pit7f" path="res://Assets/overlay_progress_bar.png" id="9_bo0tg"]
 [ext_resource type="PackedScene" uid="uid://c1xml0p8585f2" path="res://Scenes/invisible_wall.tscn" id="9_o16nm"]
+[ext_resource type="Texture2D" uid="uid://dt73ra2h1vh5n" path="res://Assets/ProgressBars/under_long_progress_bar.png" id="9_t4ilw"]
 [ext_resource type="Script" path="res://Scripts/GUI_end_turn.gd" id="9_tol5k"]
 [ext_resource type="Script" path="res://Scripts/GUI_pause_menu.gd" id="10_63ecn"]
-[ext_resource type="Texture2D" uid="uid://bf85iwjmwy747" path="res://Assets/red_progress_bar.png" id="10_t4ilw"]
-[ext_resource type="Texture2D" uid="uid://cj8gle7q6vo32" path="res://Assets/white_progress_bar.png" id="11_wq0bq"]
+[ext_resource type="Texture2D" uid="uid://b611pfvavrl36" path="res://Assets/ProgressBars/overlay_long_progress_bar.png" id="10_wq0bq"]
+[ext_resource type="Texture2D" uid="uid://7q0x5fqb57nq" path="res://Assets/ProgressBars/red_long_progress_bar.png" id="11_ssfcr"]
+[ext_resource type="Texture2D" uid="uid://mo4w5lbfafu7" path="res://Assets/ProgressBars/white_long_progress_bar.png" id="12_f6mwf"]
 [ext_resource type="Script" path="res://Scripts/snow_pile.gd" id="12_jj6mr"]
 [ext_resource type="Texture2D" uid="uid://chmqa5g7g436q" path="res://Assets/snow_pile.png" id="13_5cvbq"]
 
@@ -136,37 +137,34 @@ text = "World Map"
 wait_time = 60.0
 autostart = true
 
-[node name="Panel" type="Panel" parent="CanvasLayer/GUI"]
-layout_mode = 0
-offset_left = -451.667
-offset_top = -123.333
-offset_right = -411.667
-offset_bottom = -83.3333
-
-[node name="PlayerProgressBar" type="TextureProgressBar" parent="CanvasLayer/GUI/Panel"]
+[node name="PlayerProgressBar" type="TextureProgressBar" parent="CanvasLayer/GUI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 3.8147e-05
-offset_top = 0.333332
-offset_right = 40.0
-offset_bottom = 40.3333
+offset_left = -451.333
+offset_top = -264.334
+offset_right = -411.333
+offset_bottom = -224.334
+scale = Vector2(3.06899, 0.576278)
 max_value = 143.0
 value = 100.0
 nine_patch_stretch = true
-texture_over = ExtResource("9_bo0tg")
-texture_progress = ExtResource("10_t4ilw")
+texture_under = ExtResource("9_t4ilw")
+texture_over = ExtResource("10_wq0bq")
+texture_progress = ExtResource("11_ssfcr")
 
-[node name="WinterProgressBar" type="TextureProgressBar" parent="CanvasLayer/GUI/Panel"]
+[node name="WinterProgressBar" type="TextureProgressBar" parent="CanvasLayer/GUI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 4.07696e-05
-offset_top = 0.333332
-offset_right = 40.0
-offset_bottom = 40.3333
+offset_left = -451.333
+offset_top = -264.334
+offset_right = -411.333
+offset_bottom = -224.334
+scale = Vector2(3.06899, 0.576278)
 max_value = 143.0
+value = 50.0
 nine_patch_stretch = true
-texture_over = ExtResource("9_bo0tg")
-texture_progress = ExtResource("11_wq0bq")
+texture_over = ExtResource("10_wq0bq")
+texture_progress = ExtResource("12_f6mwf")
 
 [node name="EndOfTurnPopup" type="Control" parent="CanvasLayer"]
 process_mode = 2

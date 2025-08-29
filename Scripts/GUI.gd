@@ -6,7 +6,7 @@ func _ready() -> void:
 		print(GameManager.camp_timer_storage)
 
 func _process(delta: float) -> void:
-	$GameManagerLabel.text = "Inventory: " + str(GameManager.inventory_string()) + "\nBiscuits: " + str(GameManager.biscuits) + "\nTurn: " + str(GameManager.turn) + "\nPlayer Distance: " + str(GameManager.player_distance) + "\nWinter Distance: " + str(GameManager.winter_distance)
+	$GameManagerLabel.text = "Inventory: " + str(GameManager.inventory_string()) + "\nBiscuits: " + str(GameManager.biscuits)
 	$TimeRemainingLabel.text = "Time Remaining:\n" + str(snapped($CampTimer.time_left, 0.01))
 	%PlayerProgressBar.value = GameManager.player_distance/100
 	%WinterProgressBar.value = GameManager.winter_distance/100
