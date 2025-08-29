@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dnkitk5whgg3r"]
+[gd_scene load_steps=14 format=3 uid="uid://dnkitk5whgg3r"]
 
 [ext_resource type="Texture2D" uid="uid://bdlv5svsqkvrf" path="res://Assets/Camp/Camp_mountain.png" id="1_wifu6"]
 [ext_resource type="PackedScene" uid="uid://uldm21fmtwyx" path="res://Scenes/Player/player.tscn" id="2_3hvpl"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://d4d4b0g6aw2th" path="res://Scenes/Stations/wheat.tscn" id="7_iuk2b"]
 [ext_resource type="Script" uid="uid://rnvwkq3eij6g" path="res://Scripts/GUI.gd" id="8_5hosk"]
 [ext_resource type="PackedScene" uid="uid://c1xml0p8585f2" path="res://Scenes/invisible_wall.tscn" id="9_hp3a5"]
-[ext_resource type="Script" uid="uid://sluadc1scs3u" path="res://Scripts/GUI_end_turn.gd" id="10_768v3"]
 [ext_resource type="Script" uid="uid://gpyh2lxkqtod" path="res://Scripts/GUI_pause_menu.gd" id="11_is53t"]
 [ext_resource type="Script" uid="uid://c2oxatc6kpwxo" path="res://Scripts/snow_pile.gd" id="12_hwvy5"]
 [ext_resource type="Texture2D" uid="uid://chmqa5g7g436q" path="res://Assets/snow_pile.png" id="13_w0ckg"]
@@ -99,15 +98,6 @@ offset_right = 495.0
 offset_bottom = 334.0
 script = ExtResource("8_5hosk")
 
-[node name="EndTurnButton" type="Button" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = -122.667
-offset_top = -100.667
-offset_right = 6.33334
-offset_bottom = -69.6667
-scale = Vector2(0.352649, 0.583948)
-text = "End Turn"
-
 [node name="GameManagerLabel" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_left = -452.0
@@ -149,56 +139,6 @@ offset_right = -36.6667
 offset_bottom = -258.333
 scale = Vector2(0.582228, 0.518008)
 text = "World Map"
-
-[node name="EndOfTurnPopup" type="Control" parent="CanvasLayer"]
-process_mode = 2
-z_index = 10
-layout_mode = 3
-anchors_preset = 0
-offset_left = 455.0
-offset_top = 294.0
-offset_right = 495.0
-offset_bottom = 334.0
-script = ExtResource("10_768v3")
-
-[node name="EndOfTurnLabel" type="Label" parent="CanvasLayer/EndOfTurnPopup"]
-layout_mode = 0
-offset_left = -404.667
-offset_top = -211.0
-offset_right = 25.3333
-offset_bottom = -31.0
-scale = Vector2(0.607645, 0.477497)
-text = "How many biscuits do you want to eat while travelling?"
-
-[node name="NumberOfBiscuitsLabel" type="Label" parent="CanvasLayer/EndOfTurnPopup"]
-layout_mode = 0
-offset_left = -300.667
-offset_top = -198.333
-offset_right = -274.667
-offset_bottom = -171.333
-scale = Vector2(0.607645, 0.477497)
-text = "0"
-horizontal_alignment = 1
-
-[node name="AdvanceButton" type="Button" parent="CanvasLayer/EndOfTurnPopup"]
-layout_mode = 0
-offset_left = -317.667
-offset_top = -151.0
-offset_right = -188.666
-offset_bottom = -120.0
-scale = Vector2(0.352649, 0.583948)
-text = "Advance"
-
-[node name="NumberOfBiscuitsSlider" type="HSlider" parent="CanvasLayer/EndOfTurnPopup"]
-layout_mode = 0
-offset_left = -359.0
-offset_top = -187.667
-offset_right = -231.0
-offset_bottom = -171.667
-scale = Vector2(1.05991, 1)
-rounded = true
-scrollable = false
-ticks_on_borders = true
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer"]
 process_mode = 3
@@ -245,15 +185,9 @@ texture = ExtResource("13_w0ckg")
 scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_iuk2b")
 
-[connection signal="pressed" from="CanvasLayer/Control/EndTurnButton" to="CanvasLayer/Control" method="_on_end_turn_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/EndTurnButton" to="CanvasLayer/Control/EndTurnButton" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/EndTurnButton" to="CanvasLayer/EndOfTurnPopup" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/DiscardButton" to="CanvasLayer/Control" method="_on_discard_button_pressed"]
 [connection signal="timeout" from="CanvasLayer/Control/CampTimer" to="CanvasLayer/Control" method="_on_camp_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Control/WorldMapButton" to="CanvasLayer/Control" method="_on_world_map_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/EndOfTurnPopup/AdvanceButton" to="CanvasLayer/EndOfTurnPopup" method="_on_advance_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/EndOfTurnPopup/AdvanceButton" to="CanvasLayer/EndOfTurnPopup/AdvanceButton" method="_on_pressed"]
-[connection signal="value_changed" from="CanvasLayer/EndOfTurnPopup/NumberOfBiscuitsSlider" to="CanvasLayer/EndOfTurnPopup" method="_on_number_of_biscuits_slider_value_changed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu/ResumeButton" method="_on_pressed"]
 [connection signal="body_entered" from="SnowPile1" to="Player" method="_on_snow_pile_1_body_entered"]
