@@ -27,10 +27,9 @@ func _physics_process(delta: float) -> void:
 	if standing_in_snow:
 		speed = 110
 	
-	if !GameManager.is_busy:
-		$AnimatedSprite2D.play(anim)
-		velocity = direction * speed
-		move_and_slide()
+	$AnimatedSprite2D.play(anim)
+	velocity = direction * speed
+	move_and_slide()
 
 
 func _on_snow_pile_1_body_entered(body: Node2D) -> void:

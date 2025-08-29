@@ -15,7 +15,6 @@ func _on_harvest_button_pressed() -> void:
 	if GameManager.inventory != GameManager.Items.EMPTY:
 		return
 	
-	GameManager.is_busy = true
 	$StationProgressRadial.visible = true
 	var winter_multiplier = 1
 	if GameManager.winter_intensity > 0:
@@ -24,7 +23,6 @@ func _on_harvest_button_pressed() -> void:
 
 func _on_timer_timeout() -> void:
 	GameManager.gain_wheat()
-	GameManager.is_busy = false
 	quantity -= 1
 	if quantity < 1:
 		# destroy this object
