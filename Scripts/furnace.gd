@@ -16,7 +16,6 @@ func _on_biscuit_button_pressed() -> void:
 	if GameManager.inventory != GameManager.Items.DOUGH:
 		return
 	
-	# don't update is_busy, we can leave the biscuits cook unsupervised I guess
 	GameManager.inventory = GameManager.Items.EMPTY
 	$StationProgressRadial.visible = true
 	var winter_multiplier = 1

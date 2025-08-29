@@ -5,8 +5,6 @@ extends Node
 enum Items {EMPTY, WHEAT, FLOUR, WATER, DOUGH}
 @export var inventory: int = Items.EMPTY
 
-@export var is_busy: bool = false
-
 @export var turn: int = 1
 @export var player_distance: int = 1000
 @export var winter_distance: int = 0
