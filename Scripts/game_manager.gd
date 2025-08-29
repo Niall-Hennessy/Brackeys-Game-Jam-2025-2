@@ -62,7 +62,6 @@ func inventory_string() -> String:
 
 func gain_biscuit(num_biscuits: int) -> void:		
 	biscuits += num_biscuits
-	inventory = Items.EMPTY
 
 func gain_dough() -> void:
 	if inventory == Items.EMPTY:
