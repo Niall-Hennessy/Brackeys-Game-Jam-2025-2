@@ -111,6 +111,9 @@ func _on_choose_button_pressed() -> void:
 	biscuit_slider.set_value_no_signal(0)
 	update_biscuit_slider()
 	update_button_text()
+	# negative consequence for moving: winter advances a bit
+	print("winter advanced cause you moved\nwinter distance:" + str(GameManager.winter_distance))
+	GameManager.winter_distance += 50
 
 func _on_setup_camp_button_pressed() -> void:
 	GameManager.camps_traversed = camps_traversed
