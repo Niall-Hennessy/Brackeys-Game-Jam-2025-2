@@ -38,5 +38,5 @@ func _on_world_map_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/WorldMap/world_map.tscn")
 
 func _on_camp_timer_timeout() -> void:
-	GameManager.next_turn(0)
+	GameManager.next_turn()
 	#$EndTurnButton.pressed.emit()

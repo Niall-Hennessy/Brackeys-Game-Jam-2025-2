@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://deqbbtwchr357"]
+[gd_scene load_steps=23 format=3 uid="uid://deqbbtwchr357"]
 
 [ext_resource type="Texture2D" uid="uid://c8g4gvm87meby" path="res://Assets/Camp/Camp_temp.png" id="1_c4fu7"]
 [ext_resource type="PackedScene" uid="uid://uldm21fmtwyx" path="res://Scenes/Player/player.tscn" id="2_yqnp2"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://clgx7peyi1gxq" path="res://Assets/x_button_texture.png" id="9_5rvf2"]
 [ext_resource type="PackedScene" uid="uid://c1xml0p8585f2" path="res://Scenes/invisible_wall.tscn" id="9_o16nm"]
 [ext_resource type="Texture2D" uid="uid://dt73ra2h1vh5n" path="res://Assets/ProgressBars/under_long_progress_bar.png" id="9_t4ilw"]
-[ext_resource type="Script" path="res://Scripts/GUI_end_turn.gd" id="9_tol5k"]
 [ext_resource type="Script" path="res://Scripts/GUI_pause_menu.gd" id="10_63ecn"]
 [ext_resource type="Texture2D" uid="uid://b611pfvavrl36" path="res://Assets/ProgressBars/overlay_long_progress_bar.png" id="10_wq0bq"]
 [ext_resource type="Texture2D" uid="uid://7q0x5fqb57nq" path="res://Assets/ProgressBars/red_long_progress_bar.png" id="11_ssfcr"]
@@ -208,56 +207,6 @@ offset_bottom = -224.0
 scale = Vector2(0.769197, 0.769197)
 text = "x1"
 
-[node name="EndOfTurnPopup" type="Control" parent="CanvasLayer"]
-process_mode = 2
-z_index = 10
-layout_mode = 3
-anchors_preset = 0
-offset_left = 313.333
-offset_top = -89.3333
-offset_right = 353.333
-offset_bottom = -49.3333
-script = ExtResource("9_tol5k")
-
-[node name="EndOfTurnLabel" type="Label" parent="CanvasLayer/EndOfTurnPopup"]
-layout_mode = 0
-offset_left = -404.667
-offset_top = -211.0
-offset_right = 25.3333
-offset_bottom = -31.0
-scale = Vector2(0.607645, 0.477497)
-text = "How many biscuits do you want to eat while travelling?"
-
-[node name="NumberOfBiscuitsLabel" type="Label" parent="CanvasLayer/EndOfTurnPopup"]
-layout_mode = 0
-offset_left = -300.667
-offset_top = -198.333
-offset_right = -274.667
-offset_bottom = -171.333
-scale = Vector2(0.607645, 0.477497)
-text = "0"
-horizontal_alignment = 1
-
-[node name="AdvanceButton" type="Button" parent="CanvasLayer/EndOfTurnPopup"]
-layout_mode = 0
-offset_left = -317.667
-offset_top = -151.0
-offset_right = -188.666
-offset_bottom = -120.0
-scale = Vector2(0.352649, 0.583948)
-text = "Advance"
-
-[node name="NumberOfBiscuitsSlider" type="HSlider" parent="CanvasLayer/EndOfTurnPopup"]
-layout_mode = 0
-offset_left = -359.0
-offset_top = -187.667
-offset_right = -231.0
-offset_bottom = -171.667
-scale = Vector2(1.05991, 1)
-rounded = true
-scrollable = false
-ticks_on_borders = true
-
 [node name="PauseMenu" type="Control" parent="CanvasLayer"]
 process_mode = 3
 visible = false
@@ -326,9 +275,6 @@ shape = SubResource("RectangleShape2D_jj6mr")
 [connection signal="pressed" from="CanvasLayer/GUI/DiscardButton" to="CanvasLayer/GUI" method="_on_discard_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/GUI/WorldMapButton" to="CanvasLayer/GUI" method="_on_world_map_button_pressed"]
 [connection signal="timeout" from="CanvasLayer/GUI/CampTimer" to="CanvasLayer/GUI" method="_on_camp_timer_timeout"]
-[connection signal="pressed" from="CanvasLayer/EndOfTurnPopup/AdvanceButton" to="CanvasLayer/EndOfTurnPopup" method="_on_advance_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/EndOfTurnPopup/AdvanceButton" to="CanvasLayer/EndOfTurnPopup/AdvanceButton" method="_on_pressed"]
-[connection signal="value_changed" from="CanvasLayer/EndOfTurnPopup/NumberOfBiscuitsSlider" to="CanvasLayer/EndOfTurnPopup" method="_on_number_of_biscuits_slider_value_changed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu/ResumeButton" method="_on_pressed"]
 [connection signal="body_entered" from="SnowPile1" to="Player" method="_on_snow_pile_1_body_entered"]
