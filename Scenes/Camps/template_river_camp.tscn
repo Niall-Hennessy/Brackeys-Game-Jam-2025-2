@@ -10,8 +10,8 @@
 [ext_resource type="Script" uid="uid://rnvwkq3eij6g" path="res://Scripts/GUI.gd" id="8_dnyeb"]
 [ext_resource type="PackedScene" uid="uid://c1xml0p8585f2" path="res://Scenes/invisible_wall.tscn" id="9_ewi8y"]
 [ext_resource type="Texture2D" uid="uid://clgx7peyi1gxq" path="res://Assets/x_button_texture.png" id="11_pjjwx"]
-[ext_resource type="Script" path="res://Scripts/GUI_pause_menu.gd" id="11_po5p6"]
-[ext_resource type="Script" path="res://Scripts/snow_pile.gd" id="12_133y3"]
+[ext_resource type="Script" uid="uid://gpyh2lxkqtod" path="res://Scripts/GUI_pause_menu.gd" id="11_po5p6"]
+[ext_resource type="Script" uid="uid://c2oxatc6kpwxo" path="res://Scripts/snow_pile.gd" id="12_133y3"]
 [ext_resource type="Texture2D" uid="uid://dt73ra2h1vh5n" path="res://Assets/ProgressBars/under_long_progress_bar.png" id="12_vniha"]
 [ext_resource type="Texture2D" uid="uid://b611pfvavrl36" path="res://Assets/ProgressBars/overlay_long_progress_bar.png" id="13_g4sgn"]
 [ext_resource type="Texture2D" uid="uid://chmqa5g7g436q" path="res://Assets/snow_pile.png" id="13_o5ebw"]
@@ -182,7 +182,8 @@ scale = Vector2(0.582228, 0.518008)
 text = "World Map"
 
 [node name="CampTimer" type="Timer" parent="CanvasLayer/GUI"]
-wait_time = 30.0
+wait_time = 60.0
+one_shot = true
 autostart = true
 
 [node name="PlayerProgressBar" type="TextureProgressBar" parent="CanvasLayer/GUI"]
@@ -221,7 +222,7 @@ offset_top = -290.333
 offset_right = -78.3333
 offset_bottom = -250.333
 scale = Vector2(1.29142, 1.27094)
-max_value = 30.0
+max_value = 60.0
 fill_mode = 4
 texture_under = ExtResource("16_t3ry2")
 texture_progress = ExtResource("17_858gr")

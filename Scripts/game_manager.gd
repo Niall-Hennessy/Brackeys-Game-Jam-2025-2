@@ -13,6 +13,7 @@ enum Items {EMPTY, WHEAT, FLOUR, WATER, DOUGH}
 @export var distance_per_biscuit: int = 100
 
 @export var camp_timer : Timer
+var timer_duration_seconds: float = 60
 
 var rng = RandomNumberGenerator.new()
 
@@ -62,7 +63,6 @@ func inventory_string() -> String:
 
 func gain_biscuit(num_biscuits: int) -> void:		
 	biscuits += num_biscuits
-	inventory = Items.EMPTY
 
 func gain_dough() -> void:
 	if inventory == Items.EMPTY:
@@ -84,6 +84,7 @@ func discard_item() -> void:
 	inventory = Items.EMPTY
 
 func next_turn() -> void:
+	print("winter advanced cause a turn ended\nwinter distance:" + str(GameManager.winter_distance))
 	winter_distance += my_array[rng.rand_weighted(weights)]
 	if winter_distance >= player_distance:
 		GameManager.initialise_vars()

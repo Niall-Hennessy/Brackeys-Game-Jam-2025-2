@@ -11,11 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://clgx7peyi1gxq" path="res://Assets/x_button_texture.png" id="9_5rvf2"]
 [ext_resource type="PackedScene" uid="uid://c1xml0p8585f2" path="res://Scenes/invisible_wall.tscn" id="9_o16nm"]
 [ext_resource type="Texture2D" uid="uid://dt73ra2h1vh5n" path="res://Assets/ProgressBars/under_long_progress_bar.png" id="9_t4ilw"]
-[ext_resource type="Script" path="res://Scripts/GUI_pause_menu.gd" id="10_63ecn"]
+[ext_resource type="Script" uid="uid://gpyh2lxkqtod" path="res://Scripts/GUI_pause_menu.gd" id="10_63ecn"]
 [ext_resource type="Texture2D" uid="uid://b611pfvavrl36" path="res://Assets/ProgressBars/overlay_long_progress_bar.png" id="10_wq0bq"]
 [ext_resource type="Texture2D" uid="uid://7q0x5fqb57nq" path="res://Assets/ProgressBars/red_long_progress_bar.png" id="11_ssfcr"]
 [ext_resource type="Texture2D" uid="uid://mo4w5lbfafu7" path="res://Assets/ProgressBars/white_long_progress_bar.png" id="12_f6mwf"]
-[ext_resource type="Script" path="res://Scripts/snow_pile.gd" id="12_jj6mr"]
+[ext_resource type="Script" uid="uid://c2oxatc6kpwxo" path="res://Scripts/snow_pile.gd" id="12_jj6mr"]
 [ext_resource type="Texture2D" uid="uid://chmqa5g7g436q" path="res://Assets/snow_pile.png" id="13_5cvbq"]
 [ext_resource type="Texture2D" uid="uid://dul0pxrqja6j8" path="res://Assets/Clocks/winter_clock_progress_under.png" id="13_ssfcr"]
 [ext_resource type="Texture2D" uid="uid://bpdy38olx6j2d" path="res://Assets/Clocks/winter_clock_progress_over.png" id="14_f6mwf"]
@@ -137,7 +137,8 @@ scale = Vector2(0.582228, 0.518008)
 text = "World Map"
 
 [node name="CampTimer" type="Timer" parent="CanvasLayer/GUI"]
-wait_time = 30.0
+wait_time = 60.0
+one_shot = true
 autostart = true
 
 [node name="PlayerProgressBar" type="TextureProgressBar" parent="CanvasLayer/GUI"]
@@ -176,7 +177,7 @@ offset_top = -290.333
 offset_right = -78.3333
 offset_bottom = -250.333
 scale = Vector2(1.29142, 1.27094)
-max_value = 30.0
+max_value = 60.0
 fill_mode = 4
 texture_under = ExtResource("13_ssfcr")
 texture_progress = ExtResource("14_f6mwf")
