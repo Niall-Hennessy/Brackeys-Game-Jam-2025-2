@@ -18,6 +18,3 @@ func _on_discard_button_pressed() -> void:
 func _on_world_map_button_pressed() -> void:
 	GameManager.camp_timer_storage = $CampTimer.time_left
 	get_tree().change_scene_to_file("res://Scenes/WorldMap/world_map.tscn")
-
-func _on_camp_timer_timeout() -> void:
-	$EndTurnButton.pressed.emit()
