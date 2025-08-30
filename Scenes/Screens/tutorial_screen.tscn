@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvxr3vcjfw0y7"]
+[gd_scene load_steps=4 format=3 uid="uid://cvxr3vcjfw0y7"]
 
 [ext_resource type="Script" uid="uid://cmqbmnbkx8lai" path="res://Scripts/tutorial.gd" id="1_378p8"]
 [ext_resource type="Texture2D" uid="uid://ctogcjwe0pius" path="res://Assets/tutorial_diagram_basic.png" id="2_nsxq8"]
+[ext_resource type="Texture2D" uid="uid://tl54d6dge2eg" path="res://Assets/Screens/tutorial_map_bg.png" id="3_b6oc3"]
 
 [node name="tutorial_screen" type="Node2D"]
 script = ExtResource("1_378p8")
@@ -14,12 +15,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -86.0
-offset_top = -75.5
-offset_right = 86.0
-offset_bottom = 75.5
+offset_left = -378.0
+offset_top = -280.0
+offset_right = 427.0
+offset_bottom = 330.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.919999, 0.919999)
 alignment = 1
 
 [node name="MenuTextLabel" type="RichTextLabel" parent="VBoxContainer"]
@@ -60,8 +62,14 @@ layout_mode = 2
 text = "Back to Menu"
 
 [node name="TutorialDiagram" type="Sprite2D" parent="."]
-position = Vector2(439, -106)
+position = Vector2(410, -76)
 scale = Vector2(2.12, 2.12)
 texture = ExtResource("2_nsxq8")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1.23999, 1.62)
+scale = Vector2(2.70049, 3.02412)
+texture = ExtResource("3_b6oc3")
 
 [connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

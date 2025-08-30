@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bowcd6my4mta2"]
+[gd_scene load_steps=6 format=3 uid="uid://bowcd6my4mta2"]
 
 [ext_resource type="Script" uid="uid://dufo6sah0lbc6" path="res://Scripts/world_map.gd" id="1_whvw3"]
 [ext_resource type="Script" uid="uid://ifw7ak0slyjc" path="res://Scripts/map_generator.gd" id="2_e2gad"]
 [ext_resource type="Texture2D" uid="uid://cu5fj3jhu1dqf" path="res://Assets/Characters/character_30_frame32x32.png" id="3_e2gad"]
+[ext_resource type="Texture2D" uid="uid://tl54d6dge2eg" path="res://Assets/Screens/tutorial_map_bg.png" id="4_uwqkr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uwqkr"]
 atlas = ExtResource("3_e2gad")
@@ -31,6 +32,11 @@ texture = SubResource("AtlasTexture_uwqkr")
 position = Vector2(0.666656, 0.666656)
 scale = Vector2(0.666667, 0.666667)
 
+[node name="Background" type="Sprite2D" parent="MapTextures/PlayerSprite/Camera2D"]
+z_index = -5
+scale = Vector2(3.1, 3.1)
+texture = ExtResource("4_uwqkr")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="NewMapButton" type="Button" parent="CanvasLayer"]
@@ -53,18 +59,18 @@ text = "Setup Camp"
 
 [node name="NumberOfBiscuitsLabel" type="Label" parent="CanvasLayer"]
 offset_left = 424.0
-offset_top = 48.0
+offset_top = 74.0
 offset_right = 450.0
-offset_bottom = 75.0
+offset_bottom = 101.0
 scale = Vector2(0.607645, 0.477497)
 text = "0"
 horizontal_alignment = 1
 
 [node name="NumberOfBiscuitsSlider" type="HSlider" parent="CanvasLayer"]
 offset_left = 361.0
-offset_top = 33.0
+offset_top = 59.0
 offset_right = 489.0
-offset_bottom = 49.0
+offset_bottom = 75.0
 scale = Vector2(1.05991, 1)
 rounded = true
 scrollable = false
@@ -72,9 +78,9 @@ ticks_on_borders = true
 
 [node name="SliderCaptionLabel" type="Label" parent="CanvasLayer"]
 offset_left = 311.0
-offset_top = 4.0
+offset_top = 30.0
 offset_right = 741.0
-offset_bottom = 184.0
+offset_bottom = 210.0
 scale = Vector2(0.607645, 0.477497)
 text = "How many biscuits do you want to eat while travelling?"
 
