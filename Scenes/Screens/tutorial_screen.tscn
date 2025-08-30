@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvxr3vcjfw0y7"]
+
+[ext_resource type="Script" uid="uid://cmqbmnbkx8lai" path="res://Scripts/tutorial.gd" id="1_378p8"]
+
+[node name="tutorial_screen" type="Node2D"]
+script = ExtResource("1_378p8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = -75.5
+offset_right = 86.0
+offset_bottom = 75.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MenuTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "You play as the little fox, trying to get to a far away town for safety before winter arrives.
+As you travel, you'll need to regularly make camp and forage for supplies to make Biscuits - rations for your journey.
+Don't spend too long cooking at your camp though - winter is approaching fast,
+and if you're not careful it'll catch up with you! Foxes and winter do not mix well:(
+
+How to make Biscuits:
+Fetch Wheat from areas with crops and use the Mortar and Pestle to make Flour.
+Fetch Water from sources and mix it with Flour to make Dough.
+Bring Dough to a Furnace and bake it to make Biscuits! 
+
+Controls:
+WASD to move around your camp
+Left Click the buttons above each station to interact with it
+
+Navigating the Map Screen:
+Left Click on a zone in the map that's connected to where you are to select it as your destination.
+You'll need to eat biscuits while you travel - use the slider to decide how
+many you're going to eat (and so how far you're going to move).
+You can stop whenever you like, even between zones, to set up camp. You don't have to
+use all your biscuits at once if you'd rather save some!
+You'll travel between different zones on your way to safety - each with its own strengths and drawbacks.
+Make sure to plan your route ahead whenever you can.
+
+Safe travels and happy baking!"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Back to Menu"
+
+[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
