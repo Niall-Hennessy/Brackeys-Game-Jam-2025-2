@@ -11,11 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://clgx7peyi1gxq" path="res://Assets/x_button_texture.png" id="9_5rvf2"]
 [ext_resource type="PackedScene" uid="uid://c1xml0p8585f2" path="res://Scenes/invisible_wall.tscn" id="9_o16nm"]
 [ext_resource type="Texture2D" uid="uid://dt73ra2h1vh5n" path="res://Assets/ProgressBars/under_long_progress_bar.png" id="9_t4ilw"]
-[ext_resource type="Script" uid="uid://gpyh2lxkqtod" path="res://Scripts/GUI_pause_menu.gd" id="10_63ecn"]
+[ext_resource type="Script" path="res://Scripts/GUI_pause_menu.gd" id="10_63ecn"]
 [ext_resource type="Texture2D" uid="uid://b611pfvavrl36" path="res://Assets/ProgressBars/overlay_long_progress_bar.png" id="10_wq0bq"]
 [ext_resource type="Texture2D" uid="uid://7q0x5fqb57nq" path="res://Assets/ProgressBars/red_long_progress_bar.png" id="11_ssfcr"]
 [ext_resource type="Texture2D" uid="uid://mo4w5lbfafu7" path="res://Assets/ProgressBars/white_long_progress_bar.png" id="12_f6mwf"]
-[ext_resource type="Script" uid="uid://c2oxatc6kpwxo" path="res://Scripts/snow_pile.gd" id="12_jj6mr"]
+[ext_resource type="Script" path="res://Scripts/snow_pile.gd" id="12_jj6mr"]
 [ext_resource type="Texture2D" uid="uid://chmqa5g7g436q" path="res://Assets/snow_pile.png" id="13_5cvbq"]
 [ext_resource type="Texture2D" uid="uid://dul0pxrqja6j8" path="res://Assets/Clocks/winter_clock_progress_under.png" id="13_ssfcr"]
 [ext_resource type="Texture2D" uid="uid://bpdy38olx6j2d" path="res://Assets/Clocks/winter_clock_progress_over.png" id="14_f6mwf"]
@@ -149,8 +149,8 @@ offset_top = -294.667
 offset_right = -205.0
 offset_bottom = -254.667
 scale = Vector2(3.06899, 0.576278)
-max_value = 143.0
-value = 100.0
+max_value = 79.0
+value = 10.0
 nine_patch_stretch = true
 texture_under = ExtResource("9_t4ilw")
 texture_over = ExtResource("10_wq0bq")
@@ -164,8 +164,7 @@ offset_top = -294.667
 offset_right = -205.0
 offset_bottom = -254.667
 scale = Vector2(3.06899, 0.576278)
-max_value = 143.0
-value = 50.0
+max_value = 79.0
 nine_patch_stretch = true
 texture_over = ExtResource("10_wq0bq")
 texture_progress = ExtResource("12_f6mwf")

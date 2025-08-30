@@ -23,6 +23,7 @@ var tween: Tween
 @onready var map_textures: Node2D = $MapTextures
 @onready var camera_2d: Camera2D = $MapTextures/PlayerSprite/Camera2D
 @onready var player_sprite: Sprite2D = $MapTextures/PlayerSprite
+@onready var winter_sprite: Sprite2D = %WinterSprite
 @onready var biscuit_slider: HSlider = $CanvasLayer/NumberOfBiscuitsSlider
 
 var camera_edge_y: int
@@ -59,8 +60,10 @@ func _ready() -> void:
 		if GameManager.world_map_selected_camp:
 			selected_camp = GameManager.world_map_selected_camp
 		unlock_next_rooms()
-		
+	
+	
 	player_sprite.position = player_position
+	winter_sprite.position = GameManager.winter_world_map_position
 	update_biscuit_slider()
 	update_button_text()
 

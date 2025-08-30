@@ -48,7 +48,7 @@ func _generate_initial_grid() -> Array[Array]:
 		for j in MAP_HEIGHT:
 			var current_camp := Camp.new()
 			var offset := Vector2(randf(), randf()) * PLACEMENT_RANDOMNESS
-			current_camp.position = Vector2(i * i/8 * X_Dist + 50 * i, j * -Y_Dist) + offset#
+			current_camp.position = Vector2(i * i/8 * X_Dist + 50 * i, j * -Y_Dist) + offset
 			current_camp.column = i
 			current_camp.row = j
 			current_camp.next_camps = []
