@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://deqbbtwchr357"]
+[gd_scene load_steps=25 format=3 uid="uid://deqbbtwchr357"]
 
 [ext_resource type="Texture2D" uid="uid://c8g4gvm87meby" path="res://Assets/Camp/Camp_temp.png" id="1_c4fu7"]
 [ext_resource type="PackedScene" uid="uid://uldm21fmtwyx" path="res://Scenes/Player/player.tscn" id="2_yqnp2"]
@@ -21,6 +21,15 @@
 [ext_resource type="Texture2D" uid="uid://bpdy38olx6j2d" path="res://Assets/Clocks/winter_clock_progress_over.png" id="14_f6mwf"]
 [ext_resource type="Texture2D" uid="uid://de2s0kbsumu34" path="res://Assets/ItemBoxes/Item_Background_Temp.png" id="15_f6mwf"]
 [ext_resource type="Texture2D" uid="uid://bvytux8wetx0g" path="res://Assets/biscuit.png" id="16_8mniq"]
+[ext_resource type="PackedScene" uid="uid://dgbkrovfttgw1" path="res://Scenes/snow_generator.tscn" id="22_5rvf2"]
+
+[sub_resource type="GDScript" id="GDScript_5rvf2"]
+script/source = "extends GPUParticles2D
+
+func _physics_process(delta: float) -> void:
+	self.emitting =  GameManager.winter_intensity > 0
+	print(self.emitting)
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jj6mr"]
 
@@ -240,6 +249,12 @@ offset_right = -172.0
 offset_bottom = -147.666
 scale = Vector2(0.352649, 0.583948)
 text = "Resume"
+
+[node name="SnowGenerator" parent="CanvasLayer" instance=ExtResource("22_5rvf2")]
+position = Vector2(190, -2)
+scale = Vector2(1.28, 1)
+emitting = false
+script = SubResource("GDScript_5rvf2")
 
 [node name="InvisibleWalls" type="Node" parent="."]
 

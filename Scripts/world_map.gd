@@ -121,6 +121,7 @@ func _on_setup_camp_button_pressed() -> void:
 	GameManager.world_map_current_camp = current_camp
 	GameManager.travel_progress = travel_progress
 	GameManager.biscuits_per_travel = biscuits_per_travel
+	GameManager.update_winter_intensity()
 	get_tree().change_scene_to_file(MAPS[current_camp.biome])
 
 func _input(event: InputEvent) -> void:
