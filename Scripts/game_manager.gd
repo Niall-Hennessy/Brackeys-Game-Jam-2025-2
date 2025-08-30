@@ -22,6 +22,7 @@ var weights = PackedFloat32Array([0.5, 1, 2, 1.5, 1]) #https://docs.godotengine.
 
 var map_data: Array[Array]
 var player_world_map_position: Vector2
+var winter_world_map_position: Vector2
 var camps_traversed: int
 var world_map_selected_camp: Camp
 var world_map_current_camp: Camp
@@ -43,6 +44,11 @@ func initialise_vars() -> void:
 	turn = 1
 	player_distance = 1000
 	winter_distance = 0
+	
+	var A = -300
+	var B = 200
+	winter_world_map_position.x = A + (B - A) * 0
+	winter_world_map_position.y = 0
 	# camp timer starts automatically upon entering the scene
 	
 
@@ -86,6 +92,13 @@ func discard_item() -> void:
 func next_turn() -> void:
 	print("winter advanced cause a turn ended\nwinter distance:" + str(GameManager.winter_distance))
 	winter_distance += my_array[rng.rand_weighted(weights)]
+	#var x = 0.5
+	#winter_world_map_position.x = x * x/8 * MapGenerator.X_Dist + 50 * x  - 1152/2  + 24
+	var A = -300
+	var B = 200
+	var t = winter_distance/7900.0
+	winter_world_map_position.x = A + (B - A) * t
+	winter_world_map_position.y = 0
 	if winter_distance >= player_distance:
 		GameManager.initialise_vars()
 		get_tree().change_scene_to_file("res://Scenes/Screens/game_over_screen.tscn")

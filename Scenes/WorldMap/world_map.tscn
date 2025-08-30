@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bowcd6my4mta2"]
+[gd_scene load_steps=6 format=3 uid="uid://bowcd6my4mta2"]
 
 [ext_resource type="Script" uid="uid://dufo6sah0lbc6" path="res://Scripts/world_map.gd" id="1_whvw3"]
 [ext_resource type="Script" uid="uid://ifw7ak0slyjc" path="res://Scripts/map_generator.gd" id="2_e2gad"]
 [ext_resource type="Texture2D" uid="uid://cu5fj3jhu1dqf" path="res://Assets/Characters/character_30_frame32x32.png" id="3_e2gad"]
+[ext_resource type="Texture2D" uid="uid://cd53kd62l6tdc" path="res://Assets/winter_clouds.png" id="4_uwqkr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uwqkr"]
 atlas = ExtResource("3_e2gad")
@@ -30,6 +31,11 @@ texture = SubResource("AtlasTexture_uwqkr")
 [node name="Camera2D" type="Camera2D" parent="MapTextures/PlayerSprite"]
 position = Vector2(0.666656, 0.666656)
 scale = Vector2(0.666667, 0.666667)
+
+[node name="WinterSprite" type="Sprite2D" parent="MapTextures"]
+unique_name_in_owner = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_uwqkr")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
