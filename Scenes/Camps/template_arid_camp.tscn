@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c28b8wt7qh6jm"]
+[gd_scene load_steps=21 format=3 uid="uid://c28b8wt7qh6jm"]
 
 [ext_resource type="Texture2D" uid="uid://tinmnlveiuuh" path="res://Assets/Camp/Camp_arid.png" id="1_rlaot"]
 [ext_resource type="PackedScene" uid="uid://uldm21fmtwyx" path="res://Scenes/Player/player.tscn" id="2_7x58p"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bpdy38olx6j2d" path="res://Assets/Clocks/winter_clock_progress_over.png" id="17_gjbos"]
 [ext_resource type="Texture2D" uid="uid://de2s0kbsumu34" path="res://Assets/ItemBoxes/Item_Background_Temp.png" id="18_yp0o5"]
 [ext_resource type="Texture2D" uid="uid://bvytux8wetx0g" path="res://Assets/biscuit.png" id="19_y5gn8"]
+[ext_resource type="PackedScene" uid="uid://dgbkrovfttgw1" path="res://Scenes/snow_generator.tscn" id="20_j6jia"]
 
 [node name="TestLevel2" type="Node2D"]
 
@@ -245,6 +246,11 @@ offset_right = -389.667
 offset_bottom = -224.0
 scale = Vector2(0.769197, 0.769197)
 text = "x1"
+
+[node name="SnowGenerator" parent="CanvasLayer" instance=ExtResource("20_j6jia")]
+position = Vector2(190, -2)
+scale = Vector2(1.28, 1)
+emitting = false
 
 [connection signal="pressed" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu/ResumeButton" method="_on_pressed"]

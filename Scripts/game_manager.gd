@@ -92,14 +92,17 @@ func next_turn() -> void:
 	else:
 		turn += 1
 		
-		# calculate winter intensity
-		var gap = player_distance - winter_distance
-		if gap > 800:
-			winter_intensity = 0 # default
-		elif gap > 400:
-			winter_intensity = 1 # small graphical change, increase station times
-		else:
-			winter_intensity = 2 # noticeable graphical change, add obstacles
+		update_winter_intensity()
+		
+
+func update_winter_intensity() -> void:
+	var gap = player_distance - winter_distance
+	if gap > 800:
+		winter_intensity = 0 # default
+	elif gap > 400:
+		winter_intensity = 1 # small graphical change, increase station times
+	else:
+		winter_intensity = 2 # noticeable graphical change, add obstacles
 
 func get_current_camp() -> String :
 	if world_map_current_camp == null:

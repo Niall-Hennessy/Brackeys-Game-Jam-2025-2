@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://fqgp6c33jikj"]
+[gd_scene load_steps=24 format=3 uid="uid://fqgp6c33jikj"]
 
 [ext_resource type="Texture2D" uid="uid://fux20pn3qoyn" path="res://Assets/Camp/Camp_river.png" id="1_2tfvw"]
 [ext_resource type="PackedScene" uid="uid://uldm21fmtwyx" path="res://Scenes/Player/player.tscn" id="2_2to5n"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://bpdy38olx6j2d" path="res://Assets/Clocks/winter_clock_progress_over.png" id="17_858gr"]
 [ext_resource type="Texture2D" uid="uid://de2s0kbsumu34" path="res://Assets/ItemBoxes/Item_Background_Temp.png" id="18_amo86"]
 [ext_resource type="Texture2D" uid="uid://bvytux8wetx0g" path="res://Assets/biscuit.png" id="19_00feb"]
+[ext_resource type="PackedScene" uid="uid://dgbkrovfttgw1" path="res://Scenes/snow_generator.tscn" id="20_vniha"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qrx8r"]
 
@@ -252,6 +253,11 @@ offset_right = -389.667
 offset_bottom = -224.0
 scale = Vector2(0.769197, 0.769197)
 text = "x1"
+
+[node name="SnowGenerator" parent="CanvasLayer" instance=ExtResource("20_vniha")]
+position = Vector2(190, -2)
+scale = Vector2(1.28, 1)
+emitting = false
 
 [node name="SnowPile1" type="Area2D" parent="."]
 position = Vector2(877, 347)

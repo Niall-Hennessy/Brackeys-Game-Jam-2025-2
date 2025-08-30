@@ -25,6 +25,7 @@ func _process(delta: float) -> void:
 		4:
 			$ItemBox.texture = load("res://Assets/ItemBoxes/Dough_Item_Background_Temp.png")
 			
+	get_parent().get_node("SnowGenerator").emitting = GameManager.winter_intensity > 0 # only emit snow over intensity = 1
 	
 
 func _on_discard_button_pressed() -> void:
